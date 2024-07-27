@@ -6,7 +6,7 @@ description: What is Psychotherapy
 
 A "psychotherapist" is a broad term for a trained professional who helps people with their mental health by using psychotherapy techniques to treat their mental distress, problem, or disorder. Examples of psychotherapy applications include: relieving symptoms, aiding in recovery, and preventing the symptoms from recurring.
 
-The Regulated Health Professions Act established governing bodies, known as "colleges," to oversee some of the care provided by professionals in Ontario.  "Controlled acts" are defined as acts which may be performed only by authorized regulated health professionals.  Regulated health care providers are accountable to their regulatory college.
+The _Regulated Health Professions Act_ established governing bodies, known as "colleges," to oversee some of the care provided by professionals in Ontario.  "Controlled acts" are defined as acts which may be performed only by authorized regulated health professionals.  Regulated health care providers are accountable to their regulatory college.
 
 The "College of Registered Psychotherapists of Ontario" is the regulatory body in Ontario for "Registered Psychotherapists." There are other health professionals registered with other regulatory colleges who may also perform the controlled act of psychotherapy.  
 
