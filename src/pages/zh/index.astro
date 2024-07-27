@@ -1,0 +1,54 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+---
+
+<!doctype html>
+<html lang="zh">
+<head>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body class="w-full max-w-screen-md mx-auto my-4 dark:bg-neutral-800 dark:text-neutral-300 transition-colors duration-300" >
+  <Header />
+  <main class="flex flex-col justify-center">
+    <div class="px-4 md:px-16 flex flex-col gap-4 md:my-4 text-center">
+      <h1 class="text-2xl md:text-5xl w-full font-bold md:block">Chislon Chow</h1>
+      
+      <h2 class="text-base md:text-lg w-full font-semibold">
+        註冊心理治療師 Registered Psychotherapist<br />
+        臨床心理輔導神道學碩士 MDiv Clinical Counselling
+      </h2>
+    </div>
+    <div class="px-4 md:px-12 flex flex-col gap-4 my-4">
+      <p class="w-full text-justify text-base md:text-lg">
+        我向心理治療的方針著重於：憐憫、依附理論、創傷知情。我有協助講英語和粵語的個人、配偶及家庭案主提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我可能會使用的心理治療方式包括但不限於 : 情緒取向治療、辯證行為治療。
+      </p>
+    </div>
+    
+    <div class="px-4 md:px-12 flex flex-col gap-4 my-4">
+      <h3 class="text-base md:text-lg w-full font-semibold text-center">
+        🚨大多倫多區心理健康危機資訊
+      </h3>
+      <p class="w-full text-justify text-sm md:text-base">如遇到緊急情況，也許應該撥打911緊急熱線，並視需要撥打當地的24小時危機專線，例如: </p>
+      <ul class="text-sm">
+        <li>
+          <a href="https://988.ca/">自殺危機求助專線 Suicide Crisis Helpline</a>: 988
+        </li>
+        <li>
+          <a href="https://www.dcogt.com/408-helpline/">多倫多危難中心求助專線 Distress Centre of Toronto Helpline</a>: 416-408-4357
+        </li>
+        <li>
+          <a href="https://yssn.ca/310-cope/">你的支援服務網路危機熱線 Your Support Services Network Crisis Line</a>: 1-855-310-2673
+        </li>
+        <li>
+          <a href="https://kidshelpphone.ca/urgent-help">協助兒童電話求助專線 Kids Help Phone Helpline</a>: 1-800-668-6868
+        </li>
+      </ul>
+      
+    </div>
+  </main>
+  <Footer />
+</body>
+</html>

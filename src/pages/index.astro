@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body class="w-full max-w-screen-md mx-auto my-4 dark:bg-neutral-800 dark:text-neutral-300 transition-colors duration-300" >
+  <Header />
+  <main class="flex flex-col justify-center">
+    <div class="px-4 md:px-16 flex flex-col gap-4 md:my-4 text-center">
+      <h1 class="text-2xl md:text-5xl w-full font-bold md:block">Chislon Chow</h1>
+      
+      <h2 class="text-base md:text-lg w-full font-semibold">
+        Registered Psychotherapist<br />
+        Master of Divinity in Clinical Counselling
+      </h2>
+    </div>
+    <div class="px-4 md:px-12 flex flex-col gap-4 my-4">
+      <p class="w-full text-justify text-base md:text-lg">
+        My approach to psychotherapy is focused on : compassion, attachment theory, and being trauma-informed. I have experience in helping English and Cantonese speaking individuals, couples, and families. Having come to Canada from Hong Kong, I have insight into both cultures. The psychotherapeutic modalities I may use include but are not limited to: Emotionally Focused Therapy and Dialectical Behavioural Therapy. 
+      </p>
+    </div>    
+    <div class="px-4 md:px-12 flex flex-col gap-4 my-4">
+      <h3 class="text-base md:text-lg w-full font-semibold text-center">
+        🚨Mental Health Crisis Information for Greater Toronto Area
+      </h3>
+      <p class="w-full text-justify text-sm md:text-base">In case of emergency, you might want to call your emergency hotline 911. As needed, please consider reaching out to your local 24-hour Crisis Hotlines, such as: </p>
+      <ul class="text-sm">
+        <li>
+          <a href="https://988.ca/">Suicide Crisis Helpline</a>: 988
+        </li>
+        <li>
+          <a href="https://www.dcogt.com/408-helpline/">Distress Centre of Toronto Helpline</a>: 416-408-4357
+        </li>
+        <li>
+          <a href="https://yssn.ca/310-cope/">York Support Services Network Crisis Line</a>: 1-855-310-2673
+        </li>
+        <li>
+          <a href="https://kidshelpphone.ca/urgent-help">Kids Help Phone Helpline</a>: 1-800-668-6868
+        </li>
+      </ul>
+      
+    </div>
+  </main>
+  <Footer />
+</body>
+</html>

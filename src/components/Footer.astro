@@ -1,0 +1,17 @@
+---
+const today = new Date();
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="mt-15 md:mt-24 mx-4">
+  <div class="border-b mb-5" />
+  <p class="text-sm font-medium mb-5">
+    &copy; {today.getFullYear()} Chislon Chow (周基樂)
+  </p>
+  <p class="text-sm font-medium mb-10 italic">
+    {t('text.disclaimer')}
+  </p>
+</footer>
