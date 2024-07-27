@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/page.astro
-title: 我的個人簡介
+title: 我的簡介
 description: 我的專業簡介
 ---
 
