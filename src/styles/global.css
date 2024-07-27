@@ -18,11 +18,11 @@ a {
 }
 
 a:hover {
-    color: #444; /* Gray color for dark mode */
+    color: gray; /* Gray color for dark mode */
 }
 
 .dark a:hover {
-    color: #fff; /* White color for dark mode */
+    color: white; /* White color for dark mode */
 }
 
 img {
