@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/page.astro
-title: 本地華裔社區資源
-description: 本地華裔社區資源列表
+title: 華裔加拿大人本地社區資源
+description: 華裔加拿大人本地社區資源列表
 ---
 
 ### 定居資料

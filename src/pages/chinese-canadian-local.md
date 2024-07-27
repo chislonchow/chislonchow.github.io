@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/page.astro
-title: Chinese Community Local Resources
-description: List of Chinese Community local resources
+title: Chinese Canadian Local Community Resources
+description: List of Chinese Canadian local community resources
 ---
 
 ### Settlement Information
