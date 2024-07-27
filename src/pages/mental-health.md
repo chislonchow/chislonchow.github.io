@@ -44,7 +44,7 @@ Some qualities of mental health:
 
 <sub> Johnson, S. M. (2019). _Attachment theory in practice: Emotionally focused therapy (EFT) with individuals, couples, and families._ Guilford Press.</sub>
 
-
+&#8203;
 "EFIT is an approach to growing and expanding the self and its capacities grounded in attachment science and the power of transforming core emotional experience. Core chaotic, foreign, or denied emotional experience is evoked, ordered, and regulated to shape emotional balance and integration in each client. Clients move from chaos to order, reactivity to balance, from self-abnegation to self-acceptance, from helplessness to agency."
 
 <sub>- Johnson, S.M., & Campbell, T.L. (2021). _A Primer for Emotionally Focused Individual Therapy (EFIT): Cultivating Fitness and Growth in Every Client_. Routledge. </sub>
