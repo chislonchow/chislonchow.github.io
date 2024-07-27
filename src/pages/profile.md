@@ -10,7 +10,7 @@ I have experience in applying Emotionally Focused Therapy and Dialectical Behavi
 
 I immigrated with my family from Hong Kong to Canada and grew up in the Greater Toronto Area. This gives me insight from childhood to adulthood into both cultures, and sensitivity to challenges with cultural adaption in Canada. I am fluent in spoken Cantonese and Canadian English. I try to be respectful to each person’s unique concerns with a trauma-informed and inclusive approach to psychotherapy. 
 
-Prior to becoming a psychotherapist, I graduated with a degree in mechanical engineering and had a career working with computing software technology. My professional background makes it possible for me to identify with navigating particular career-related challenges. 
+I hold a Master of Divinity degree in Clinical Counselling from Tyndale Seminary. Prior to becoming a psychotherapist, I graduated with a degree in mechanical engineering and had a career working with computing software technology. My professional background makes it possible for me to identify with navigating particular career-related challenges. 
 
 
 ### Professional Qualifications
