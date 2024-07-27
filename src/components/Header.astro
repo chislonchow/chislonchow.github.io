@@ -17,7 +17,7 @@ const t = useTranslations(lang);
 import LanguagePicker from './LanguagePicker.astro';
 ---
 
-<header class="lg:flex pt-2 px-4 sm:px-6 xl:px-0 md:pt-4 gap-5 mb-6 lg:mb-12 w-full">
+<header class="lg:flex pt-2 px-4 sm:px-6 xl:px-0 md:pt-4 gap-5 mb-4 lg:mb-12 w-full">
   <Astronav>
     <div class="flex w-full justify-between items-end border-b lg:border-none pb-4 lg:pb-0">
       <div class="flex gap-2 pb-1">
@@ -58,7 +58,6 @@ import LanguagePicker from './LanguagePicker.astro';
                 <li class="flex items-center py-2"><a href={getRelativeLocaleUrl(lang, 'psychotherapy')}>{t('nav.psychotherapy')}</a></li>
                 <li class="flex items-center py-2"><a href={getRelativeLocaleUrl(lang, 'mental-health')}>{t('nav.mental-health')}</a></li>
                 <li class="flex items-center py-2"><a href={getRelativeLocaleUrl(lang, 'chinese-canadian-local')}>{t('nav.chinese-canadian-local')}</a></li>
-                
               </ul>
             </div>
           </DropdownItems>
