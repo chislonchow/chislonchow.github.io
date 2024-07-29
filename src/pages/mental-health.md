@@ -10,12 +10,11 @@ description: What is Mental Health
 
 
 ### Additional Perspectives on Mental Health
-&#8203;
+
 "The basic view of Taoism and Confucianism on mental health is to eliminate or transform individual desires, and the specific way to eliminate or transform individual desires is to promote the unity of man with nature or society."
 
 <sub>- Wang K. (2022). The Yin-Yang Definition Model of Mental Health: The Mental Health Definition in Chinese Culture. _Frontiers in psychology_, 13, 832076. `doi.org/10.3389/fpsyg.2022.832076`</sub>
 
-&#8203;
 "In North America, Indigenous peoples belonging to the Algonquian language family use the term mino-pimatisiwin, which could be loosely translated as "living the good life", to describe a state of harmony, well-being, and comprehensive health based on relationships, cultural identity, and connection to the land."
 
 <sub>- Landry, V., Asselin, H., & Lévesque, C. (2019). Link to the Land and Mino-Pimatisiwin (Comprehensive Health) of Indigenous People Living in Urban Areas in Eastern Canada. _International journal of environmental research and public health_, 16(23), 4782. `doi.org/10.3390/ijerph16234782`</sub>
@@ -44,7 +43,6 @@ Some qualities of mental health:
 
 <sub> Johnson, S. M. (2019). _Attachment theory in practice: Emotionally focused therapy (EFT) with individuals, couples, and families._ Guilford Press.</sub>
 
-&#8203;
 "EFIT is an approach to growing and expanding the self and its capacities grounded in attachment science and the power of transforming core emotional experience. Core chaotic, foreign, or denied emotional experience is evoked, ordered, and regulated to shape emotional balance and integration in each client. Clients move from chaos to order, reactivity to balance, from self-abnegation to self-acceptance, from helplessness to agency."
 
 <sub>- Johnson, S.M., & Campbell, T.L. (2021). _A Primer for Emotionally Focused Individual Therapy (EFIT): Cultivating Fitness and Growth in Every Client_. Routledge. </sub>
