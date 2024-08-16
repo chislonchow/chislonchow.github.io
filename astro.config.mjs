@@ -6,7 +6,7 @@ import { ui } from './src/i18n/ui'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://chislonchow.com',
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     shikiConfig: {
