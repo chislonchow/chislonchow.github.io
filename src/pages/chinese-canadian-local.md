@@ -21,7 +21,7 @@ description: List of Chinese Canadian local community resources
 
 ### Canadian Basic Civic Education
 
--   (简中) [Canadian politics: Understanding Canada’s political system - Radio Canada International](https://www.rcinet.ca/politique-canadienne-en/)
+-   (English) [Canadian politics: Understanding Canada’s political system - Radio Canada International](https://www.rcinet.ca/politique-canadienne-en/)
 -   (English/简中) [Indigenous: The Other Story - Radio Canada International](https://www.rcinet.ca/autochtones-en/)
 -   (English/繁中/简中) [Chinese Canadian National Council for Social Justice - Fight Racism in Canada](https://ccncsj.ca/fightracismincanada/)
 -   (English)  [City of Toronto - Anti-East Asian Racism](https://www.toronto.ca/community-people/get-involved/community/toronto-for-all/anti-east-asian-racism/)
