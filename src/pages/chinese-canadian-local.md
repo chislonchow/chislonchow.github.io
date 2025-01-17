@@ -17,7 +17,9 @@ description: List of Chinese Canadian local community resources
 -   (English/繁中) [Chinese Canadian Stories](http://wayback.archive-it.org/4160/20160413225613/http://ccs.library.ubc.ca/)
 -   (English/简中) [Road to Justice](http://web.archive.org/web/20110903083038/http://www.roadtojustice.ca/)
 -   (English/繁中) [A Brief Chronology of Chinese Canadian History - Simon Fraser University ](https://www.sfu.ca/chinese-canadian-history/chart_en.html)
-- (English) [Learning Resources - Chinese Canadian Museum](https://www.chinesecanadianmuseum.ca/learn/learning-resources)
+-   (English) [Resources Guide to Chinese Canadian Studies - Richard Charles Lee Canada-Hong Kong Library](https://guides.library.utoronto.ca/ChineseCanadianStudies)
+-   (English) [Chinese Canadians - University of British Columbia Library](https://guides.library.ubc.ca/chinese_canadians)
+-   (English) [Learning Resources - Chinese Canadian Museum](https://www.chinesecanadianmuseum.ca/learn/learning-resources)
 
 ### Canadian Basic Civic Education
 

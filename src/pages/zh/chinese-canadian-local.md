@@ -17,6 +17,9 @@ description: 華裔加拿大人本地社區資源列表
 -   (English/繁中) [加華記事](http://wayback.archive-it.org/4160/20160413225613/http://ccs.library.ubc.ca/)
 -   (English/简中) [走向公義之路](http://web.archive.org/web/20110903083038/http://www.roadtojustice.ca/)
 -   (English/繁中) [加拿大華裔歷史紀要 - 西門菲莎大學](https://www.sfu.ca/chinese-canadian-history/chart.html)
+-   (English) [Resources Guide to Chinese Canadian Studies - Richard Charles Lee Canada-Hong Kong Library](https://guides.library.utoronto.ca/ChineseCanadianStudies)
+-   (English) [Chinese Canadians - University of British Columbia Library](https://guides.library.ubc.ca/chinese_canadians)
+-   (English) [Learning Resources - Chinese Canadian Museum](https://www.chinesecanadianmuseum.ca/learn/learning-resources)
 
 ### 加拿大基本公民教育
 
