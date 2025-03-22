@@ -11,7 +11,7 @@ The therapist generally conducts meetings through an online video call platform.
 
 The typical session duration is 1 hour for individual psychotherapy, but the actual time of psychotherapy is 50 minutes. For family or couples therapy, the typical session duration is 1.5 hours.
 
-### What if I can't afford the full cost of psychotherapy?
+### What if I cannot afford the full cost of psychotherapy?
 I strive to make psychotherapy accessible to those facing financial difficulties. I offer a limited number of sliding scale slots, which means the session fee is adjusted based on your income and financial situation. If eligible, you may pay a reduced rate that is manageable for you.
 
 Additionally, I partner with organizations that provide partial subsidies for payment of sessions.
