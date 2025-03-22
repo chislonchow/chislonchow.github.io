@@ -9,6 +9,7 @@ export const ui = {
   'en': {
     'nav.home': 'Home',
     'nav.profile': 'My Profile',
+    'nav.faq': 'FAQ',
     'nav.psychotherapy': 'Psychotherapy',
     'nav.mental-health': 'Mental Health',
     'nav.more': 'More',
@@ -18,6 +19,7 @@ export const ui = {
   'zh': {
     'nav.home': '主頁',
     'nav.profile': '我的簡介',
+    'nav.faq': '常見問答',
     'nav.psychotherapy': '心理治療',
     'nav.mental-health': '心理健康',
     'nav.more': '更多',

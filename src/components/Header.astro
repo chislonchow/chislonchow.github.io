@@ -34,6 +34,7 @@ import LanguagePicker from './LanguagePicker.astro';
       <ul class="whitespace-nowrap break-keep flex flex-col lg:flex-row lg:gap-2 gap-3 mt-3 lg:mt-0 pb-4 lg:pb-0 border-b border-neutral-400 lg:border-b-0">
         <li class="flex items-center"><a href={getRelativeLocaleUrl(lang, '')}>{t('nav.home')}</a></li>
         <li class="flex items-center"><a href={getRelativeLocaleUrl(lang, 'profile')}>{t('nav.profile')}</a></li>
+        <li class="flex items-center"><a href={getRelativeLocaleUrl(lang, 'faq')}>{t('nav.faq')}</a></li>
         
         <li class="flex items-center">
           <Dropdown class="group">
