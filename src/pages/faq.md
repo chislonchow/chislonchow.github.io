@@ -7,9 +7,9 @@ description: Frequently asked client questions and corresponding answers
 ### How do I get started with psychotherapy from you?
 I offer a free 15 to 30 minute video consultation to help you determine if we are a good fit. After this consultation, you will be asked to complete and submit mandatory intake forms. 
 
-The therapist generally conducts meetings through an online video call platform. Clients are expected to have a stable internet connection and a device capable of video calling (such as a computer, tablet, or smartphone). Any special arrangements must be discussed and agreed upon with the therapist in advance.
+Meetings typically will use online video call platforms. Clients are expected to have a stable internet connection and a device capable of video calling (such as a computer, tablet, or smartphone). Any special arrangements must be discussed and agreed upon in advance.
 
-The typical session duration is 1 hour for individual psychotherapy, but the actual time of psychotherapy is 50 minutes. For family or couples therapy, the typical session duration is 1.5 hours.
+The typical psychotherapy session duration is 50 minutes for individuals. For family or couples therapy, the typical session duration is 1 hour and 15 minutes.
 
 ### What if I cannot afford the full cost of psychotherapy?
 I strive to make psychotherapy accessible to those facing financial difficulties. I offer a limited number of sliding scale slots, which means the session fee is adjusted based on your income and financial situation. If eligible, you may pay a reduced rate that is manageable for you.
