@@ -11,18 +11,36 @@ const t = useTranslations(lang);
 
 <footer class="mt-20 md:mt-32 mx-4">
   <div class="border-b mb-5" />
-  <p class="text-sm font-medium mb-5">
-    &copy; {today.getFullYear()} Chislon Chow (周基樂)
-  </p>
   <div class="flex gap-3 my-4">
-    <a href="https://blog.chislonchow.com/">
+    <a href="https://blog.chislonchow.com/" aria-label="Blog">
       <Icon name="jam:blogger-square" class="w-5 h-5 text-gray-600 hover:text-[gray] dark:hover:text-white"/>
     </a>
-    <a href="https://bsky.app/profile/cchowcares.bsky.social/">
+    <a href="https://bsky.app/profile/cchowcares.bsky.social/" aria-label="Bluesky">
       <Icon name="fa6-brands:bluesky" class="w-5 h-5 text-gray-600 hover:text-[gray] dark:hover:text-white"/>
     </a>
   </div>
+  <div class="flex gap-3 my-4 text-sm font-medium">
+    Contact email: <a id="email-link"></a>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var emailLink = document.getElementById("email-link") as HTMLAnchorElement;
+        if (emailLink) {
+          var user = "contact";
+          var domain = "chislonchow.com";
+          var assembleText = user + "@" + domain;
+          emailLink.textContent = assembleText;
+          emailLink.href = "mailto:" + assembleText;
+        }
+      });
+    </script> 
+    <noscript>
+      Enable JavaScript to show protected email address.
+    </noscript>
+  </div>
   <p class="text-sm font-medium mb-10 italic">
     {t('text.disclaimer')}
+  </p>
+  <p class="text-sm font-medium mb-5">
+    &copy; {today.getFullYear()} Chislon Kei Lok Chow (周基樂)
   </p>
 </footer>
