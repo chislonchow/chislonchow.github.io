@@ -20,7 +20,7 @@ const t = useTranslations(lang);
     </a>
   </div>
   <div class="flex gap-3 my-4 text-sm font-medium">
-    Contact email: <a id="email-link"></a>
+    {t('text.email')}: <a id="email-link"></a>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var emailLink = document.getElementById("email-link") as HTMLAnchorElement;
