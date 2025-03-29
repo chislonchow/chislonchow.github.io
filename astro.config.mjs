@@ -19,6 +19,7 @@ export default defineConfig({
         dark: 'catppuccin-latte',
       },
     },
+    smartypants: false
   },    
   i18n: {
     defaultLocale: "en",
