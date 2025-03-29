@@ -24,7 +24,24 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       <p class="w-full text-center text-base md:text-lg">
         My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. The psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. 
       </p>
-    </div>    
+    </div>
+    <div class="flex justify-center">
+      <a id="email-link" class="no-underline bg-cyan-500 hover:bg-cyan-700 text-white hover:text-white font-bold py-4 px-4 rounded-2xl w-fit">
+        Enable JavaScript to show protected email address.
+      </a>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var emailLink = document.getElementById("email-link") as HTMLAnchorElement;
+          if (emailLink) {
+            var user = "contact";
+            var domain = "chislonchow.com";
+            var assembleText = user + "@" + domain;
+            emailLink.textContent = "Email inquries to " + assembleText;
+            emailLink.href = "mailto:" + assembleText;
+          }
+        });
+      </script> 
+    </div>
     <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-12">
       <h3 class="text-base md:text-lg w-full font-semibold text-center">
         🚨Greater Toronto Area Mental Health Crisis Information

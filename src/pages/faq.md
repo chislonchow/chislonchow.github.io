@@ -4,8 +4,10 @@ title: Frequently Asked Questions
 description: Frequently asked client questions and corresponding answers 
 ---
 
-### How do I get started with psychotherapy from you?
-I offer a free 15 to 30 minute video consultation to help you determine if we are a good fit. After this consultation, you will be asked to complete and submit mandatory intake forms. 
+### How do I get started with psychotherapy directly from you?
+You may reach me by email, sending me a few dates and times that work for you to schedule a meeting, so I can then reply with the next steps.
+
+I offer a free 15 to 30 minute video call to help us determine if there is a good fit to proceed with receiving psychotherapy from me. 
 
 Meetings typically will use online video call platforms. Clients are expected to have a stable internet connection and a device capable of video calling (such as a computer, tablet, or smartphone). Any special arrangements must be discussed and agreed upon in advance.
 
@@ -24,4 +26,4 @@ For couples or family therapy, the entire group is considered the treatment unit
 ### Are there any limitations to psychotherapy I should be aware of?
 To maintain professional ethics, I avoid dual relationships or conflicts of interest with clients (such as social or peer relationships). This helps maintain the professionalism and objectivity of my psychotherapy service. 
 
-I also practice within my scope of professional psychotherapy expertise, meaning I cannot provide services related to legal proceedings or other areas beyond my training. I am also unable to provide medical diagnoses or medicinal treatments. 
+I also typically practice within my scope of professional psychotherapy expertise, meaning I cannot proactively provide services related to legal proceedings, or other areas beyond my training. For this reason, I am also unable to provide medical diagnoses or medicinal treatments. 

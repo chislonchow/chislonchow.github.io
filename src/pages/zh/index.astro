@@ -25,7 +25,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
         我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括 ： 情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。
       </p>
     </div>
-    
+    <div class="flex justify-center">
+      <a id="email-link" class="no-underline bg-cyan-500 hover:bg-cyan-700 text-white hover:text-white font-bold py-4 px-4 rounded-2xl w-fit">
+        啟用 JavaScript 以顯示受保護的電子郵件地址。
+      </a>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var emailLink = document.getElementById("email-link") as HTMLAnchorElement;
+          if (emailLink) {
+            var user = "contact";
+            var domain = "chislonchow.com";
+            var assembleText = user + "@" + domain;
+            emailLink.textContent = "透過電子郵件查詢 " + assembleText;
+            emailLink.href = "mailto:" + assembleText;
+          }
+        });
+      </script> 
+    </div>
     <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-12">
       <h3 class="text-base md:text-lg w-full font-semibold text-center">
         🚨大多倫多區心理健康危機資訊
