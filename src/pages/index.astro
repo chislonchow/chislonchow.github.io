@@ -21,12 +21,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </h2>
     </div>
     <div class="mx-2 md:mx-4 my-4 px-4 md:px-8 py-8 md:py-8 flex flex-col gap-4 rounded-lg bg-[#eee] dark:bg-[#222]">
-      <p class="w-full text-center text-base md:text-lg">
+      <p class="w-full text-center text-sm md:text-base">
         My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. The psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. 
       </p>
     </div>
     <div class="flex justify-center">
-      <a id="email-link" class="no-underline bg-cyan-500 hover:bg-cyan-700 text-white hover:text-white font-bold py-4 px-4 rounded-2xl w-fit">
+      <a id="email-link" class="text-center no-underline bg-cyan-500 hover:bg-cyan-700 text-white hover:text-white font-bold py-4 px-4 rounded-2xl w-fit">
         Enable JavaScript to show protected email address.
       </a>
       <script>
@@ -36,7 +36,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             var user = "contact";
             var domain = "chislonchow.com";
             var assembleText = user + "@" + domain;
-            emailLink.textContent = "Email inquries to " + assembleText;
+            emailLink.innerHTML = "Email inquiries to <br />" + assembleText;
             emailLink.href = "mailto:" + assembleText;
           }
         });
