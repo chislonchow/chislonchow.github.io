@@ -15,9 +15,27 @@ const t = useTranslations(lang);
     <a href="https://blog.chislonchow.com/" aria-label="Blog">
       <Icon name="jam:blogger-square" class="w-5 h-5 text-gray-600 hover:text-[gray] dark:hover:text-white"/>
     </a>
+    <a href="https://www.youtube.com/@ChislonChow" aria-label="YouTube">
+      <Icon name="fa6-brands:youtube" class="w-5 h-5 text-gray-600 hover:text-[gray] dark:hover:text-white"/>
+    </a>
     <a href="https://bsky.app/profile/chislonchow.com/" aria-label="Bluesky">
       <Icon name="fa6-brands:bluesky" class="w-5 h-5 text-gray-600 hover:text-[gray] dark:hover:text-white"/>
     </a>
+  </div>
+  <div class="flex gap-3 my-4 text-sm font-medium">
+    {t('text.email')}: <a id="email-link-footer">{t('text.email-protection')}</a>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var emailLink = document.getElementById("email-link-footer") as HTMLAnchorElement;
+        if (emailLink) {
+          var user = "contact";
+          var domain = "chislonchow.com";
+          var assembleText = user + "@" + domain;
+          emailLink.textContent = assembleText;
+          emailLink.href = "mailto:" + assembleText;
+        }
+      });
+    </script>
   </div>
   <p class="text-sm font-medium mb-10 italic">
     {t('text.disclaimer')}

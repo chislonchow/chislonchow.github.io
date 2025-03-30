@@ -2,13 +2,16 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <BaseHead title={t('site_title')} description={t('site_description')} />
 </head>
 <body class="w-full max-w-screen-md mx-auto my-4 dark:bg-neutral-800 dark:text-neutral-300 transition-colors duration-300">
   <Header />
@@ -22,7 +25,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     </div>
     <div class="mx-2 md:mx-4 my-4 px-4 md:px-8 py-8 md:py-8 flex flex-col gap-4 rounded-lg bg-[#eee] dark:bg-[#222]">
       <p class="w-full text-center text-sm md:text-base">
-        My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. The psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. 
+        My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. 
       </p>
     </div>
     <div class="flex justify-center">
@@ -37,16 +40,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             var domain = "chislonchow.com";
             var assembleText = user + "@" + domain;
             emailLink.innerHTML = "Email inquiries to <br />" + assembleText;
-            emailLink.href = "mailto:" + assembleText;
+            emailLink.href = "mailto:" + assembleText  + "?subject=Meeting Request (from webpage)&body=I would like to book a meeting with you. My details are as follows:%0D%0A%0D%0AName: [Your preferred name] %0D%0APreferred Date and Time: [Give a few options]%0D%0APurpose of meeting: [online one-time first consultation/online psychotherapy session/other]%0D%0A%0D%0APlease arrange for this meeting, or let me know of your alternative availability.";
           }
         });
       </script> 
     </div>
-    <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-12">
+    <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-24">
       <h3 class="text-base md:text-lg w-full font-semibold text-center">
         🚨Greater Toronto Area Mental Health Crisis Information
       </h3>
-      <p class="w-full text-sm md:text-base">In case of emergency, you might want to call your emergency hotline 911. As needed, please consider reaching out to local 24-hour Crisis Hotlines, such as: </p>
+      <p class="w-full text-sm md:text-base">I cannot be immediately available for emergencies, please ensure safety by seeking the emergency supports you need.</p>
+      <p class="w-full text-sm md:text-base">In the case of emergency, maybe you should immediately call your emergency hotline at 911 to call for help. You may also consider reaching out to local 24-hour Crisis Hotlines, such as: </p>
       <ul class="text-sm">
         <li>
           <a href="https://988.ca/">Suicide Crisis Helpline</a>: 988
@@ -60,8 +64,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         <li>
           <a href="https://kidshelpphone.ca/urgent-help">Kids Help Phone Helpline</a>: 1-800-668-6868
         </li>
-      </ul>
-      
+      </ul>      
     </div>
   </main>
   <Footer />

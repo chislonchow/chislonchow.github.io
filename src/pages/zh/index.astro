@@ -2,13 +2,16 @@
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
 <html lang="zh">
 <head>
-  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <BaseHead title={t('site_title')} description={t('site_description')} />
 </head>
 <body class="w-full max-w-screen-md mx-auto my-4 dark:bg-neutral-800 dark:text-neutral-300 transition-colors duration-300">
   <Header />
@@ -22,7 +25,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
     </div>
     <div class="mx-2 md:mx-4 my-4 px-4 md:px-8 py-6 md:py-8 flex flex-col gap-4 rounded-lg bg-[#eee] dark:bg-[#222]">
       <p class="w-full text-center text-sm md:text-base">
-        我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括 ： 情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。
+        我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。
       </p>
     </div>
     <div class="flex justify-center">
@@ -37,16 +40,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
             var domain = "chislonchow.com";
             var assembleText = user + "@" + domain;
             emailLink.innerHTML = "透過電子郵件查詢 <br />" + assembleText;
-            emailLink.href = "mailto:" + assembleText;
-          }
+            emailLink.href = "mailto:" + assembleText + "?subject=會談請求（來自網頁）&body=我想與你預約會談。我的詳細資訊如下：%0D%0A%0D%0A姓名：[你的姓名]%0D%0A首選日期和時間：[請提供幾個選項]%0D%0A會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]%0D%0A%0D%0A請你安排這次會談，或讓我知道你其他方便的時間。";          }
         });
       </script> 
     </div>
-    <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-12">
+    <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-24">
       <h3 class="text-base md:text-lg w-full font-semibold text-center">
         🚨大多倫多區心理健康危機資訊
       </h3>
-      <p class="w-full text-sm md:text-base">如遇到緊急情況，也許應該撥打911緊急熱線，並視需要撥打當地的24小時危機專線，例如: </p>
+      <p class="w-full text-sm md:text-base">我無法在緊急情況下提供即時援助，請立即尋求你需要的緊急支援以確保安全。</p>
+      <p class="w-full text-sm md:text-base">如果遇到緊急情況時，也許你應該立即撥打911緊急熱線以尋求幫助。也可考慮聯繫當地的24小時危機熱線，例如: </p>
+
       <ul class="text-sm">
         <li>
           <a href="https://988.ca/">自殺危機求助專線 Suicide Crisis Helpline</a>: 988
@@ -60,8 +64,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
         <li>
           <a href="https://kidshelpphone.ca/urgent-help">協助兒童電話求助專線 Kids Help Phone Helpline</a>: 1-800-668-6868
         </li>
-      </ul>
-      
+      </ul>      
     </div>
   </main>
   <Footer />
