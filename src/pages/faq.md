@@ -19,9 +19,13 @@ I strive to make psychotherapy accessible to those facing financial difficulties
 Additionally, I partner with organizations that result in reduced rates for psychotherapy.
 
 ### What are the limitations of confidentiality?
-Therapy sessions are confidential. However, there are legal and ethical exceptions where I am required to disclose information to a third-party without your consent. These include situations involving imminent harm, reportable abuse, or court orders mandating the release of information.
+Therapy sessions are confidential. However, there are legal and ethical exceptions where I am required to disclose information to a third-party without your consent. These include situations involving imminent harm, reportable abuse, or court orders mandating the release of information. These legal requirements are based on the laws of Ontario and Canada, not those of any laws of other jurisdictions or countries. 
 
 For couples or family therapy, the entire group is considered the treatment unit. Therefore, I will encourage open and honest communication between participating clients, without forcing individual clients to share.
+
+### Can you directly bill to my health insurance?
+
+I am not currently set up to bill health insurance providers directly. I can provide you with a receipt that you can submit to your insurance company. However, it is your responsibility to confirm what services are covered and ensure that your insurance plan will reimburse you. 
 
 ### Are there any limitations to psychotherapy I should be aware of?
 To maintain professional ethics, I avoid dual relationships or conflicts of interest with clients (such as social or peer relationships). This helps maintain the professionalism and objectivity of my psychotherapy service. 
