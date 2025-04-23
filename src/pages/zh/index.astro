@@ -3,6 +3,7 @@ import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { Icon } from "astro-iconify";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -20,7 +21,7 @@ const t = useTranslations(lang);
       <h1 class="text-2xl md:text-5xl w-full font-bold md:block">Chislon Chow</h1>
       
       <h2 class="text-sm md:text-base w-full font-semibold">
-        註冊心理治療師 <br class="lg:hidden" />Registered Psychotherapist
+        註冊心理治療師 Registered Psychotherapist (安省 <Icon name="cif:ca" class="inline relative top-[-1px] md:top-[-2px] w-5 h-5 md:w-6 md:h-6"/>)
       </h2>
     </div>
     <div class="mx-2 md:mx-4 my-4 px-4 md:px-8 py-6 md:py-8 flex flex-col gap-4 rounded-lg bg-[#eee] dark:bg-[#222]">
@@ -46,7 +47,7 @@ const t = useTranslations(lang);
     </div>
     <div class="px-4 md:px-12 flex flex-col gap-4 mb-4 mt-24">
       <h3 class="text-base md:text-lg w-full font-semibold text-center">
-        🚨大多倫多區心理健康危機資訊
+        <Icon name="noto:police-car-light" class="inline relative top-[-1px] md:top-[-2px] w-5 h-5 md:w-6 md:h-6"/>大多倫多區心理健康危機資訊
       </h3>
       <p class="w-full text-sm md:text-base">我無法在緊急情況下提供即時援助，請立即尋求你需要的緊急支援以確保安全。</p>
       <p class="w-full text-sm md:text-base">如果遇到緊急情況時，也許你應該立即撥打911緊急熱線以尋求幫助。也可考慮聯繫當地的24小時危機熱線，例如: </p>
