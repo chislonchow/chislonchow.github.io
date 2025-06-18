@@ -420,14 +420,14 @@ export default function HomePageClientContents({
           <div className="flex flex-row flex-wrap items-center justify-center gap-1">
             <a
               href={dynamicMailtoLink}
-              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs font-headline border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center"
+              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-6 sm:py-3 sm:text-lg font-headline border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center"
             >
               {heroButtonText}
               <Mail className="ml-2 h-4 w-4" aria-hidden="true" />
             </a>
             <Button
               asChild
-              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs font-headline border transition-transform hover:scale-105 whitespace-nowrap"
+              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs sm:px-6 sm:py-3 sm:text-lg font-headline border transition-transform hover:scale-105 whitespace-nowrap"
             >
               <Link href={profilePath}>
                 {heroButtonSecondaryText}
