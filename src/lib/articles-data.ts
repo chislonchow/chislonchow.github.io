@@ -15,7 +15,8 @@ export interface Article {
   pinned: boolean;
   date_updated: string; // YYYY-MM-DD
   date_updated_shown: boolean;
-  hidden?: boolean; // New attribute
+  hidden?: boolean;
+  frontpage_display?: boolean; // New field
 }
 
 interface RawArticleYaml {
@@ -28,7 +29,8 @@ interface RawArticleYaml {
   pinned: boolean;
   date_updated: string;
   date_updated_shown: boolean;
-  hidden?: boolean; // New attribute
+  hidden?: boolean;
+  frontpage_display?: boolean; // New field
 }
 
 const articlesDirectory = path.join(process.cwd(), 'src', 'content', 'articles');
@@ -85,13 +87,16 @@ export function getArticles(): Article[] {
           date_updated: data.date_updated,
           date_updated_shown: data.date_updated_shown === true,
           hidden: false, // Articles that are not filtered out are not hidden
+          frontpage_display: data.frontpage_display === true, // Read new field, default to false
         } as Article;
       })
       .filter((article): article is Article => article !== null); // This also filters out hidden articles now
 
     allArticlesData.sort((a, b) => {
+        // Pinned articles (pinned:true) still sort higher than non-pinned (pinned:false) overall
         if (a.pinned && !b.pinned) return -1;
         if (!a.pinned && b.pinned) return 1;
+        // Then sort by date_updated
         return new Date(b.date_updated).getTime() - new Date(a.date_updated).getTime();
     });
 

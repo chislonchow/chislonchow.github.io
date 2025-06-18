@@ -1,3 +1,4 @@
+
 title:
   en: "Chinese Canadian Local Community Resources"
   zh: "華裔加拿大人本地社區資源"
@@ -73,7 +74,8 @@ content:
      -   [惠恩健康中心](https://www.gracehealthcentre.ca/)
      -   [泉源輔導中心](https://lwcounselling.ca/)
 categories:
-  - "Chinese Canadians"
-pinned: false
+  - "Cultural Sensitivity"
+pinned: true
+frontpage_display: false
 date_updated: "2025-06-17"
 date_updated_shown: true

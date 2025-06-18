@@ -20,7 +20,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   const rawPinnedArticleText = translations.pinnedArticle;
   const pinnedArticleText = typeof rawPinnedArticleText === 'object' && rawPinnedArticleText !== null && typeof rawPinnedArticleText[language] === 'string' ? rawPinnedArticleText[language] : (typeof rawPinnedArticleText === 'string' ? rawPinnedArticleText : '');
 
-  const rawReadArticleLabel = translations.readArticleLabel; // Re-add this
+  const rawReadArticleLabel = translations.readArticleLabel; 
   const readArticleLabelText = typeof rawReadArticleLabel === 'object' && rawReadArticleLabel !== null && typeof rawReadArticleLabel[language] === 'string' ? rawReadArticleLabel[language] : (typeof rawReadArticleLabel === 'string' ? rawReadArticleLabel : '');
   const articleLinkAriaLabel = `${readArticleLabelText}: ${article.title[language]}`;
 
@@ -33,7 +33,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="flex-grow pb-3">
-          <p className="text-base font-body text-foreground/80 leading-relaxed line-clamp-3">
+          <p className="text-sm xs:text-base font-body text-foreground/80 leading-relaxed line-clamp-4">
             {article.description[language]}
           </p>
         </CardContent>

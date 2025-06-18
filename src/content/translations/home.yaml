@@ -1,3 +1,4 @@
+
 homePageTitle:
   en: "Chislon Chow (Psychotherapist)"
   zh: "Chislon Chow (心理治療師)"
@@ -35,8 +36,8 @@ network1Title:
   en: "Open Path Collective"
   zh: "Open Path Collective"
 network1Desc:
-  en: "Providing affordable psychotherapy to those who need it."
-  zh: "讓需要的人能以經濟實惠的價格接受心理治療。"
+  en: "Providing affordable psychotherapy to those who need."
+  zh: "讓需要的人能以經濟實惠的價格進行心理治療。"
 network2Title:
   en: "Asian Mental Health Collective"
   zh: "Asian Mental Health Collective"
@@ -83,8 +84,8 @@ ctaTitle:
   en: "Resources"
   zh: "資源"
 ctaText:
-  en: "Explore resources to learn more about mental health, well-being, and therapeutic approaches."
-  zh: "探索關於心理健康、身心健康和治療方法的資源。"
+  en: "Explore resources to learn more about mental health, well-being, and therapeutic approaches. Some featured articles are highlighted below."
+  zh: "探索關於心理健康、身心健康和治療方法的資源。部分精選資源列於下方。"
 ctaButtonArticles:
   en: "View Resources"
   zh: "查看資源"
@@ -103,3 +104,4 @@ sectionCrisisInfoLabel:
 sectionCtaLabel:
   en: "Resources"
   zh: "資源"
+

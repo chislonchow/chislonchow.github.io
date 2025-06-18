@@ -35,6 +35,10 @@ loading:
 prioritizePinnedToggleTooltip:
   en: "Toggle prioritization of pinned articles"
   zh: "切換置頂文章的優先順序"
+prioritizeFrontpageToggleTooltip: # New translation
+  en: "Toggle prioritization of frontpage articles"
+  zh: "切換首頁顯示文章的優先順序"
 sortTitleToggleTooltip:
   en: "Toggle title sort order (A-Z or Z-A)"
   zh: "切換標題排序順序 (A-Z 或 Z-A)"
+

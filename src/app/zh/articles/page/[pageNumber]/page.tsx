@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getArticles } from "@/lib/articles-data";
 import ArticleListClient from "@/components/articles/article-list-client";
 import { getTranslations } from "@/lib/translations";
-import { ARTICLES_PER_PAGE } from "@/config/pagination";
+import { ARTICLES_PER_PAGE } from "@/lib/site-config";
 import type { Language } from "@/contexts/language-context";
 
 type Props = {
@@ -146,7 +146,7 @@ export default async function PaginatedArticlesPageZh({ params }: Props) {
 
   return (
     <div className="container mx-auto py-6 px-2 sm:px-6 lg:px-8">
-      <h1 className="text-lg md:text-xl font-bold font-headline text-foreground mb-3 text-center">
+      <h1 className="text-2xl md:text-3xl font-bold font-headline text-foreground mb-3 text-center">
         {pageTitleText}
         {totalItems > 0 &&
           ` - ${paginationInfoText
@@ -160,6 +160,7 @@ export default async function PaginatedArticlesPageZh({ params }: Props) {
         articles={articlesData}
         currentPageFromUrl={pageNumber}
         basePath="/zh/articles/page"
+        articlesPerPage={ARTICLES_PER_PAGE}
       />
     </div>
   );

@@ -8,10 +8,10 @@ rootLayoutTitleTemplate: "%s | Chislon Chow" # Always English
 # Root Layout Metadata (src/app/layout.tsx & src/app/zh/layout.tsx)
 rootLayoutTitleDefault:
   en: "Chislon Chow - Registered Psychotherapist"
-  zh: "周基樂 - 註冊心理治療師"
+  zh: "Chislon Chow - 註冊心理治療師"
 rootLayoutMetaDescription:
-  en: "Chislon Chow offers compassionate mental wellness services in English and Cantonese."
-  zh: "Chislon Chow提供粵語的心理健康服務。"
+  en: "Chislon Chow offers mental wellness services in English and Cantonese."
+  zh: "Chislon Chow 提供英語和粵語的心理健康服務。"
 
 # Profile Page Metadata
 profilePageMetaTitle:

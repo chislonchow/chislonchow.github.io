@@ -1,7 +1,7 @@
 
 title:
-  en: "Psychotherapy"
-  zh: "心理治療"
+  en: "Psychotherapy Definition"
+  zh: "心理治療定義"
 description:
   en: "What is psychotherapy? Understand its purpose, common reasons for seeking it, and how it can support mental well-being."
   zh: "心理治療是什麼？了解其目的、尋求治療的常見原因，以及它如何支持心理健康。"
@@ -48,5 +48,6 @@ content:
 categories:
   - "Mental Health Literacy"
 pinned: true
+frontpage_display: true
 date_updated: "2025-06-17"
 date_updated_shown: false

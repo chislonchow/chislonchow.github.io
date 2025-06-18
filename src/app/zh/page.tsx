@@ -41,13 +41,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const allArticles = getArticles();
-  const pinnedArticles = allArticles.filter((article) => article.pinned);
+  const allArticles = getArticles(); // Fetch all articles
   const notificationConfig = await getNotificationData();
 
   return (
     <>
-      <HomePageClientContents pinnedArticles={pinnedArticles} />
+      <HomePageClientContents allArticles={allArticles} /> {/* Pass all articles */}
       <HomePageNotifier notificationConfig={notificationConfig} />
     </>
   );

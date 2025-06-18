@@ -1,6 +1,7 @@
+
 title:
-  en: "Mental Health"
-  zh: "心理健康"
+  en: "Mental Health Defined"
+  zh: "心理健康定義"
 description:
   en: "What is mental health? Discover definitions, cultural views, and key wellness qualities."
   zh: "心理健康是什麼？探索定義、文化觀點及關鍵健康特質。"
@@ -102,5 +103,6 @@ content:
 categories:
   - "Mental Health Literacy"
 pinned: true
+frontpage_display: true
 date_updated: "2025-06-17"
 date_updated_shown: false

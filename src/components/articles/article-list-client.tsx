@@ -8,17 +8,17 @@ import ArticleCard from './article-card';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ChevronDown, ListFilter, ArrowUpDown, Star, ArrowDownAZ, ArrowUpZA, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, ListFilter, ArrowUpDown, Star, ArrowDownAZ, ArrowUpZA, ChevronLeft, ChevronRight, Home } from 'lucide-react';
 import { useLanguage, type Language } from '@/contexts/language-context';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Toolbar } from '@/components/ui/toolbar';
-import { ARTICLES_PER_PAGE } from '@/config/pagination';
 import { useRouter } from 'next/navigation'; 
 
 interface ArticleListClientProps {
   articles: Article[];
   currentPageFromUrl: number;
   basePath: string; 
+  articlesPerPage: number;
 }
 
 const sortArticlesByTitleHelper = (data: Article[], order: 'asc' | 'desc', language: Language) => {
@@ -29,12 +29,13 @@ const sortArticlesByTitleHelper = (data: Article[], order: 'asc' | 'desc', langu
   });
 };
 
-export default function ArticleListClient({ articles, currentPageFromUrl, basePath }: ArticleListClientProps) {
+export default function ArticleListClient({ articles, currentPageFromUrl, basePath, articlesPerPage }: ArticleListClientProps) {
   const { language, translations } = useLanguage();
   const router = useRouter();
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sortByPinned, setSortByPinned] = useState<boolean>(true);
+  const [sortByFrontpageDisplay, setSortByFrontpageDisplay] = useState<boolean>(false);
   const [sortByTitle, setSortByTitle] = useState<'asc' | 'desc'>('asc');
   
   const [clientSideCurrentPage, setClientSideCurrentPage] = useState(currentPageFromUrl);
@@ -50,13 +51,31 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
 
   useEffect(() => {
     setClientSideCurrentPage(1); 
-  }, [selectedCategories, sortByPinned, sortByTitle]);
+  }, [selectedCategories, sortByPinned, sortByFrontpageDisplay, sortByTitle]);
 
   useEffect(() => {
     setClientSideCurrentPage(currentPageFromUrl);
     isInitialLoadRef.current = true; 
   }, [currentPageFromUrl]);
 
+
+  const handleSortByPinnedToggle = () => {
+    if (!sortByPinned) { 
+      setSortByPinned(true);
+      setSortByFrontpageDisplay(false); 
+    } else { 
+      setSortByPinned(false);
+    }
+  };
+
+  const handleSortByFrontpageDisplayToggle = () => {
+    if (!sortByFrontpageDisplay) { 
+      setSortByFrontpageDisplay(true);
+      setSortByPinned(false); 
+    } else { 
+      setSortByFrontpageDisplay(false);
+    }
+  };
 
   const sortedCategoryFilters = useMemo(() => {
     const allCategoryKeys = articles.reduce((acc, article) => {
@@ -88,25 +107,29 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
     if (sortByPinned) {
       const pinnedArticles = processedArticles.filter(article => article.pinned);
       const unpinnedArticles = processedArticles.filter(article => !article.pinned);
-      
       const sortedPinned = sortArticlesByTitleHelper(pinnedArticles, sortByTitle, language);
       const sortedUnpinned = sortArticlesByTitleHelper(unpinnedArticles, sortByTitle, language);
-      
       return [...sortedPinned, ...sortedUnpinned];
+    } else if (sortByFrontpageDisplay) {
+      const frontpageArticles = processedArticles.filter(article => article.frontpage_display);
+      const otherArticles = processedArticles.filter(article => !article.frontpage_display);
+      const sortedFrontpage = sortArticlesByTitleHelper(frontpageArticles, sortByTitle, language);
+      const sortedOther = sortArticlesByTitleHelper(otherArticles, sortByTitle, language);
+      return [...sortedFrontpage, ...sortedOther];
     } else {
       return sortArticlesByTitleHelper(processedArticles, sortByTitle, language);
     }
-  }, [articles, selectedCategories, sortByPinned, sortByTitle, language]);
+  }, [articles, selectedCategories, sortByPinned, sortByFrontpageDisplay, sortByTitle, language]);
 
-  const totalPagesForFilteredView = Math.ceil(filteredAndSortedArticles.length / ARTICLES_PER_PAGE);
+  const totalPagesForFilteredView = Math.ceil(filteredAndSortedArticles.length / articlesPerPage);
   
   const paginatedArticlesToDisplay = useMemo(() => {
-    const startIndex = (clientSideCurrentPage - 1) * ARTICLES_PER_PAGE;
-    return filteredAndSortedArticles.slice(startIndex, startIndex + ARTICLES_PER_PAGE);
-  }, [filteredAndSortedArticles, clientSideCurrentPage]);
+    const startIndex = (clientSideCurrentPage - 1) * articlesPerPage;
+    return filteredAndSortedArticles.slice(startIndex, startIndex + articlesPerPage);
+  }, [filteredAndSortedArticles, clientSideCurrentPage, articlesPerPage]);
 
-  const currentStartIndex = (clientSideCurrentPage - 1) * ARTICLES_PER_PAGE + 1;
-  const currentEndIndex = Math.min(clientSideCurrentPage * ARTICLES_PER_PAGE, filteredAndSortedArticles.length);
+  const currentStartIndex = (clientSideCurrentPage - 1) * articlesPerPage + 1;
+  const currentEndIndex = Math.min(clientSideCurrentPage * articlesPerPage, filteredAndSortedArticles.length);
 
   const handleCategoryChange = (categoryKey: string, checked: boolean) => {
     setSelectedCategories(prev =>
@@ -162,6 +185,9 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   const rawPrioritizePinnedTooltip = translations.prioritizePinnedToggleTooltip;
   const prioritizePinnedTooltipText = typeof rawPrioritizePinnedTooltip === 'object' && rawPrioritizePinnedTooltip !== null && typeof rawPrioritizePinnedTooltip[language] === 'string' ? rawPrioritizePinnedTooltip[language] : (typeof rawPrioritizePinnedTooltip === 'string' ? rawPrioritizePinnedTooltip : '');
 
+  const rawPrioritizeFrontpageTooltip = translations.prioritizeFrontpageToggleTooltip;
+  const prioritizeFrontpageToggleTooltipText = typeof rawPrioritizeFrontpageTooltip === 'object' && rawPrioritizeFrontpageTooltip !== null && typeof rawPrioritizeFrontpageTooltip[language] === 'string' ? rawPrioritizeFrontpageTooltip[language] : (typeof rawPrioritizeFrontpageTooltip === 'string' ? rawPrioritizeFrontpageTooltip : '');
+
   const rawSortTitleTooltip = translations.sortTitleToggleTooltip;
   const sortTitleTooltipText = typeof rawSortTitleTooltip === 'object' && rawSortTitleTooltip !== null && typeof rawSortTitleTooltip[language] === 'string' ? rawSortTitleTooltip[language] : (typeof rawSortTitleTooltip === 'string' ? rawSortTitleTooltip : '');
 
@@ -196,10 +222,11 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
             <Skeleton className="h-5 w-12 shrink-0" />
             <Skeleton className="h-10 w-10 rounded-md" />
             <Skeleton className="h-10 w-10 rounded-md" />
+            <Skeleton className="h-10 w-10 rounded-md" />
           </div>
         </Toolbar>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-label={articlesListAriaLabelText || "Articles list"}>
-          {[...Array(ARTICLES_PER_PAGE)].map((_, i) => ( 
+          {[...Array(articlesPerPage)].map((_, i) => ( 
             <div key={i} className="flex flex-col space-y-3">
               <Skeleton className="h-[125px] w-full rounded-xl" />
               <div className="space-y-2">
@@ -210,7 +237,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
             </div>
           ))}
         </div>
-        { ARTICLES_PER_PAGE < articles.length && (
+        { articlesPerPage < articles.length && (
             <div className="mt-8 flex items-center justify-between">
               <Skeleton className="h-10 w-10 rounded-md" />
               <div className="flex flex-col items-center">
@@ -298,7 +325,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => setSortByPinned(!sortByPinned)}
+                  onClick={handleSortByPinnedToggle}
                   aria-pressed={sortByPinned}
                   aria-label={prioritizePinnedTooltipText}
                 >
@@ -307,6 +334,24 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
               </TooltipTrigger>
               <TooltipContent>
                 <p>{prioritizePinnedTooltipText}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleSortByFrontpageDisplayToggle}
+                  aria-pressed={sortByFrontpageDisplay}
+                  aria-label={prioritizeFrontpageToggleTooltipText}
+                >
+                  <Home className={`h-4 w-4 ${sortByFrontpageDisplay ? 'fill-primary stroke-primary' : 'text-foreground'}`} aria-hidden="true" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{prioritizeFrontpageToggleTooltipText}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

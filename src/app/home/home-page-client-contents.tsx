@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -44,7 +45,7 @@ const getLocalizedPath = (baseHref: string, lang: Language): string => {
 
 function ServiceCard({ title, description, href }: ServiceCardProps) {
   const cardInnerContent = (
-    <Card className="text-center transition-all duration-150 hover:border-primary rounded-lg bg-background h-full flex flex-col border overflow-hidden">
+    <Card className="text-center transition-all duration-150 hover:border-primary bg-background h-full flex flex-col border overflow-hidden rounded-none">
       <CardHeader className="p-2 pb-1">
         <CardTitle className="text-sm sm:text-lg font-headline font-semibold text-primary">
           {title}
@@ -68,7 +69,12 @@ function ServiceCard({ title, description, href }: ServiceCardProps) {
 
   if (href) {
     return (
-      <a href={href} rel="noopener noreferrer" className="block h-full">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full"
+      >
         {cardInnerContent}
       </a>
     );
@@ -89,11 +95,11 @@ const crisisHotlines: HotlineInfo[] = [
 ];
 
 interface HomePageClientContentsProps {
-  pinnedArticles: Article[];
+  allArticles: Article[];
 }
 
 export default function HomePageClientContents({
-  pinnedArticles,
+  allArticles,
 }: HomePageClientContentsProps) {
   const { language, translations } = useLanguage();
   const [dynamicMailtoLink, setDynamicMailtoLink] = useState<string>("#");
@@ -132,14 +138,16 @@ export default function HomePageClientContents({
     setDynamicMailtoLink(constructedLink);
   }, [language, translations]);
 
-  const sortedPinnedArticles = useMemo(() => {
-    if (!pinnedArticles) return [];
-    return [...pinnedArticles].sort((a, b) => {
-      const titleA = a.title[language] || "";
-      const titleB = b.title[language] || "";
-      return titleA.localeCompare(titleB, language, { sensitivity: "base" });
-    });
-  }, [pinnedArticles, language]);
+  const articlesForFrontpageAccordion = useMemo(() => {
+    if (!allArticles) return [];
+    return allArticles
+      .filter(article => article.frontpage_display === true)
+      .sort((a, b) => {
+        const titleA = a.title[language] || "";
+        const titleB = b.title[language] || "";
+        return titleA.localeCompare(titleB, language, { sensitivity: "base" });
+      });
+  }, [allArticles, language]);
 
   const psychotherapyApproachTitleId = "psychotherapy-approach-title";
   const networkListingsTitleId = "network-listings-title";
@@ -447,7 +455,7 @@ export default function HomePageClientContents({
           <h2 id={psychotherapyApproachTitleId} className="sr-only">
             {sectionPsychotherapyApproachLabelText}
           </h2>
-          <Card className="max-w-3xl mx-auto bg-[#eeeeee] p-1 sm:p-2 rounded-xl border">
+          <Card className="max-w-3xl mx-auto bg-[#eeeeee] p-1 sm:p-2 border rounded-none">
             <CardContent className="p-1.5 sm:p-2.5 text-center">
               <p
                 className={cn(
@@ -493,7 +501,7 @@ export default function HomePageClientContents({
           >
             {networkListingsLabel}
           </h2>
-          <div className="grid sm:grid-cols-3 gap-1.5">
+          <div className="grid sm:grid-cols-3 gap-0">
             <ServiceCard
               title={network1TitleText}
               description={network1DescText}
@@ -538,8 +546,8 @@ export default function HomePageClientContents({
           >
             {crisisInfoLabel}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-1.5">
-            <Card className="rounded-lg bg-background/80 p-1.5 border h-full flex flex-col">
+          <div className="grid sm:grid-cols-2 gap-0">
+            <Card className="bg-background/80 p-1.5 border h-full flex flex-col rounded-none">
               <CardHeader className="p-0.5 text-center">
                 {/* Placeholder for Siren from Lucide */}
                 <svg
@@ -572,7 +580,7 @@ export default function HomePageClientContents({
                 </p>
               </CardContent>
             </Card>
-            <Card className="rounded-lg bg-background/80 p-1.5 border h-full flex flex-col">
+            <Card className="bg-background/80 p-1.5 border h-full flex flex-col rounded-none">
               <CardHeader className="p-0.5 text-center">
                 {/* Placeholder for Phone from Lucide */}
                 <svg
@@ -613,6 +621,7 @@ export default function HomePageClientContents({
                       <li key={hotline.key}>
                         <a
                           href={hotline.url}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-accent hover:underline"
                         >
@@ -653,20 +662,20 @@ export default function HomePageClientContents({
           >
             {ctaLabel}
           </h2>
-          <Card className="bg-background/80 border rounded-lg max-w-3xl mx-auto">
+          <Card className="bg-background/80 border max-w-3xl mx-auto rounded-none">
             <CardContent className="p-4 sm:p-6">
               <div className="sm:flex sm:items-center sm:gap-8">
                 <div className="mb-6 sm:mb-0 sm:flex-grow">
                   <p className="text-sm sm:text-base font-body text-foreground/90 max-w-xl mx-auto sm:mx-0 mb-4 text-center sm:text-left">
                     {ctaTextContent}
                   </p>
-                  {sortedPinnedArticles.length > 0 && (
+                  {articlesForFrontpageAccordion.length > 0 && (
                     <Accordion
                       type="single"
                       collapsible
                       className="w-full border-t border-b"
                     >
-                      {sortedPinnedArticles.map((article) => (
+                      {articlesForFrontpageAccordion.map((article) => (
                         <AccordionItem
                           value={article.slug}
                           key={article.slug}
@@ -724,3 +733,5 @@ export default function HomePageClientContents({
     </div>
   );
 }
+
+    

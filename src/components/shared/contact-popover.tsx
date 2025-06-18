@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -11,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Info, Mail, X } from "lucide-react";
 import { useLanguage, type Language } from "@/contexts/language-context";
-import { useLayoutVisibility } from "@/contexts/layout-visibility-context";
+import { useLayoutVisibility } from '@/contexts/layout-visibility-context';
 import { cn } from "@/lib/utils";
 
 export default function ContactPopover() {
@@ -21,71 +22,56 @@ export default function ContactPopover() {
   const [mounted, setMounted] = useState(false);
   const [dynamicMailtoLink, setDynamicMailtoLink] = useState<string>("#");
 
-  const contactEmailString =
-    typeof translations.contactEmailValue === "string"
-      ? translations.contactEmailValue
-      : "";
+  const contactEmailString = typeof translations.contactEmailValue === 'string'
+    ? translations.contactEmailValue
+    : ""; 
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    const emailAddress = contactEmailString;
+    const emailAddress = contactEmailString; 
 
     const emailSubjectKey = "heroMailSubject";
     const emailBodyKey = "heroMailBodyTemplate";
 
     const rawSubject = translations[emailSubjectKey];
     let subject: string;
-    if (
-      typeof rawSubject === "object" &&
-      rawSubject !== null &&
-      typeof rawSubject[language] === "string"
-    ) {
+    if (typeof rawSubject === 'object' && rawSubject !== null && typeof rawSubject[language] === 'string') {
       subject = rawSubject[language];
-    } else if (typeof rawSubject === "string") {
+    } else if (typeof rawSubject === 'string') {
       subject = rawSubject;
     } else {
-      subject = "";
+      subject = '';
     }
 
     const rawBody = translations[emailBodyKey];
     let body: string;
-    if (
-      typeof rawBody === "object" &&
-      rawBody !== null &&
-      typeof rawBody[language] === "string"
-    ) {
+    if (typeof rawBody === 'object' && rawBody !== null && typeof rawBody[language] === 'string') {
       body = rawBody[language];
-    } else if (typeof rawBody === "string") {
+    } else if (typeof rawBody === 'string') {
       body = rawBody;
     } else {
-      body = "";
+      body = '';
     }
 
-    const constructedLink = emailAddress
-      ? `mailto:${emailAddress}?subject=${encodeURIComponent(
-          subject
-        )}&body=${encodeURIComponent(body)}`
-      : "#";
+    const constructedLink = emailAddress ? `mailto:${emailAddress}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}` : '#';
     setDynamicMailtoLink(constructedLink);
   }, [language, translations, contactEmailString]);
 
   const getTranslatedText = (key: string): string => {
-    if (!mounted) return "";
+    if (!mounted) return ''; 
     const translationEntry = translations[key];
-    if (
-      typeof translationEntry === "object" &&
-      translationEntry !== null &&
-      typeof translationEntry[language] === "string"
-    ) {
+    if (typeof translationEntry === 'object' && translationEntry !== null && typeof translationEntry[language] === "string") {
       return translationEntry[language];
     }
-    if (typeof translationEntry === "string") {
+    if (typeof translationEntry === 'string') {
       return translationEntry;
     }
-    return "";
+    return ''; 
   };
 
   const triggerAriaLabel = getTranslatedText("contactPopoverLabel");
@@ -97,10 +83,11 @@ export default function ContactPopover() {
   const popoverTitleId = "contact-popover-title";
 
   return (
-    <div
-      className={cn("fixed bottom-4 left-4 z-50", {
-        hidden: !showLayoutElements,
-      })}
+    <div 
+      className={cn(
+        "fixed bottom-4 left-4 z-50",
+        { 'hidden': !showLayoutElements }
+      )}
     >
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
