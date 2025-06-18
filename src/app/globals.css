@@ -21,7 +21,7 @@
     --secondary-foreground: 202 20% 30%;
 
     --muted: 33 71% 88%;
-    --muted-foreground: 202 20% 40%;
+    --muted-foreground: 202 20% 55%; /* Made lighter */
 
     --accent: 340 25% 60%; /* #B88DA0 Darker dusty rose */
     --accent-foreground: 0 0% 10%; /* Dark text on accent */
@@ -33,47 +33,7 @@
     --input: 33 30% 88%; /* Lighter input border color */
     --ring: 202 40% 60%; /* Primary color for rings - Adjusted to match new primary */
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-  }
-
-  .dark {
-    /* Define dark mode colors if needed, for now keep them similar or adapt based on a dark theme strategy */
-    --background: 202 20% 15%; /* Dark blue-gray */
-    --foreground: 33 71% 90%; /* Light beige text */
-
-    --card: 202 20% 18%;
-    --card-foreground: 33 71% 90%;
-
-    --popover: 202 20% 12%;
-    --popover-foreground: 33 71% 90%;
-
-    --primary: 202 40% 60%; /* Soft blue - can remain same or be adjusted */
-    --primary-foreground: 0 0% 10%; /* Dark text for better contrast on soft blue in dark mode */
-
-    --secondary: 202 20% 22%;
-    --secondary-foreground: 33 71% 85%;
-
-    --muted: 202 20% 25%;
-    --muted-foreground: 33 71% 70%;
-
-    --accent: 340 25% 60%; /* Darker dusty rose - consistent with light theme adjustment */
-    --accent-foreground: 0 0% 100%; /* White/light text on accent in dark mode */
-
-    --border: 202 20% 30%;
-    --input: 202 20% 28%;
-    --ring: 202 40% 70%; /* Adjusted to match new primary logic for dark theme */
-
-    /* chart colors for dark mode */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
   }
 }
 

@@ -13,6 +13,7 @@ import { useLanguage, type Language } from '@/contexts/language-context';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Toolbar } from '@/components/ui/toolbar';
 import { useRouter } from 'next/navigation'; 
+import { cn } from "@/lib/utils";
 
 interface ArticleListClientProps {
   articles: Article[];
@@ -280,7 +281,12 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                 >
                   <div className="flex items-center truncate mr-2">
                     <ListFilter className="h-4 w-4 mr-1.5 shrink-0" aria-hidden="true" />
-                    <span className="truncate">{getCategoryFilterText()}</span>
+                    <span className={cn(
+                      "truncate",
+                      selectedCategories.length === 0 && "text-muted-foreground"
+                    )}>
+                      {getCategoryFilterText()}
+                    </span>
                   </div>
                   <ChevronDown className="h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
                 </Button>
@@ -329,7 +335,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                   aria-pressed={sortByPinned}
                   aria-label={prioritizePinnedTooltipText}
                 >
-                  <Star className={`h-4 w-4 ${sortByPinned ? 'fill-yellow-500 stroke-yellow-500' : 'text-foreground'}`} aria-hidden="true" />
+                  <Star className={cn('h-4 w-4', sortByPinned ? 'fill-yellow-500 stroke-yellow-500' : 'text-muted-foreground')} aria-hidden="true" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -347,7 +353,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                   aria-pressed={sortByFrontpageDisplay}
                   aria-label={prioritizeFrontpageToggleTooltipText}
                 >
-                  <Home className={`h-4 w-4 ${sortByFrontpageDisplay ? 'fill-primary stroke-primary' : 'text-foreground'}`} aria-hidden="true" />
+                  <Home className={cn('h-4 w-4', sortByFrontpageDisplay ? 'fill-primary stroke-primary' : 'text-muted-foreground')} aria-hidden="true" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -430,3 +436,4 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
     </div>
   );
 }
+

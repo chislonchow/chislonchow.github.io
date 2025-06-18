@@ -455,7 +455,7 @@ export default function HomePageClientContents({
           <h2 id={psychotherapyApproachTitleId} className="sr-only">
             {sectionPsychotherapyApproachLabelText}
           </h2>
-          <Card className="max-w-3xl mx-auto bg-[#eeeeee] p-1 sm:p-2 border rounded-none">
+          <Card className="max-w-3xl mx-auto bg-[#eeeeee] p-1 sm:p-2 border">
             <CardContent className="p-1.5 sm:p-2.5 text-center">
               <p
                 className={cn(
@@ -571,7 +571,7 @@ export default function HomePageClientContents({
                   {crisisCard1TitleText}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-0.5 flex-grow font-body text-foreground/90">
+              <CardContent className="p-0.5 flex-grow font-body text-foreground/90 text-left">
                 <p className="mb-1 text-sm sm:text-base leading-relaxed">
                   {crisisCard1P1Text}
                 </p>
@@ -662,7 +662,7 @@ export default function HomePageClientContents({
           >
             {ctaLabel}
           </h2>
-          <Card className="bg-background/80 border max-w-3xl mx-auto rounded-none">
+          <Card className="bg-background/80 border max-w-3xl mx-auto">
             <CardContent className="p-4 sm:p-6">
               <div className="sm:flex sm:items-center sm:gap-8">
                 <div className="mb-6 sm:mb-0 sm:flex-grow">

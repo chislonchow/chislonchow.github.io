@@ -44,7 +44,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 const categoryTranslation = translations[category];
                 const categoryText = (typeof categoryTranslation === 'object' && categoryTranslation !== null && typeof categoryTranslation[language] === "string" ? categoryTranslation[language] : (typeof categoryTranslation === 'string' ? categoryTranslation : '')) || category;
                 return (
-                  <Badge key={index} variant="outline" className="mr-1.5 mb-1.5 text-sm">
+                  <Badge key={index} variant="outline" className="mr-1.5 mb-1.5 text-xs">
                     <Tag className="w-3.5 h-3.5 mr-1" aria-hidden="true" />
                     {categoryText}
                   </Badge>
@@ -73,3 +73,4 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     </Link>
   );
 }
+
