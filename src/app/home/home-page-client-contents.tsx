@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -425,8 +424,6 @@ export default function HomePageClientContents({
           <div className="flex flex-row flex-wrap items-center justify-center gap-1">
             <a
               href={dynamicMailtoLink}
-              target="_blank"
-              rel="noopener noreferrer"
               className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs font-headline border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center"
             >
               {heroButtonText}
