@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
   title: string;
@@ -67,12 +68,7 @@ function ServiceCard({ title, description, href }: ServiceCardProps) {
 
   if (href) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
+      <a href={href} rel="noopener noreferrer" className="block h-full">
         {cardInnerContent}
       </a>
     );
@@ -453,7 +449,14 @@ export default function HomePageClientContents({
           </h2>
           <Card className="max-w-3xl mx-auto bg-[#eeeeee] p-1 sm:p-2 rounded-xl border">
             <CardContent className="p-1.5 sm:p-2.5 text-center">
-              <p className="text-sm xs:text-base sm:text-xl font-body text-black mb-0.5 leading-normal">
+              <p
+                className={cn(
+                  "font-body text-black mb-0.5 leading-normal",
+                  language === "zh"
+                    ? "text-base xs:text-lg sm:text-2xl"
+                    : "text-sm xs:text-base sm:text-xl"
+                )}
+              >
                 <Quote
                   className="inline-block w-4 h-4 text-primary/50 transform rotate-180 mr-1 mb-1 align-middle"
                   aria-hidden="true"
@@ -471,7 +474,7 @@ export default function HomePageClientContents({
         aria-labelledby={networkListingsTitleId}
       >
         <div>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 text-homeSectionHeading">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="72"
@@ -486,7 +489,7 @@ export default function HomePageClientContents({
           </div>
           <h2
             id={networkListingsTitleId}
-            className="text-lg sm:text-xl font-bold font-headline text-foreground mb-1.5 sm:mb-3 text-center"
+            className="text-lg sm:text-xl font-bold font-headline text-homeSectionHeading mb-1.5 sm:mb-3 text-center"
           >
             {networkListingsLabel}
           </h2>
@@ -516,7 +519,7 @@ export default function HomePageClientContents({
         aria-labelledby={crisisInfoTitleId}
       >
         <div>
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 text-homeSectionHeading">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="72"
@@ -531,7 +534,7 @@ export default function HomePageClientContents({
           </div>
           <h2
             id={crisisInfoTitleId}
-            className="text-lg sm:text-xl font-bold font-headline text-foreground mb-1.5 sm:mb-3 text-center"
+            className="text-lg sm:text-xl font-bold font-headline text-homeSectionHeading mb-1.5 sm:mb-3 text-center"
           >
             {crisisInfoLabel}
           </h2>
@@ -556,7 +559,7 @@ export default function HomePageClientContents({
                   <line x1="12" y1="9" x2="12" y2="13"></line>
                   <line x1="12" y1="17" x2="12.01" y2="17"></line>
                 </svg>
-                <CardTitle className="text-sm sm:text-lg font-headline text-foreground mb-0.5">
+                <CardTitle className="text-sm sm:text-lg font-headline text-homeSectionHeading mb-0.5">
                   {crisisCard1TitleText}
                 </CardTitle>
               </CardHeader>
@@ -587,7 +590,7 @@ export default function HomePageClientContents({
                 >
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <CardTitle className="text-sm sm:text-lg font-headline text-foreground mb-0.5">
+                <CardTitle className="text-sm sm:text-lg font-headline text-homeSectionHeading mb-0.5">
                   {crisisCard2TitleText}
                 </CardTitle>
               </CardHeader>
@@ -610,7 +613,6 @@ export default function HomePageClientContents({
                       <li key={hotline.key}>
                         <a
                           href={hotline.url}
-                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-accent hover:underline"
                         >
@@ -632,7 +634,7 @@ export default function HomePageClientContents({
         aria-labelledby={ctaTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 text-homeSectionHeading">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="72"
@@ -647,7 +649,7 @@ export default function HomePageClientContents({
           </div>
           <h2
             id={ctaTitleId}
-            className="text-lg sm:text-xl font-bold font-headline text-foreground mb-2 sm:mb-4 text-center"
+            className="text-lg sm:text-xl font-bold font-headline text-homeSectionHeading mb-2 sm:mb-4 text-center"
           >
             {ctaLabel}
           </h2>

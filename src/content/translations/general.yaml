@@ -1,4 +1,3 @@
-
 # src/content/translations/general.yaml
 
 # Site Identity & Branding
@@ -11,13 +10,13 @@ rootLayoutTitleDefault:
   en: "Chislon Chow - Registered Psychotherapist"
   zh: "周基樂 - 註冊心理治療師"
 rootLayoutMetaDescription:
-  en: "Chislon Chow offers compassionate mental wellness services in English and Traditional Chinese. Start your journey to a serene mind with personalized psychotherapy."
-  zh: "周基樂提供英語和繁體中文的關懷心理健康服務。透過個人化心理治療，開啟您心靈寧靜的旅程。"
+  en: "Chislon Chow offers compassionate mental wellness services in English and Cantonese."
+  zh: "Chislon Chow提供粵語的心理健康服務。"
 
 # Profile Page Metadata
 profilePageMetaTitle:
   en: "About Chislon Chow, R.P."
-  zh: "關於 周基樂 (註冊心理治療師)"
+  zh: "關於 Chislon Chow, R.P."
 profilePageMetaDescription: # {siteName} will be replaced with translations.siteName
   en: "Learn more about {siteName}: qualifications, approach to therapy, and commitment to your mental well-being. Bilingual services available."
   zh: "了解更多關於{siteName}：資歷、治療方法以及對您心理健康的承諾。提供雙語服務。"
@@ -118,4 +117,3 @@ mobileNavMenuTitle:
 notificationCloseButtonLabel: # For custom close button on notification toast
   en: "Close notification"
   zh: "關閉通知"
-

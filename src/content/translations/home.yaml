@@ -1,4 +1,3 @@
-
 homePageTitle:
   en: "Chislon Chow (Psychotherapist)"
   zh: "Chislon Chow (心理治療師)"
@@ -29,30 +28,9 @@ welcomeTitle:
 welcomeText:
   en: "My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. "
   zh: "我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。 "
-servicesTitle:
-  en: "Our Approach"
-  zh: "我們的理念"
-service1Title:
-  en: "Personalized Therapy"
-  zh: "個人化治療"
-service1Text:
-  en: "Tailored sessions focusing on your individual needs and goals."
-  zh: "針對您的個人需求和目標量身定制治療方案。"
-service2Title:
-  en: "Bilingual Support"
-  zh: "雙語服務"
-service2Text:
-  en: "Services offered in both English and Traditional Chinese."
-  zh: "提供英語和繁體中文服務。"
-service3Title:
-  en: "Holistic Wellness"
-  zh: "整體健康"
-service3Text:
-  en: "An integrative approach considering all aspects of your well-being."
-  zh: "綜合考慮您身心健康的各個方面。"
 networkListingsTitle:
   en: "Network Affiliations"
-  zh: "網絡聯盟"
+  zh: "聯屬網絡"
 network1Title:
   en: "Open Path Collective"
   zh: "Open Path Collective"
@@ -125,5 +103,3 @@ sectionCrisisInfoLabel:
 sectionCtaLabel:
   en: "Resources"
   zh: "資源"
-
-    

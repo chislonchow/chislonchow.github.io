@@ -69,6 +69,7 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+        homeSectionHeading: 'hsl(0 0% 50%)', // New color for specific home page headings
       },
       borderRadius: {
         lg: 'var(--radius)',
