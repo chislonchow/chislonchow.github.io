@@ -1,0 +1,10 @@
+
+enabled: true
+title:
+  en: "What is psychotherapy anyway?"
+  zh: "心理治療到底是什麼？"
+description_markdown:
+  en: "What is psychotherapy? [Learn more](/article/psychotherapy/)."
+  zh: "心理治療是什麼？[了解更多](/zh/article/psychotherapy/)."
+duration_seconds: 15
+

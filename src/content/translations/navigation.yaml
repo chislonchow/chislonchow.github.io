@@ -1,0 +1,16 @@
+
+home:
+  en: "Home"
+  zh: "主頁"
+profile:
+  en: "My Profile"
+  zh: "我的簡介"
+faq:
+  en: "FAQ"
+  zh: "常問問答"
+articles:
+  en: "Resources"
+  zh: "資源"
+mobileNavMenuTitle:
+  en: "Navigation Menu"
+  zh: "導航選單"

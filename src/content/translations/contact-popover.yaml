@@ -1,0 +1,16 @@
+
+# src/content/translations/contact-popover.yaml
+
+contactPopoverProfileImageAlt:
+  en: "Profile image"
+  zh: "頭像圖片"
+contactPopoverLabel: # Aria-label for trigger
+  en: "Contact Information"
+  zh: "聯絡資訊"
+contactPopoverTitle: # Title inside popover
+  en: "Contact Me"
+  zh: "聯絡我"
+contactPopoverCloseButtonLabel: # Aria-label for close button
+  en: "Close contact popover"
+  zh: "關閉聯絡彈窗"
+

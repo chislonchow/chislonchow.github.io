@@ -1,0 +1,121 @@
+
+# src/content/translations/general.yaml
+
+# Site Identity & Branding
+siteName: "Chislon Chow" # Consistent English name for branding in metadata templates, etc.
+headerSiteName: "Chislon Chow, R.P." # Used in Header, always English
+rootLayoutTitleTemplate: "%s | Chislon Chow" # Always English
+
+# Root Layout Metadata (src/app/layout.tsx & src/app/zh/layout.tsx)
+rootLayoutTitleDefault:
+  en: "Chislon Chow - Registered Psychotherapist"
+  zh: "周基樂 - 註冊心理治療師"
+rootLayoutMetaDescription:
+  en: "Chislon Chow offers compassionate mental wellness services in English and Traditional Chinese. Start your journey to a serene mind with personalized psychotherapy."
+  zh: "周基樂提供英語和繁體中文的關懷心理健康服務。透過個人化心理治療，開啟您心靈寧靜的旅程。"
+
+# Profile Page Metadata
+profilePageMetaTitle:
+  en: "About Chislon Chow, R.P."
+  zh: "關於 周基樂 (註冊心理治療師)"
+profilePageMetaDescription: # {siteName} will be replaced with translations.siteName
+  en: "Learn more about {siteName}: qualifications, approach to therapy, and commitment to your mental well-being. Bilingual services available."
+  zh: "了解更多關於{siteName}：資歷、治療方法以及對您心理健康的承諾。提供雙語服務。"
+
+# FAQ Page Metadata
+faqPageMetaTitle:
+  en: "Frequently Asked Questions"
+  zh: "常問問題"
+faqPageMetaDescription: # {siteName} will be replaced with translations.siteName
+  en: "Answers to common questions about therapy with {siteName}, covering services, appointments, fees, and the therapeutic process."
+  zh: "關於{siteName}心理治療服務的常見問題解答，涵蓋服務、預約、費用和治療過程。"
+
+# Article Pages Metadata
+articleNotFoundMetaTitle: # For metadata <title> if article not found e.g. "Article Not Found | SiteName"
+  en: "Article Not Found | {siteName}"
+  zh: "文章未找到 | {siteName}"
+
+# Resources List Page Metadata (/articles/page/[pageNumber]/)
+articlesListMetaPageTitle: # Used for the <title> like "Resources - Page X | SiteName"
+  en: "Resources - Page {pageNumber} | {siteName}"
+  zh: "資源 - 第 {pageNumber} 頁 | {siteName}"
+articlesListMetaDescription: # {pageNumber} and {siteName} will be replaced - USED FOR METADATA
+  en: "Browse resources on mental health and well-being from {siteName}. Page {pageNumber}."
+  zh: "瀏覽來自{siteName}的心理健康相關資源。第 {pageNumber} 頁。"
+articlesListPageBodyDescription: # {siteName} will be replaced - USED FOR ON-PAGE TEXT
+  en: "Browse resources on mental health and well-being."
+  zh: "瀏覽心理健康相關資源。"
+articlesListPageNotFoundMetaTitle: # Used for <title> if page number is invalid
+  en: "Page Not Found | {siteName}"
+  zh: "頁面未找到 | {siteName}"
+articlesListBasePageDescription: # Description for the /articles/page.tsx redirector
+  en: "Browse resources on mental health and well-being from {siteName}."
+  zh: "瀏覽來自{siteName}的心理健康相關資源。"
+
+# Contact Information (used in popover, footer, etc.)
+contactEmailValue: "contact@chislonchow.com" # Non-translatable value
+contactEmailLabel:
+  en: "Email:"
+  zh: "電郵："
+
+# Markdown Display Component Errors
+markdownErrorInvalidContent:
+  en: "Invalid content provided for display."
+  zh: "提供了無效的內容以供顯示。"
+markdownErrorProcessingFailed:
+  en: "There was an issue displaying the content."
+  zh: "顯示內容時出現問題。"
+markdownErrorLoadingTitle:
+  en: "Error Loading Content"
+  zh: "載入內容錯誤"
+
+# Footer
+footerDisclaimer:
+  en: "I cannot be held responsible for the content, privacy policies, or practices of any third-party websites or services mentioned on my site."
+  zh: "本網站提及的任何第三方網站或服務的內容、隱私政策或做法，本人概不負責。"
+footerCopyrightText: "© {year} Chislon Kei Lok Chow (周 基 樂), Canada"
+
+# General UI elements
+languageToggle:
+  en: "中文"
+  zh: "EN"
+notFoundTitle: # For the 404 page body H2
+  en: "Page Not Found"
+  zh: "頁面未找到"
+notFoundMessage: # For the 404 page body paragraph
+  en: "Sorry, the page you are looking for doesn't exist or has been moved."
+  zh: "抱歉，您正在尋找的頁面不存在或已被移動。"
+notFoundGoHome:
+  en: "Go to Homepage"
+  zh: "返回主頁"
+paginationPageInfo:
+  en: "Page {currentPage}/{totalPages}"
+  zh: "第 {currentPage}/{totalPages} 頁"
+paginationItemsInfo:
+  en: "(items {startIndex}-{endIndex} of {totalItems})"
+  zh: "(項目 {startIndex}-{endIndex}，共 {totalItems} 項)"
+paginationPrevious:
+  en: "Previous Page"
+  zh: "上一頁"
+paginationNext:
+  en: "Next Page"
+  zh: "下一頁"
+updatedOn: # For article date
+  en: "Updated on"
+  zh: "更新於"
+readMore: # For article card link
+  en: "See More"
+  zh: "查看更多"
+articlesPageGenericTitle: # Generic title for resources page when more specific one isn't found
+  en: "Resources"
+  zh: "資源"
+loadingText: # Generic loading text
+  en: "Loading..."
+  zh: "載入中..."
+mobileNavMenuTitle:
+  en: "Navigation Menu"
+  zh: "導航選單"
+notificationCloseButtonLabel: # For custom close button on notification toast
+  en: "Close notification"
+  zh: "關閉通知"
+

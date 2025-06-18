@@ -1,0 +1,129 @@
+
+homePageTitle:
+  en: "Chislon Chow (Psychotherapist)"
+  zh: "Chislon Chow (心理治療師)"
+homePageMetaDescription:
+  en: "Chislon Chow (Registered Psychotherapist) offers mental wellness services in English and Cantonese Chinese."
+  zh: "Chislon Chow (註冊心理治療師) 提供英語和粵語的心理健康服務。"
+heroTitle:
+  en: "Chislon Chow"
+  zh: "Chislon Chow"
+heroSubtitle:
+  en: "Registered Psychotherapist (Ontario)"
+  zh: "註冊心理治療師 Registered Psychotherapist (安省)"
+heroButton:
+  en: "Email Inquiry"
+  zh: "電郵查詢"
+heroButtonSecondary:
+  en: "About Me"
+  zh: "關於我"
+heroMailSubject:
+  en: "Meeting Request (from webpage)"
+  zh: "會談請求（來自網頁）"
+heroMailBodyTemplate:
+  en: "I would like to book a meeting with you. My details are as follows:\n\nName: [Your preferred name] \nPreferred Date and Time: [Give a few options]\nPurpose of meeting: [online one-time first consultation/online psychotherapy session/other]\n\nPlease arrange for this meeting, or let me know of your alternative availability."
+  zh: "我想與你預約會談。我的詳細資訊如下：%0D%0A%0D%0A姓名：[你的姓名]%0D%0A首選日期和時間：[請提供幾個選項]%0D%0A會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]%0D%0A%0D%0A請你安排這次會談，或讓我知道你其他方便的時間。"
+welcomeTitle:
+  en: "Psychotherapy Approach"
+  zh: "心理治療方針"
+welcomeText:
+  en: "My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. "
+  zh: "我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。 "
+servicesTitle:
+  en: "Our Approach"
+  zh: "我們的理念"
+service1Title:
+  en: "Personalized Therapy"
+  zh: "個人化治療"
+service1Text:
+  en: "Tailored sessions focusing on your individual needs and goals."
+  zh: "針對您的個人需求和目標量身定制治療方案。"
+service2Title:
+  en: "Bilingual Support"
+  zh: "雙語服務"
+service2Text:
+  en: "Services offered in both English and Traditional Chinese."
+  zh: "提供英語和繁體中文服務。"
+service3Title:
+  en: "Holistic Wellness"
+  zh: "整體健康"
+service3Text:
+  en: "An integrative approach considering all aspects of your well-being."
+  zh: "綜合考慮您身心健康的各個方面。"
+networkListingsTitle:
+  en: "Network Affiliations"
+  zh: "網絡聯盟"
+network1Title:
+  en: "Open Path Collective"
+  zh: "Open Path Collective"
+network1Desc:
+  en: "Providing affordable psychotherapy to those who need it."
+  zh: "讓需要的人能以經濟實惠的價格接受心理治療。"
+network2Title:
+  en: "Asian Mental Health Collective"
+  zh: "Asian Mental Health Collective"
+network2Desc:
+  en: "Building culturally sensitive mental‑health support for Asian communities."
+  zh: "致力於為亞裔社群建立具文化敏感度的心理健康支援。"
+network3Title:
+  en: "ICEEFT"
+  zh: "國際情緒取向治療卓越中心"
+network3Desc:
+  en: "International Centre for Excellence in Emotionally Focused Therapy Therapist Directory."
+  zh: "國際情緒取向治療卓越中心治療師目錄。"
+crisisInfoTitle:
+  en: "Mental Health Crisis Information"
+  zh: "心理健康危機資訊"
+crisisCard1Title:
+  en: "Immediate Emergency Protocol"
+  zh: "即時緊急情況應對"
+crisisCard1P1:
+  en: "I cannot be immediately available for emergencies, please ensure safety by seeking the emergency supports you need."
+  zh: "我無法立即處理緊急情況，請確保尋求您需要的緊急支援以保障安全。"
+crisisCard1P2:
+  en: "In the case of emergency, maybe you should immediately call your emergency hotline at 911 to call for help."
+  zh: "如遇緊急情況，請立即撥打您的緊急熱線911求助。"
+crisisCard2Title:
+  en: "Alternative Support Hotlines"
+  zh: "其他支援熱線"
+crisisCard2P1:
+  en: "You may also consider reaching out to local 24-hour Crisis Hotlines, such as:"
+  zh: "您也可以考慮聯繫當地的24小時危機熱線，例如："
+crisisCard2ListItem1:
+  en: "Suicide Crisis Helpline: 988"
+  zh: "防止自殺危機熱線：988"
+crisisCard2ListItem2:
+  en: "Distress Centre of Toronto Helpline: 416-408-4357"
+  zh: "多倫多支援中心熱線：416-408-4357"
+crisisCard2ListItem3:
+  en: "York Support Services Network Crisis Line: 1-855-310-2673"
+  zh: "約克區支援服務網絡危機熱線：1-855-310-2673"
+crisisCard2ListItem4:
+  en: "Kids Help Phone Helpline: 1-800-668-6868"
+  zh: "兒童幫助熱線：1-800-668-6868"
+ctaTitle:
+  en: "Resources"
+  zh: "資源"
+ctaText:
+  en: "Explore resources to learn more about mental health, well-being, and therapeutic approaches."
+  zh: "探索關於心理健康、身心健康和治療方法的資源。"
+ctaButtonArticles:
+  en: "View Resources"
+  zh: "查看資源"
+ctaAccordionReadArticle:
+  en: "See More"
+  zh: "查看更多"
+sectionPsychotherapyApproachLabel:
+  en: "Psychotherapy Approach"
+  zh: "心理治療方法"
+sectionNetworkListingsLabel:
+  en: "Network Affiliations"
+  zh: "網絡聯盟"
+sectionCrisisInfoLabel:
+  en: "Mental Health Crisis Information"
+  zh: "心理健康危機資訊"
+sectionCtaLabel:
+  en: "Resources"
+  zh: "資源"
+
+    

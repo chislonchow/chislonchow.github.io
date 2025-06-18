@@ -1,0 +1,40 @@
+
+articlesPageTitle:
+  en: "Resources"
+  zh: "資源"
+articlesPageDescription:
+  en: "Browse resources on mental health, therapy techniques, and personal growth. Filter by category or sort to discover content relevant to your journey."
+  zh: "瀏覽關於心理健康、治療技巧和個人成長的資源。您可以按類別篩選或排序，探索與您相關的內容。"
+filterLabel:
+  en: "Filter"
+  zh: "篩選"
+sortLabel:
+  en: "Sort"
+  zh: "排序"
+selectCategoriesPlaceholder:
+  en: "Categories"
+  zh: "類別"
+categoriesSelected:
+  en: "{count} selected"
+  zh: "已選 {count} 個"
+noCategoriesAvailable:
+  en: "No categories available for filtering."
+  zh: "沒有可供篩選的類別。"
+clearAllCategories:
+  en: "Clear Selections"
+  zh: "清除選擇"
+noArticlesFound:
+  en: "No articles found matching your criteria."
+  zh: "找不到符合您篩選條件的文章。"
+pinnedArticle:
+  en: "Pinned"
+  zh: "已置頂"
+loading:
+  en: "Loading..."
+  zh: "載入中..."
+prioritizePinnedToggleTooltip:
+  en: "Toggle prioritization of pinned articles"
+  zh: "切換置頂文章的優先順序"
+sortTitleToggleTooltip:
+  en: "Toggle title sort order (A-Z or Z-A)"
+  zh: "切換標題排序順序 (A-Z 或 Z-A)"

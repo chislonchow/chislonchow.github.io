@@ -1,0 +1,13 @@
+# For each category key (which is the English display name from article YAMLs),
+# provide the 'zh' translation.
+# The 'en' translation will be derived from the key itself if not explicitly set here.
+"Mental Health Conditions":
+  zh: "心理健康狀況"
+"Mental Health Literacy":
+  zh: "心理健康素養"
+"Chinese Canadian":
+  zh: "華裔加拿大人"
+# Add other categories from article YAML files here as they are created.
+# Example:
+# "Relationships":
+#   zh: "人際關係"

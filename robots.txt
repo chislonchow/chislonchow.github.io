@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chislonchow.com/sitemap-index.xml

@@ -1,0 +1,27 @@
+mainNavigationLabel:
+  en: "Main navigation"
+  zh: "主導航"
+socialMediaNavLabel:
+  en: "Follow us on social media"
+  zh: "在社交媒體上關注我們"
+socialYoutubeLabel:
+  en: "Visit Chislon Chow on YouTube"
+  zh: "前往周基樂的 YouTube 頻道"
+socialBloggerLabel:
+  en: "Read Chislon Chow's blog on Blogger"
+  zh: "閱讀周基樂在 Blogger 上的博客"
+socialBlueskyLabel:
+  en: "Follow Chislon Chow on Bluesky"
+  zh: "在 Bluesky 上關注周基樂"
+socialThreadsLabel:
+  en: "Follow Chislon Chow on Threads"
+  zh: "在 Threads 上關注周基樂"
+readArticleLabel:
+  en: "Read article"
+  zh: "閱讀文章"
+articleControlsToolbarLabel:
+  en: "Article display controls"
+  zh: "文章顯示控制"
+articlesListAriaLabel:
+  en: "Articles list"
+  zh: "文章列表"
