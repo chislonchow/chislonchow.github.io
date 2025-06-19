@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -144,7 +143,7 @@ export default function HomePageClientContents({
   const articlesForFrontpageAccordion = useMemo(() => {
     if (!allArticles) return [];
     return allArticles
-      .filter(article => article.frontpage_display === true)
+      .filter((article) => article.frontpage_display === true)
       .sort((a, b) => {
         const titleA = a.title[language] || "";
         const titleB = b.title[language] || "";
@@ -434,7 +433,10 @@ export default function HomePageClientContents({
               className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-base font-headline border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center shadow-md hover:shadow-lg"
             >
               {heroButtonText}
-              <Mail className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4" aria-hidden="true" />
+              <Mail
+                className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                aria-hidden="true"
+              />
             </a>
             <Button
               asChild
@@ -442,7 +444,10 @@ export default function HomePageClientContents({
             >
               <Link href={profilePath}>
                 {heroButtonSecondaryText}
-                <User className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4" aria-hidden="true" />
+                <User
+                  className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                  aria-hidden="true"
+                />
               </Link>
             </Button>
           </div>
@@ -463,7 +468,7 @@ export default function HomePageClientContents({
               <p
                 className={cn(
                   "font-body text-[hsl(202,40%,30%)] mb-0.5 leading-normal",
-                   language === "zh"
+                  language === "zh"
                     ? "text-base xs:text-lg sm:text-xl md:text-2xl"
                     : "text-sm xs:text-base sm:text-lg md:text-xl"
                 )}
@@ -472,8 +477,8 @@ export default function HomePageClientContents({
                   className={cn(
                     "inline-block text-primary/50 transform rotate-180 mr-2 mb-1 align-middle",
                     language === "zh"
-                    ? "w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                    : "w-3 h-3 xs:w-4 xs:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5"
+                      ? "w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                      : "w-3 h-3 xs:w-4 xs:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5"
                   )}
                   aria-hidden="true"
                 />
@@ -490,16 +495,14 @@ export default function HomePageClientContents({
         aria-labelledby={networkListingsTitleId}
       >
         <div className="container mx-auto">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-6 text-muted-foreground mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
               className="w-full h-full"
             >
-              <path
-                d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20"
-              />
+              <path d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20" />
             </svg>
           </div>
           <h2
@@ -508,8 +511,8 @@ export default function HomePageClientContents({
           >
             {networkListingsLabel}
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6 md:gap-8">
-            <ServiceCard 
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <ServiceCard
               title={network1TitleText}
               description={network1DescText}
               href="https://openpathcollective.org/clinicians/chislon-chow/"
@@ -534,16 +537,14 @@ export default function HomePageClientContents({
         aria-labelledby={crisisInfoTitleId}
       >
         <div className="container mx-auto">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-6 text-muted-foreground mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
               className="w-full h-full"
             >
-              <path
-                d="M20 11q-.425 0-.712-.288T19 10t.288-.712T20 9t.713.288T21 10t-.288.713T20 11m-1-3V3h2v5zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 8v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T9 15t-2.775.338T3.5 16.35q-.225.125-.363.35T3 17.2zm6-8q.825 0 1.413-.587T11 8t-.587-1.412T9 6t-1.412.588T7 8t.588 1.413T9 10m0 8"
-              />
+              <path d="M20 11q-.425 0-.712-.288T19 10t.288-.712T20 9t.713.288T21 10t-.288.713T20 11m-1-3V3h2v5zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 8v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T9 15t-2.775.338T3.5 16.35q-.225.125-.363.35T3 17.2zm6-8q.825 0 1.413-.587T11 8t-.587-1.412T9 6t-1.412.588T7 8t.588 1.413T9 10m0 8" />
             </svg>
           </div>
           <h2
@@ -552,11 +553,11 @@ export default function HomePageClientContents({
           >
             {crisisInfoLabel}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             <Card className="bg-accent/10 p-2 xs:p-6 md:p-8 border h-full flex flex-col shadow-md">
               <CardHeader className="p-2 text-center">
                 <AlertTriangle
-                  className="w-8 h-8 mx-auto mb-2 text-accent"
+                  className="w-8 h-8 mx-auto mb-0 sm:mb-2 text-accent"
                   aria-hidden="true"
                 />
                 <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
@@ -575,7 +576,7 @@ export default function HomePageClientContents({
             <Card className="bg-primary/5 p-2 xs:p-6 md:p-8 border h-full flex flex-col shadow-md">
               <CardHeader className="p-2 text-center">
                 <Phone
-                  className="w-8 h-8 mx-auto mb-2 text-primary"
+                  className="w-8 h-8 mx-auto  mb-0 sm:mb-2 text-primary"
                   aria-hidden="true"
                 />
                 <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
@@ -623,16 +624,14 @@ export default function HomePageClientContents({
         aria-labelledby={ctaTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-6 text-muted-foreground mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6  text-muted-foreground mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
               className="w-full h-full"
             >
-              <path
-                d="M11 17.05V7.2q-1.025-.6-2.175-.9T6.5 6q-.9 0-1.788.175T3 6.7v9.9q.875-.3 1.738-.45T6.5 16q1.175 0 2.288.263T11 17.05M12 20q-1.2-.95-2.6-1.475T6.5 18q-1.05 0-2.062.275T2.5 19.05q-.525.275-1.012-.025T1 18.15V6.1q0-.275.138-.525T1.55 5.2q1.15-.6 2.4-.9T6.5 4q1.85 0 3.15.425t2.8 1.3q.275.15.413.35T13 6.6v10.45q1.1-.525 2.213-.788T17.5 16q.9 0 1.763.15T21 16.6V4.575q.375.125.738.275t.712.35q.275.125.413.375T23 6.1v12.05q0 .575-.488.875t-1.012.025q-.925-.5-1.937-.775T17.5 18q-1.5 0-2.9.525T12 20m3.5-6V3l3-1v11zM7 11.525"
-              />
+              <path d="M11 17.05V7.2q-1.025-.6-2.175-.9T6.5 6q-.9 0-1.788.175T3 6.7v9.9q.875-.3 1.738-.45T6.5 16q1.175 0 2.288.263T11 17.05M12 20q-1.2-.95-2.6-1.475T6.5 18q-1.05 0-2.062.275T2.5 19.05q-.525.275-1.012-.025T1 18.15V6.1q0-.275.138-.525T1.55 5.2q1.15-.6 2.4-.9T6.5 4q1.85 0 3.15.425t2.8 1.3q.275.15.413.35T13 6.6v10.45q1.1-.525 2.213-.788T17.5 16q.9 0 1.763.15T21 16.6V4.575q.375.125.738.275t.712.35q.275.125.413.375T23 6.1v12.05q0 .575-.488.875t-1.012.025q-.925-.5-1.937-.775T17.5 18q-1.5 0-2.9.525T12 20m3.5-6V3l3-1v11zM7 11.525" />
             </svg>
           </div>
           <h2
@@ -649,11 +648,7 @@ export default function HomePageClientContents({
                     {ctaTextContent}
                   </p>
                   {articlesForFrontpageAccordion.length > 0 && (
-                    <Accordion
-                      type="single"
-                      collapsible
-                      className="w-full"
-                    >
+                    <Accordion type="single" collapsible className="w-full">
                       {articlesForFrontpageAccordion.map((article) => (
                         <AccordionItem
                           value={article.slug}
@@ -702,7 +697,10 @@ export default function HomePageClientContents({
                   >
                     <Link href={articlesPath}>
                       {ctaButtonArticlesText}
-                      <Newspaper className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4" aria-hidden="true" />
+                      <Newspaper
+                        className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                        aria-hidden="true"
+                      />
                     </Link>
                   </Button>
                 </div>
@@ -714,4 +712,3 @@ export default function HomePageClientContents({
     </div>
   );
 }
-
