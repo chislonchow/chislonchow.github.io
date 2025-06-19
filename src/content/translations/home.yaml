@@ -1,4 +1,3 @@
-
 homePageTitle:
   en: "Chislon Chow (Psychotherapist)"
   zh: "Chislon Chow (心理治療師)"
@@ -22,7 +21,7 @@ heroMailSubject:
   zh: "會談請求（來自網頁）"
 heroMailBodyTemplate:
   en: "I would like to book a meeting with you. My details are as follows:\n\nName: [Your preferred name] \nPreferred Date and Time: [Give a few options]\nPurpose of meeting: [online one-time first consultation/online psychotherapy session/other]\n\nPlease arrange for this meeting, or let me know of your alternative availability."
-  zh: "我想與你預約會談。我的詳細資訊如下：%0D%0A%0D%0A姓名：[你的姓名]%0D%0A首選日期和時間：[請提供幾個選項]%0D%0A會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]%0D%0A%0D%0A請你安排這次會談，或讓我知道你其他方便的時間。"
+  zh: "我想與你預約會談。我的詳細資訊如下：\n\n姓名：[你的姓名]\n首選日期和時間：[請提供幾個選項]\n會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]\n\n請你安排這次會談，或讓我知道你其他方便的時間。"
 welcomeTitle:
   en: "Psychotherapy Approach"
   zh: "心理治療方針"
@@ -104,4 +103,3 @@ sectionCrisisInfoLabel:
 sectionCtaLabel:
   en: "Resources"
   zh: "資源"
-
