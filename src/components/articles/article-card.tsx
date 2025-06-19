@@ -26,7 +26,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
   return (
     <Link href={articleUrl} className="block h-full group" aria-label={articleLinkAriaLabel}>
-      <Card className="flex flex-col h-full bg-background/80 border rounded-lg group-hover:border-primary transition-all duration-150">
+      <Card className="flex flex-col h-full bg-background/80 border rounded-lg shadow-sm group-hover:shadow-lg transition-all duration-150">
         <CardHeader className="pb-2">
           <CardTitle className="text-xl font-headline text-primary">
             {article.title[language]}
@@ -73,4 +73,3 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     </Link>
   );
 }
-

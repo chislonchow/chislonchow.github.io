@@ -1,5 +1,7 @@
 import type {Config} from 'tailwindcss';
 
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 export default {
   darkMode: ['class'],
   content: [
@@ -8,6 +10,10 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      'xs': '20rem', // 320px
+      ...defaultTheme.screens
+    },
     container: {
       center: true, // Keeps container centered on larger screens
       // We do not define padding here as it's handled by utility classes like px-4, sm:px-6 etc.
@@ -20,9 +26,6 @@ export default {
       },
     },
     extend: {
-      screens: {
-        'xs': '20rem', // 320px
-      },
       fontFamily: {
         body: ['Noto Serif TC', 'Georgia', 'Times New Roman', 'Times', 'serif'],
         headline: ['Noto Sans TC', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],

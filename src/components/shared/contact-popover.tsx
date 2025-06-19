@@ -102,7 +102,7 @@ export default function ContactPopover() {
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-full max-w-xs md:max-w-md mb-1 bg-background text-foreground relative"
+          className="w-full max-w-xs md:max-w-md mb-1 bg-background text-foreground relative shadow-xl"
           sideOffset={10}
           aria-labelledby={popoverTitleId}
         >
@@ -140,7 +140,7 @@ export default function ContactPopover() {
               <div className="flex flex-col items-center space-y-1.5 text-center">
                 <Button
                   asChild
-                  className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-2 py-1 text-[10px] leading-tight font-headline border transition-transform hover:scale-105 whitespace-nowrap"
+                  className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-2 py-1 text-[10px] xs:px-2.5 xs:py-1.5 xs:text-xs leading-tight font-headline border transition-transform hover:scale-105 whitespace-nowrap"
                 >
                   <a href={dynamicMailtoLink}>
                     {emailButtonText}
@@ -155,3 +155,4 @@ export default function ContactPopover() {
     </div>
   );
 }
+

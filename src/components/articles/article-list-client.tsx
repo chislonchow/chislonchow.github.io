@@ -12,13 +12,13 @@ import { ChevronDown, ListFilter, ArrowUpDown, Star, ArrowDownAZ, ArrowUpZA, Che
 import { useLanguage, type Language } from '@/contexts/language-context';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Toolbar } from '@/components/ui/toolbar';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import { cn } from "@/lib/utils";
 
 interface ArticleListClientProps {
   articles: Article[];
   currentPageFromUrl: number;
-  basePath: string; 
+  basePath: string;
   articlesPerPage: number;
 }
 
@@ -38,11 +38,11 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   const [sortByPinned, setSortByPinned] = useState<boolean>(true);
   const [sortByFrontpageDisplay, setSortByFrontpageDisplay] = useState<boolean>(false);
   const [sortByTitle, setSortByTitle] = useState<'asc' | 'desc'>('asc');
-  
+
   const [clientSideCurrentPage, setClientSideCurrentPage] = useState(currentPageFromUrl);
 
   const [componentReady, setComponentReady] = useState(false);
-  const isInitialLoadRef = useRef(true); 
+  const isInitialLoadRef = useRef(true);
 
   useEffect(() => {
     if (translations && translations.selectCategoriesPlaceholder) {
@@ -51,29 +51,29 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   }, [translations]);
 
   useEffect(() => {
-    setClientSideCurrentPage(1); 
+    setClientSideCurrentPage(1);
   }, [selectedCategories, sortByPinned, sortByFrontpageDisplay, sortByTitle]);
 
   useEffect(() => {
     setClientSideCurrentPage(currentPageFromUrl);
-    isInitialLoadRef.current = true; 
+    isInitialLoadRef.current = true;
   }, [currentPageFromUrl]);
 
 
   const handleSortByPinnedToggle = () => {
-    if (!sortByPinned) { 
+    if (!sortByPinned) {
       setSortByPinned(true);
-      setSortByFrontpageDisplay(false); 
-    } else { 
+      setSortByFrontpageDisplay(false);
+    } else {
       setSortByPinned(false);
     }
   };
 
   const handleSortByFrontpageDisplayToggle = () => {
-    if (!sortByFrontpageDisplay) { 
+    if (!sortByFrontpageDisplay) {
       setSortByFrontpageDisplay(true);
-      setSortByPinned(false); 
-    } else { 
+      setSortByPinned(false);
+    } else {
       setSortByFrontpageDisplay(false);
     }
   };
@@ -104,7 +104,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
         article.categories.some(category => selectedCategories.includes(category))
       );
     }
-    
+
     if (sortByPinned) {
       const pinnedArticles = processedArticles.filter(article => article.pinned);
       const unpinnedArticles = processedArticles.filter(article => !article.pinned);
@@ -123,7 +123,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   }, [articles, selectedCategories, sortByPinned, sortByFrontpageDisplay, sortByTitle, language]);
 
   const totalPagesForFilteredView = Math.ceil(filteredAndSortedArticles.length / articlesPerPage);
-  
+
   const paginatedArticlesToDisplay = useMemo(() => {
     const startIndex = (clientSideCurrentPage - 1) * articlesPerPage;
     return filteredAndSortedArticles.slice(startIndex, startIndex + articlesPerPage);
@@ -145,11 +145,11 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   useEffect(() => {
     if (componentReady) {
       if (isInitialLoadRef.current) {
-        isInitialLoadRef.current = false; 
+        isInitialLoadRef.current = false;
       } else {
-        const articleListTop = document.querySelector('.grid[aria-live="polite"]'); 
+        const articleListTop = document.querySelector('.grid[aria-live="polite"]');
         if (articleListTop) {
-          const yOffset = -80; 
+          const yOffset = -80;
           const y = articleListTop.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({top: y, behavior: 'smooth' });
         } else {
@@ -157,8 +157,8 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
         }
       }
     }
-  }, [clientSideCurrentPage, currentPageFromUrl, componentReady]); 
-  
+  }, [clientSideCurrentPage, currentPageFromUrl, componentReady]);
+
   const rawControlsToolbarLabel = translations.articleControlsToolbarLabel;
   const controlsToolbarLabel = typeof rawControlsToolbarLabel === 'object' && rawControlsToolbarLabel !== null && typeof rawControlsToolbarLabel[language] === 'string' ? rawControlsToolbarLabel[language] : (typeof rawControlsToolbarLabel === 'string' ? rawControlsToolbarLabel : '');
 
@@ -167,7 +167,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
 
   const rawSelectCategoriesPlaceholder = translations.selectCategoriesPlaceholder;
   const selectCategoriesPlaceholderText = typeof rawSelectCategoriesPlaceholder === 'object' && rawSelectCategoriesPlaceholder !== null && typeof rawSelectCategoriesPlaceholder[language] === 'string' ? rawSelectCategoriesPlaceholder[language] : (typeof rawSelectCategoriesPlaceholder === 'string' ? rawSelectCategoriesPlaceholder : '');
-  
+
   const rawCategoriesSelected = translations.categoriesSelected;
   const categoriesSelectedTemplate = typeof rawCategoriesSelected === 'object' && rawCategoriesSelected !== null && typeof rawCategoriesSelected[language] === 'string' ? rawCategoriesSelected[language] : (typeof rawCategoriesSelected === 'string' ? rawCategoriesSelected : '');
 
@@ -178,8 +178,8 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   const clearAllCategoriesText = typeof rawClearAllCategories === 'object' && rawClearAllCategories !== null && typeof rawClearAllCategories[language] === 'string' ? rawClearAllCategories[language] : (typeof rawClearAllCategories === 'string' ? rawClearAllCategories : '');
 
   const rawNoCategoriesAvailable = translations.noCategoriesAvailable;
-  const noCategoriesAvailableText = typeof rawNoCategoriesAvailable === 'object' && rawNoCategoriesAvailable !== null && typeof rawNoCategoriesAvailable[language] === 'string' ? rawNoCategoriesAvailable[language] : (typeof rawNoCategoriesAvailable === 'string' ? rawNoCategoriesAvailable : '');
-  
+  const noCategoriesAvailableText = typeof rawNoCategoriesAvailable === 'object' && rawNoCategoriesAvailable !== null && typeof rawNoCategoriesAvailable[language] === "string" ? rawNoCategoriesAvailable[language] : (typeof rawNoCategoriesAvailable === 'string' ? rawNoCategoriesAvailable : '');
+
   const rawSortLabel = translations.sortLabel;
   const sortLabelText = typeof rawSortLabel === 'object' && rawSortLabel !== null && typeof rawSortLabel[language] === 'string' ? rawSortLabel[language] : (typeof rawSortLabel === 'string' ? rawSortLabel : '');
 
@@ -211,8 +211,8 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   if (!componentReady) {
     return (
       <div>
-        <Toolbar 
-          className="mb-6 border rounded-lg p-4 flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-y-4 sm:gap-x-6 sm:gap-y-0"
+        <Toolbar
+          className="mb-6 pt-3 pb-4 flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-y-4 sm:gap-x-6 sm:gap-y-0"
           aria-label={controlsToolbarLabel || "Article display controls"}
         >
           <div className="flex flex-col sm:flex-row sm:items-center w-full sm:w-auto gap-y-2 sm:gap-x-3">
@@ -227,7 +227,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
           </div>
         </Toolbar>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-label={articlesListAriaLabelText || "Articles list"}>
-          {[...Array(articlesPerPage)].map((_, i) => ( 
+          {[...Array(articlesPerPage)].map((_, i) => (
             <div key={i} className="flex flex-col space-y-3">
               <Skeleton className="h-[125px] w-full rounded-xl" />
               <div className="space-y-2">
@@ -252,7 +252,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
       </div>
     );
   }
-  
+
   const getCategoryFilterText = () => {
     if (selectedCategories.length === 0) {
       return selectCategoriesPlaceholderText;
@@ -267,8 +267,8 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
 
   return (
     <div>
-      <Toolbar 
-        className="mb-6 border rounded-lg p-4 flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-y-4 sm:gap-x-6 sm:gap-y-0"
+      <Toolbar
+        className="mb-6 pt-3 pb-4 flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-y-4 sm:gap-x-6 sm:gap-y-0"
         aria-label={controlsToolbarLabel}
       >
         <div className="flex flex-col sm:flex-row sm:items-center w-full sm:w-auto gap-y-2 sm:gap-x-3">
@@ -398,10 +398,10 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
 
       {componentReady && totalPagesForFilteredView > 1 && (
         <div className="mt-8 flex items-center justify-between">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={() => handlePageNavigation(clientSideCurrentPage - 1)} 
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => handlePageNavigation(clientSideCurrentPage - 1)}
             disabled={clientSideCurrentPage === 1}
             aria-label={paginationPreviousText}
           >
@@ -422,10 +422,10 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
               </div>
             )}
           </div>
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={() => handlePageNavigation(clientSideCurrentPage + 1)} 
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => handlePageNavigation(clientSideCurrentPage + 1)}
             disabled={clientSideCurrentPage === totalPagesForFilteredView || totalPagesForFilteredView === 0}
             aria-label={paginationNextText}
           >

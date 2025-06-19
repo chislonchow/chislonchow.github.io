@@ -14,8 +14,6 @@ const CanadaFlagIcon = (props: React.SVGProps<SVGSVGElement>) => {
       role={props.role || "img"}
       {...rest}
     >
-      // Icon from CoreUI Flags by creativeLabs Łukasz Holeczek -
-      https://creativecommons.org/publicdomain/zero/1.0/
       <g fill="none">
         <path fill="red" d="M.5.5h300v150H.5z" />
         <path fill="#FFF" d="M75.5.5h150v150h-150z" />

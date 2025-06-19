@@ -180,7 +180,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-14">
           <Link
             href={getLocalizedPath("/", language)}
-            className="text-sm xs:text-base sm:text-lg md:text-xl font-bold font-headline text-primary"
+            className="text-sm xs:text-base sm:text-lg md:text-xl font-semibold font-headline text-primary"
           >
             {displaySiteName}
           </Link>

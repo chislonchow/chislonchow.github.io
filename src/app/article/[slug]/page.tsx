@@ -88,7 +88,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-10rem)]">
-        <article className="max-w-3xl mx-auto bg-card p-6 sm:p-8 md:p-10 rounded-xl border">
+        <article className="max-w-3xl mx-auto bg-background/50 p-6 sm:p-8 md:p-10 rounded-xl border">
           <header className="mb-8 border-b pb-6">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-headline text-foreground mb-3">
               {article.title[lang]}

@@ -5,10 +5,10 @@
 
 @layer base {
   :root {
-    --background: 33 71% 94%; /* #FBefe5 Warm, desaturated beige */
+    --background: 33 71% 94%; /* #FBf0e5 Warm, desaturated beige */
     --foreground: 202 25% 20%; /* Darker, desaturated blue for text - Increased contrast */
 
-    --card: 33 71% 94%; /* Adjusted to match background or slightly off */
+    --card: 33 71% 93%; /* Lighter beige for cards */
     --card-foreground: 202 25% 20%;
 
     --popover: 33 71% 90%; /* Slightly darker than background */
@@ -21,7 +21,7 @@
     --secondary-foreground: 202 20% 30%;
 
     --muted: 33 71% 88%;
-    --muted-foreground: 202 20% 55%; /* Made lighter */
+    --muted-foreground: 202 20% 65%; /* Adjusted for lighter footer text */
 
     --accent: 340 25% 60%; /* #B88DA0 Darker dusty rose */
     --accent-foreground: 0 0% 10%; /* Dark text on accent */
@@ -42,7 +42,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-medium; /* Changed from font-semibold to font-medium */
   }
   @media (hover: hover) {
     /* This block can be used for hover-specific styles on devices that support true hover. */

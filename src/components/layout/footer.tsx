@@ -83,16 +83,40 @@ export default function Footer() {
           <div className="sm:w-1/2 mb-6 sm:mb-0">
             <nav aria-label={socialNavLabelText}>
               <div className="flex items-center space-x-4">
-                <a href="https://blog.chislonchow.com" aria-label={bloggerLabelText} className="text-muted-foreground hover:text-primary transition-colors">
+                <a 
+                  href="https://blog.chislonchow.com" 
+                  aria-label={bloggerLabelText} 
+                  className="text-primary hover:text-primary/90 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <BloggerIcon />
                 </a>
-                <a href="https://www.youtube.com/@ChislonChow" aria-label={youtubeLabelText} className="text-muted-foreground hover:text-primary transition-colors">
+                <a 
+                  href="https://www.youtube.com/@ChislonChow" 
+                  aria-label={youtubeLabelText} 
+                  className="text-primary hover:text-primary/90 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <YouTubeIcon />
                 </a>
-                <a href="https://bsky.app/profile/chislonchow.com" aria-label={blueskyLabelText} className="text-muted-foreground hover:text-primary transition-colors">
+                <a 
+                  href="https://bsky.app/profile/chislonchow.com" 
+                  aria-label={blueskyLabelText} 
+                  className="text-primary hover:text-primary/90 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <BlueskyIcon />
                 </a>
-                <a href="https://www.threads.net/@chislonchow" aria-label={threadsLabelText} className="text-muted-foreground hover:text-primary transition-colors">
+                <a 
+                  href="https://www.threads.net/@chislonchow" 
+                  aria-label={threadsLabelText} 
+                  className="text-primary hover:text-primary/90 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ThreadsIcon />
                 </a>
               </div>
@@ -107,7 +131,7 @@ export default function Footer() {
                 {emailAddress}
               </a>
             </p>
-            <p className="text-muted-foreground text-sm italic">
+            <p className="text-muted-foreground text-xs italic font-normal">
               {footerDisclaimerText}
             </p>
           </div>
@@ -115,7 +139,7 @@ export default function Footer() {
 
         {/* Copyright Information - Full Width Below */}
         <div className="text-center">
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm font-normal">
             {fullCopyrightText}
           </p>
         </div>
@@ -123,3 +147,4 @@ export default function Footer() {
     </footer>
   );
 }
+
