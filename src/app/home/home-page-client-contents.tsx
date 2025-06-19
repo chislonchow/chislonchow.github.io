@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -121,18 +122,18 @@ export default function HomePageClientContents({
       typeof rawHeroMailSubject[language] === "string"
         ? rawHeroMailSubject[language]
         : typeof rawHeroMailSubject === "string"
-        ? rawHeroMailSubject
-        : "";
+          ? rawHeroMailSubject
+          : "";
 
     const rawHeroMailBodyTemplate = translations.heroMailBodyTemplate;
     const emailBody =
       typeof rawHeroMailBodyTemplate === "object" &&
-      rawHeroMailBodyTemplate !== null &&
-      typeof rawHeroMailBodyTemplate[language] === "string"
+        rawHeroMailBodyTemplate !== null &&
+        typeof rawHeroMailBodyTemplate[language] === "string"
         ? rawHeroMailBodyTemplate[language]
         : typeof rawHeroMailBodyTemplate === "string"
-        ? rawHeroMailBodyTemplate
-        : "";
+          ? rawHeroMailBodyTemplate
+          : "";
 
     const constructedLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
       emailSubject
@@ -155,6 +156,7 @@ export default function HomePageClientContents({
   const networkListingsTitleId = "network-listings-title";
   const crisisInfoTitleId = "crisis-info-title";
   const ctaTitleId = "cta-title";
+  const pageBottomTitleId = "page-bottom-title-h2";
 
   const rawHeroTitleText = translations.heroTitle;
   const heroTitleText =
@@ -163,18 +165,18 @@ export default function HomePageClientContents({
     typeof rawHeroTitleText[language] === "string"
       ? rawHeroTitleText[language]
       : typeof rawHeroTitleText === "string"
-      ? rawHeroTitleText
-      : "";
+        ? rawHeroTitleText
+        : "";
 
   const rawHeroSubtitle = translations.heroSubtitle;
   const heroSubtitleRawText =
     typeof rawHeroSubtitle === "object" &&
-    rawHeroSubtitle !== null &&
-    typeof rawHeroSubtitle[language] === "string"
+      rawHeroSubtitle !== null &&
+      typeof rawHeroSubtitle[language] === "string"
       ? rawHeroSubtitle[language]
       : typeof rawHeroSubtitle === "string"
-      ? rawHeroSubtitle
-      : "";
+        ? rawHeroSubtitle
+        : "";
 
   let heroSubtitleDisplay: React.ReactNode = heroSubtitleRawText;
 
@@ -198,213 +200,233 @@ export default function HomePageClientContents({
   const rawHeroButtonText = translations.heroButton;
   const heroButtonText =
     typeof rawHeroButtonText === "object" &&
-    rawHeroButtonText !== null &&
-    typeof rawHeroButtonText[language] === "string"
+      rawHeroButtonText !== null &&
+      typeof rawHeroButtonText[language] === "string"
       ? rawHeroButtonText[language]
       : typeof rawHeroButtonText === "string"
-      ? rawHeroButtonText
-      : "";
+        ? rawHeroButtonText
+        : "";
 
   const rawHeroButtonSecondaryText = translations.heroButtonSecondary;
   const heroButtonSecondaryText =
     typeof rawHeroButtonSecondaryText === "object" &&
-    rawHeroButtonSecondaryText !== null &&
-    typeof rawHeroButtonSecondaryText[language] === "string"
+      rawHeroButtonSecondaryText !== null &&
+      typeof rawHeroButtonSecondaryText[language] === "string"
       ? rawHeroButtonSecondaryText[language]
       : typeof rawHeroButtonSecondaryText === "string"
-      ? rawHeroButtonSecondaryText
-      : "";
+        ? rawHeroButtonSecondaryText
+        : "";
 
   const rawSectionPsychotherapyApproachLabel =
     translations.sectionPsychotherapyApproachLabel;
   const sectionPsychotherapyApproachLabelText =
     typeof rawSectionPsychotherapyApproachLabel === "object" &&
-    rawSectionPsychotherapyApproachLabel !== null &&
-    typeof rawSectionPsychotherapyApproachLabel[language] === "string"
+      rawSectionPsychotherapyApproachLabel !== null &&
+      typeof rawSectionPsychotherapyApproachLabel[language] === "string"
       ? rawSectionPsychotherapyApproachLabel[language]
       : typeof rawSectionPsychotherapyApproachLabel === "string"
-      ? rawSectionPsychotherapyApproachLabel
-      : "";
+        ? rawSectionPsychotherapyApproachLabel
+        : "";
 
   const rawWelcomeTextContent = translations.welcomeText;
   const welcomeTextContent =
     typeof rawWelcomeTextContent === "object" &&
-    rawWelcomeTextContent !== null &&
-    typeof rawWelcomeTextContent[language] === "string"
+      rawWelcomeTextContent !== null &&
+      typeof rawWelcomeTextContent[language] === "string"
       ? rawWelcomeTextContent[language]
       : typeof rawWelcomeTextContent === "string"
-      ? rawWelcomeTextContent
-      : "";
+        ? rawWelcomeTextContent
+        : "";
 
   const rawNetworkListingsLabel = translations.sectionNetworkListingsLabel;
   const networkListingsLabel =
     typeof rawNetworkListingsLabel === "object" &&
-    rawNetworkListingsLabel !== null &&
-    typeof rawNetworkListingsLabel[language] === "string"
+      rawNetworkListingsLabel !== null &&
+      typeof rawNetworkListingsLabel[language] === "string"
       ? rawNetworkListingsLabel[language]
       : typeof rawNetworkListingsLabel === "string"
-      ? rawNetworkListingsLabel
-      : "";
+        ? rawNetworkListingsLabel
+        : "";
 
   const rawNetwork1Title = translations.network1Title;
   const network1TitleText =
     typeof rawNetwork1Title === "object" &&
-    rawNetwork1Title !== null &&
-    typeof rawNetwork1Title[language] === "string"
+      rawNetwork1Title !== null &&
+      typeof rawNetwork1Title[language] === "string"
       ? rawNetwork1Title[language]
       : typeof rawNetwork1Title === "string"
-      ? rawNetwork1Title
-      : "";
+        ? rawNetwork1Title
+        : "";
 
   const rawNetwork1Desc = translations.network1Desc;
   const network1DescText =
     typeof rawNetwork1Desc === "object" &&
-    rawNetwork1Desc !== null &&
-    typeof rawNetwork1Desc[language] === "string"
+      rawNetwork1Desc !== null &&
+      typeof rawNetwork1Desc[language] === "string"
       ? rawNetwork1Desc[language]
       : typeof rawNetwork1Desc === "string"
-      ? rawNetwork1Desc
-      : "";
+        ? rawNetwork1Desc
+        : "";
 
   const rawNetwork2Title = translations.network2Title;
   const network2TitleText =
     typeof rawNetwork2Title === "object" &&
-    rawNetwork2Title !== null &&
-    typeof rawNetwork2Title[language] === "string"
+      rawNetwork2Title !== null &&
+      typeof rawNetwork2Title[language] === "string"
       ? rawNetwork2Title[language]
       : typeof rawNetwork2Title === "string"
-      ? rawNetwork2Title
-      : "";
+        ? rawNetwork2Title
+        : "";
 
   const rawNetwork2Desc = translations.network2Desc;
   const network2DescText =
     typeof rawNetwork2Desc === "object" &&
-    rawNetwork2Desc !== null &&
-    typeof rawNetwork2Desc[language] === "string"
+      rawNetwork2Desc !== null &&
+      typeof rawNetwork2Desc[language] === "string"
       ? rawNetwork2Desc[language]
       : typeof rawNetwork2Desc === "string"
-      ? rawNetwork2Desc
-      : "";
+        ? rawNetwork2Desc
+        : "";
 
   const rawNetwork3Title = translations.network3Title;
   const network3TitleText =
     typeof rawNetwork3Title === "object" &&
-    rawNetwork3Title !== null &&
-    typeof rawNetwork3Title[language] === "string"
+      rawNetwork3Title !== null &&
+      typeof rawNetwork3Title[language] === "string"
       ? rawNetwork3Title[language]
       : typeof rawNetwork3Title === "string"
-      ? rawNetwork3Title
-      : "";
+        ? rawNetwork3Title
+        : "";
 
   const rawNetwork3Desc = translations.network3Desc;
   const network3DescText =
     typeof rawNetwork3Desc === "object" &&
-    rawNetwork3Desc !== null &&
-    typeof rawNetwork3Desc[language] === "string"
+      rawNetwork3Desc !== null &&
+      typeof rawNetwork3Desc[language] === "string"
       ? rawNetwork3Desc[language]
       : typeof rawNetwork3Desc === "string"
-      ? rawNetwork3Desc
-      : "";
+        ? rawNetwork3Desc
+        : "";
 
   const rawCrisisInfoLabel = translations.sectionCrisisInfoLabel;
   const crisisInfoLabel =
     typeof rawCrisisInfoLabel === "object" &&
-    rawCrisisInfoLabel !== null &&
-    typeof rawCrisisInfoLabel[language] === "string"
+      rawCrisisInfoLabel !== null &&
+      typeof rawCrisisInfoLabel[language] === "string"
       ? rawCrisisInfoLabel[language]
       : typeof rawCrisisInfoLabel === "string"
-      ? rawCrisisInfoLabel
-      : "";
+        ? rawCrisisInfoLabel
+        : "";
 
   const rawCrisisCard1Title = translations.crisisCard1Title;
   const crisisCard1TitleText =
     typeof rawCrisisCard1Title === "object" &&
-    rawCrisisCard1Title !== null &&
-    typeof rawCrisisCard1Title[language] === "string"
+      rawCrisisCard1Title !== null &&
+      typeof rawCrisisCard1Title[language] === "string"
       ? rawCrisisCard1Title[language]
       : typeof rawCrisisCard1Title === "string"
-      ? rawCrisisCard1Title
-      : "";
+        ? rawCrisisCard1Title
+        : "";
 
   const rawCrisisCard1P1 = translations.crisisCard1P1;
   const crisisCard1P1Text =
     typeof rawCrisisCard1P1 === "object" &&
-    rawCrisisCard1P1 !== null &&
-    typeof rawCrisisCard1P1[language] === "string"
+      rawCrisisCard1P1 !== null &&
+      typeof rawCrisisCard1P1[language] === "string"
       ? rawCrisisCard1P1[language]
       : typeof rawCrisisCard1P1 === "string"
-      ? rawCrisisCard1P1
-      : "";
+        ? rawCrisisCard1P1
+        : "";
 
   const rawCrisisCard1P2 = translations.crisisCard1P2;
   const crisisCard1P2Text =
     typeof rawCrisisCard1P2 === "object" &&
-    rawCrisisCard1P2 !== null &&
-    typeof rawCrisisCard1P2[language] === "string"
+      rawCrisisCard1P2 !== null &&
+      typeof rawCrisisCard1P2[language] === "string"
       ? rawCrisisCard1P2[language]
       : typeof rawCrisisCard1P2 === "string"
-      ? rawCrisisCard1P2
-      : "";
+        ? rawCrisisCard1P2
+        : "";
 
   const rawCrisisCard2Title = translations.crisisCard2Title;
   const crisisCard2TitleText =
     typeof rawCrisisCard2Title === "object" &&
-    rawCrisisCard2Title !== null &&
-    typeof rawCrisisCard2Title[language] === "string"
+      rawCrisisCard2Title !== null &&
+      typeof rawCrisisCard2Title[language] === "string"
       ? rawCrisisCard2Title[language]
       : typeof rawCrisisCard2Title === "string"
-      ? rawCrisisCard2Title
-      : "";
+        ? rawCrisisCard2Title
+        : "";
 
   const rawCrisisCard2P1 = translations.crisisCard2P1;
   const crisisCard2P1Text =
     typeof rawCrisisCard2P1 === "object" &&
-    rawCrisisCard2P1 !== null &&
-    typeof rawCrisisCard2P1[language] === "string"
+      rawCrisisCard2P1 !== null &&
+      typeof rawCrisisCard2P1[language] === "string"
       ? rawCrisisCard2P1[language]
       : typeof rawCrisisCard2P1 === "string"
-      ? rawCrisisCard2P1
-      : "";
+        ? rawCrisisCard2P1
+        : "";
 
   const rawCtaLabel = translations.sectionCtaLabel;
   const ctaLabel =
     typeof rawCtaLabel === "object" &&
-    rawCtaLabel !== null &&
-    typeof rawCtaLabel[language] === "string"
+      rawCtaLabel !== null &&
+      typeof rawCtaLabel[language] === "string"
       ? rawCtaLabel[language]
       : typeof rawCtaLabel === "string"
-      ? rawCtaLabel
-      : "";
+        ? rawCtaLabel
+        : "";
 
   const rawCtaTextContent = translations.ctaText;
   const ctaTextContent =
     typeof rawCtaTextContent === "object" &&
-    rawCtaTextContent !== null &&
-    typeof rawCtaTextContent[language] === "string"
+      rawCtaTextContent !== null &&
+      typeof rawCtaTextContent[language] === "string"
       ? rawCtaTextContent[language]
       : typeof rawCtaTextContent === "string"
-      ? rawCtaTextContent
-      : "";
+        ? rawCtaTextContent
+        : "";
 
   const rawCtaAccordionReadArticleText = translations.ctaAccordionReadArticle;
   const ctaAccordionReadArticleText =
     typeof rawCtaAccordionReadArticleText === "object" &&
-    rawCtaAccordionReadArticleText !== null &&
-    typeof rawCtaAccordionReadArticleText[language] === "string"
+      rawCtaAccordionReadArticleText !== null &&
+      typeof rawCtaAccordionReadArticleText[language] === "string"
       ? rawCtaAccordionReadArticleText[language]
       : typeof rawCtaAccordionReadArticleText === "string"
-      ? rawCtaAccordionReadArticleText
-      : "";
+        ? rawCtaAccordionReadArticleText
+        : "";
 
   const rawCtaButtonArticlesText = translations.ctaButtonArticles;
   const ctaButtonArticlesText =
     typeof rawCtaButtonArticlesText === "object" &&
-    rawCtaButtonArticlesText !== null &&
-    typeof rawCtaButtonArticlesText[language] === "string"
+      rawCtaButtonArticlesText !== null &&
+      typeof rawCtaButtonArticlesText[language] === "string"
       ? rawCtaButtonArticlesText[language]
       : typeof rawCtaButtonArticlesText === "string"
-      ? rawCtaButtonArticlesText
-      : "";
+        ? rawCtaButtonArticlesText
+        : "";
+
+  const rawPageBottomSectionTitle = translations.pageBottomSectionTitle;
+  const pageBottomSectionTitleText =
+    typeof rawPageBottomSectionTitle === "object" &&
+    rawPageBottomSectionTitle !== null &&
+    typeof rawPageBottomSectionTitle[language] === "string"
+      ? rawPageBottomSectionTitle[language]
+      : typeof rawPageBottomSectionTitle === "string"
+        ? rawPageBottomSectionTitle
+        : "";
+
+  const rawPageBottomSectionSubtitle = translations.pageBottomSectionSubtitle;
+  const pageBottomSectionSubtitleText =
+    typeof rawPageBottomSectionSubtitle === "object" &&
+      rawPageBottomSectionSubtitle !== null &&
+      typeof rawPageBottomSectionSubtitle[language] === "string"
+      ? rawPageBottomSectionSubtitle[language]
+      : typeof rawPageBottomSectionSubtitle === "string"
+        ? rawPageBottomSectionSubtitle
+        : "";
 
   return (
     <div className="flex flex-col">
@@ -463,7 +485,7 @@ export default function HomePageClientContents({
           <h2 id={psychotherapyApproachTitleId} className="sr-only">
             {sectionPsychotherapyApproachLabelText}
           </h2>
-          <Card className="max-w-3xl mx-auto bg-primary/10 p-4 xs:p-8 md:p-10 border shadow-md">
+          <Card className="max-w-3xl mx-auto bg-primary/10 p-4 xs:p-8 md:p-10 shadow-md">
             <CardContent className="p-0 text-left">
               <p
                 className={cn(
@@ -489,142 +511,13 @@ export default function HomePageClientContents({
         </div>
       </section>
 
-      {/* Network Listings Section */}
+      {/* Call to Action Section (Resources) */}
       <section
-        className="py-12 sm:py-16 bg-secondary px-4 sm:px-6 lg:px-8"
-        aria-labelledby={networkListingsTitleId}
-      >
-        <div className="container mx-auto">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-full h-full"
-            >
-              <path d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20" />
-            </svg>
-          </div>
-          <h2
-            id={networkListingsTitleId}
-            className="text-xl sm:text-3xl font-bold font-headline text-muted-foreground mb-10 sm:mb-12 text-center"
-          >
-            {networkListingsLabel}
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <ServiceCard
-              title={network1TitleText}
-              description={network1DescText}
-              href="https://openpathcollective.org/clinicians/chislon-chow/"
-            />
-            <ServiceCard
-              title={network2TitleText}
-              description={network2DescText}
-              href="https://www.asianmhc.org/therapists/chislon-chow/"
-            />
-            <ServiceCard
-              title={network3TitleText}
-              description={network3DescText}
-              href="https://directory.iceeft.com/therapist-profile/chislon_chow_16442/"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Mental Health Crisis Information Section */}
-      <section
-        className="py-12 sm:py-16 bg-background px-4 sm:px-6 lg:px-8"
-        aria-labelledby={crisisInfoTitleId}
-      >
-        <div className="container mx-auto">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-full h-full"
-            >
-              <path d="M20 11q-.425 0-.712-.288T19 10t.288-.712T20 9t.713.288T21 10t-.288.713T20 11m-1-3V3h2v5zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 8v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T9 15t-2.775.338T3.5 16.35q-.225.125-.363.35T3 17.2zm6-8q.825 0 1.413-.587T11 8t-.587-1.412T9 6t-1.412.588T7 8t.588 1.413T9 10m0 8" />
-            </svg>
-          </div>
-          <h2
-            id={crisisInfoTitleId}
-            className="text-xl sm:text-3xl font-bold font-headline text-muted-foreground mb-10 sm:mb-12 text-center"
-          >
-            {crisisInfoLabel}
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            <Card className="bg-accent/10 p-2 xs:p-6 md:p-8 border h-full flex flex-col shadow-md">
-              <CardHeader className="p-2 text-center">
-                <AlertTriangle
-                  className="w-8 h-8 mx-auto mb-0 sm:mb-2 text-accent"
-                  aria-hidden="true"
-                />
-                <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
-                  {crisisCard1TitleText}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-2 flex-grow font-body text-foreground/90 text-left">
-                <p className="mb-3 text-xs xs:text-sm md:text-base leading-relaxed">
-                  {crisisCard1P1Text}
-                </p>
-                <p className="text-xs xs:text-sm md:text-base leading-relaxed">
-                  {crisisCard1P2Text}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-primary/5 p-2 xs:p-6 md:p-8 border h-full flex flex-col shadow-md">
-              <CardHeader className="p-2 text-center">
-                <Phone
-                  className="w-8 h-8 mx-auto  mb-0 sm:mb-2 text-primary"
-                  aria-hidden="true"
-                />
-                <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
-                  {crisisCard2TitleText}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-2 flex-grow font-body text-foreground/90">
-                <p className="mb-3 text-xs xs:text-sm md:text-base leading-relaxed">
-                  {crisisCard2P1Text}
-                </p>
-                <ul className="list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed">
-                  {crisisHotlines.map((hotline) => {
-                    const rawHotlineText = translations[hotline.key];
-                    const hotlineText =
-                      typeof rawHotlineText === "object" &&
-                      rawHotlineText !== null &&
-                      typeof rawHotlineText[language] === "string"
-                        ? rawHotlineText[language]
-                        : typeof rawHotlineText === "string"
-                        ? rawHotlineText
-                        : "";
-                    return (
-                      <li key={hotline.key}>
-                        <a
-                          href={hotline.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-accent hover:underline"
-                        >
-                          {hotlineText}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section
-        className="py-12 sm:py-16 bg-gradient-to-r from-primary/10 to-accent/10"
+        className="py-12 sm:py-16 bg-secondary"
         aria-labelledby={ctaTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6  text-muted-foreground mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -640,7 +533,7 @@ export default function HomePageClientContents({
           >
             {ctaLabel}
           </h2>
-          <Card className="bg-card border max-w-3xl mx-auto shadow-md">
+          <Card className="bg-card max-w-3xl mx-auto shadow-md">
             <CardContent className="p-4 xs:p-6 md:p-10">
               <div className="md:flex md:items-center md:gap-8">
                 <div className="mb-8 md:mb-0 md:flex-grow">
@@ -707,6 +600,168 @@ export default function HomePageClientContents({
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Network Listings Section */}
+      <section
+        className="py-12 sm:py-16 bg-gradient-to-r from-primary/10 to-accent/10 px-4 sm:px-6 lg:px-8"
+        aria-labelledby={networkListingsTitleId}
+      >
+        <div className="container mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-full h-full"
+            >
+              <path d="M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-.175-.012-.363t-.013-.312q-.125.725-.675 1.2T18 13h-2q-.825 0-1.412-.587T14 11v-1h-4V8q0-.825.588-1.412T12 6h1q0-.575.313-1.012t.762-.713q-.5-.125-1.012-.2T12 4Q8.65 4 6.325 6.325T4 12h5q1.65 0 2.825 1.175T13 16v1h-3v2.75q.5.125.988.188T12 20" />
+            </svg>
+          </div>
+          <h2
+            id={networkListingsTitleId}
+            className="text-xl sm:text-3xl font-bold font-headline text-muted-foreground mb-10 sm:mb-12 text-center"
+          >
+            {networkListingsLabel}
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <ServiceCard
+              title={network1TitleText}
+              description={network1DescText}
+              href="https://openpathcollective.org/clinicians/chislon-chow/"
+            />
+            <ServiceCard
+              title={network2TitleText}
+              description={network2DescText}
+              href="https://www.asianmhc.org/therapists/chislon-chow/"
+            />
+            <ServiceCard
+              title={network3TitleText}
+              description={network3DescText}
+              href="https://directory.iceeft.com/therapist-profile/chislon_chow_16442/"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Mental Health Crisis Information Section */}
+      <section
+        className="py-12 sm:py-16 bg-background px-4 sm:px-6 lg:px-8"
+        aria-labelledby={crisisInfoTitleId}
+      >
+        <div className="container mx-auto">
+          <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-full h-full"
+            >
+              <path d="M20 11q-.425 0-.712-.288T19 10t.288-.712T20 9t.713.288T21 10t-.288.713T20 11m-1-3V3h2v5zM9 12q-1.65 0-2.825-1.175T5 8t1.175-2.825T9 4t2.825 1.175T13 8t-1.175 2.825T9 12m-8 8v-2.8q0-.85.438-1.562T2.6 14.55q1.55-.775 3.15-1.162T9 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T17 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T9 15t-2.775.338T3.5 16.35q-.225.125-.363.35T3 17.2zm6-8q.825 0 1.413-.587T11 8t-.587-1.412T9 6t-1.412.588T7 8t.588 1.413T9 10m0 8" />
+            </svg>
+          </div>
+          <h2
+            id={crisisInfoTitleId}
+            className="text-xl sm:text-3xl font-bold font-headline text-muted-foreground mb-10 sm:mb-12 text-center"
+          >
+            {crisisInfoLabel}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <Card className="bg-accent/10 p-2 xs:p-6 md:p-8 h-full flex flex-col shadow-md">
+              <CardHeader className="p-2 text-center">
+                <AlertTriangle
+                  className="w-8 h-8 mx-auto mb-0 sm:mb-2 text-accent"
+                  aria-hidden="true"
+                />
+                <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
+                  {crisisCard1TitleText}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-2 flex-grow font-body text-foreground/90 text-left">
+                <p className="mb-3 text-xs xs:text-sm md:text-base leading-relaxed">
+                  {crisisCard1P1Text}
+                </p>
+                <p className="text-xs xs:text-sm md:text-base leading-relaxed">
+                  {crisisCard1P2Text}
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-primary/5 p-2 xs:p-6 md:p-8 h-full flex flex-col shadow-md">
+              <CardHeader className="p-2 text-center">
+                <Phone
+                  className="w-8 h-8 mx-auto  mb-0 sm:mb-2 text-primary"
+                  aria-hidden="true"
+                />
+                <CardTitle className="text-base xs:text-lg md:text-lg font-headline text-foreground font-semibold mb-1">
+                  {crisisCard2TitleText}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-2 flex-grow font-body text-foreground/90">
+                <p className="mb-3 text-xs xs:text-sm md:text-base leading-relaxed">
+                  {crisisCard2P1Text}
+                </p>
+                <ul className="list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed">
+                  {crisisHotlines.map((hotline) => {
+                    const rawHotlineText = translations[hotline.key];
+                    const hotlineText =
+                      typeof rawHotlineText === "object" &&
+                        rawHotlineText !== null &&
+                        typeof rawHotlineText[language] === "string"
+                        ? rawHotlineText[language]
+                        : typeof rawHotlineText === "string"
+                          ? rawHotlineText
+                          : "";
+                    return (
+                      <li key={hotline.key}>
+                        <a
+                          href={hotline.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-accent hover:underline"
+                        >
+                          {hotlineText}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Page Bottom Section */}
+      <section
+        className="py-14 sm:py-20 w-full"
+        aria-labelledby={pageBottomTitleId}
+        style={{ backgroundColor: 'hsl(202, 50%, 92%)' }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2
+            id={pageBottomTitleId}
+            className={cn(
+              "font-extrabold font-headline mb-4",
+              language === "zh"
+                ? "text-2xl xs:text-4xl sm:text-5xl md:text-6xl"
+                : "text-lg xs:text-2xl sm:text-3xl md:text-4xl"
+            )}
+            style={{ color: 'hsl(202, 50%, 30%)' }}
+          >
+            {pageBottomSectionTitleText}
+          </h2>
+          <p
+            className={cn(
+              "font-body mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto",
+              language === "zh"
+                ? "text-base xs:text-lg sm:text-xl md:text-2xl"
+                : "text-xs xs:text-sm sm:text-base md:text-lg"
+            )}
+            style={{ color: 'hsl(202, 50%, 50%)' }}
+          >
+            {pageBottomSectionSubtitleText}
+          </p>
         </div>
       </section>
     </div>
