@@ -4,116 +4,186 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-export interface Article {
+// Type for raw data from metadata.yaml
+interface ArticleMetadataYaml {
+  title: { [key in Language]: string };
+  description: { [key in Language]: string };
+  categories?: string[];
+  pinned?: boolean;
+  date_updated: string;
+  date_updated_shown?: boolean;
+  hidden?: boolean;
+  frontpage_display?: boolean;
+}
+
+// For list views, this is the processed, final data structure.
+export interface ArticleListItem {
   slug: string;
   title: { [key in Language]: string };
   description: { [key in Language]: string };
-  imageUrl?: string;
-  imageCaption?: { [key in Language]: string };
-  content: { [key in Language]: string };
-  categories: string[];
-  pinned: boolean;
-  date_updated: string; // YYYY-MM-DD
-  date_updated_shown: boolean;
-  hidden?: boolean;
-  frontpage_display?: boolean; // New field
-}
-
-interface RawArticleYaml {
-  title: { en: string; zh: string };
-  description: { en: string; zh: string };
-  imageUrl?: string;
-  imageCaption?: { en: string; zh: string };
-  content: { en: string; zh: string };
   categories: string[];
   pinned: boolean;
   date_updated: string;
   date_updated_shown: boolean;
   hidden?: boolean;
-  frontpage_display?: boolean; // New field
+  frontpage_display: boolean;
 }
 
+// For the full article page, we need everything.
+export interface Article extends ArticleListItem {
+  imageUrl?: string;
+  imageCaption?: { [key in Language]: string };
+  content: { [key in Language]: string };
+}
+
+// From content.yaml
+interface ArticleContentData {
+  imageUrl?: string;
+  imageCaption?: { [key in Language]: string };
+  content: { [key in Language]: string };
+}
+
+
 const articlesDirectory = path.join(process.cwd(), 'src', 'content', 'articles');
-
-let cachedArticles: Article[] | null = null;
-
-// Regular expression for validating slugs: allows alphanumeric characters, hyphens, and underscores.
 const VALID_SLUG_REGEX = /^[a-zA-Z0-9_-]+$/;
 
-export function getArticles(): Article[] {
-  if (process.env.NODE_ENV === 'production' && cachedArticles) {
-    return cachedArticles;
-  }
+let cachedArticleListItems: ArticleListItem[] | null = null;
+const articleCache = new Map<string, Article>();
 
-  try {
-    if (!fs.existsSync(articlesDirectory)) {
-        console.warn(`Articles directory not found: ${articlesDirectory}`);
-        return [];
+// Helper to read and parse a metadata.yaml file for a given slug
+function readArticleMetadata(slug: string): ArticleMetadataYaml | null {
+    if (!VALID_SLUG_REGEX.test(slug)) {
+        console.warn(`Invalid slug format: "${slug}"`);
+        return null;
     }
-    const fileNames = fs.readdirSync(articlesDirectory);
-    const allArticlesData = fileNames
-      .filter(fileName => fileName.endsWith('.yaml') || fileName.endsWith('.yml'))
-      .map(fileName => {
-        const slug = fileName.replace(/\.ya?ml$/, '');
 
-        if (!VALID_SLUG_REGEX.test(slug)) {
-          console.warn(`Skipping file ${fileName} due to invalid characters in derived slug "${slug}". Slugs should only contain alphanumeric characters, hyphens, or underscores.`);
-          return null;
-        }
+    const metadataPath = path.join(articlesDirectory, slug, 'metadata.yaml');
 
-        const fullPath = path.join(articlesDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-        const data = yaml.load(fileContents) as RawArticleYaml;
+    if (!fs.existsSync(metadataPath)) {
+        return null;
+    }
 
-        if (!data || typeof data !== 'object' || !data.title || !data.content || !data.description) {
-            console.warn(`Skipping ${fileName} due to missing essential fields or invalid format.`);
+    try {
+        const metadataContents = fs.readFileSync(metadataPath, 'utf8');
+        const metadata = yaml.load(metadataContents) as ArticleMetadataYaml;
+
+        if (!metadata?.title || !metadata?.description) {
+            console.warn(`Skipping slug "${slug}" due to missing title or description in metadata.yaml.`);
             return null;
         }
 
-        // If article is hidden, skip it
-        if (data.hidden === true) {
-          return null;
-        }
-        
-        return {
-          slug,
-          title: data.title,
-          description: data.description,
-          imageUrl: data.imageUrl,
-          imageCaption: data.imageCaption,
-          content: data.content,
-          categories: Array.isArray(data.categories) ? data.categories : [],
-          pinned: data.pinned === true,
-          date_updated: data.date_updated,
-          date_updated_shown: data.date_updated_shown === true,
-          hidden: false, // Articles that are not filtered out are not hidden
-          frontpage_display: data.frontpage_display === true, // Read new field, default to false
-        } as Article;
-      })
-      .filter((article): article is Article => article !== null); // This also filters out hidden articles now
-
-    allArticlesData.sort((a, b) => {
-        // Pinned articles (pinned:true) still sort higher than non-pinned (pinned:false) overall
-        if (a.pinned && !b.pinned) return -1;
-        if (!a.pinned && b.pinned) return 1;
-        // Then sort by date_updated
-        return new Date(b.date_updated).getTime() - new Date(a.date_updated).getTime();
-    });
-
-    cachedArticles = allArticlesData;
-    return cachedArticles;
-  } catch (error) {
-    console.error("Failed to read articles from YAML files:", error);
-    cachedArticles = []; 
-    return [];
-  }
+        return metadata;
+    } catch (error) {
+        console.error(`Error reading or parsing metadata.yaml for slug "${slug}":`, error);
+        return null;
+    }
 }
 
+
+// Get all articles for list views (without heavy 'content' field)
+export function getArticleListItems(): ArticleListItem[] {
+    if (process.env.NODE_ENV === 'production' && cachedArticleListItems) {
+        return cachedArticleListItems;
+    }
+
+    try {
+        if (!fs.existsSync(articlesDirectory)) {
+            console.warn(`Articles directory not found: ${articlesDirectory}`);
+            return [];
+        }
+
+        const articleSlugs = fs.readdirSync(articlesDirectory, { withFileTypes: true })
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
+
+        const allArticleItems = articleSlugs
+            .map(slug => {
+                const metadata = readArticleMetadata(slug);
+                if (!metadata || metadata.hidden) {
+                    return null;
+                }
+
+                // Explicitly construct the ArticleListItem to ensure type correctness
+                const item: ArticleListItem = {
+                    slug,
+                    title: metadata.title,
+                    description: metadata.description,
+                    categories: Array.isArray(metadata.categories) ? metadata.categories : [],
+                    pinned: metadata.pinned === true,
+                    date_updated: metadata.date_updated,
+                    date_updated_shown: metadata.date_updated_shown === true,
+                    hidden: metadata.hidden,
+                    frontpage_display: metadata.frontpage_display === true,
+                };
+                return item;
+            })
+            .filter((item): item is ArticleListItem => item !== null);
+
+        allArticleItems.sort((a, b) => {
+            if (a.pinned && !b.pinned) return -1;
+            if (!a.pinned && b.pinned) return 1;
+            return new Date(b.date_updated).getTime() - new Date(a.date_updated).getTime();
+        });
+
+        if (process.env.NODE_ENV === 'production') {
+          cachedArticleListItems = allArticleItems;
+        }
+        return allArticleItems;
+    } catch (error) {
+        console.error("Failed to read article list items:", error);
+        return [];
+    }
+}
+
+// Get a single, full article by its slug, including content
 export function getArticleBySlug(slug: string): Article | undefined {
-  if (!VALID_SLUG_REGEX.test(slug)) {
-    console.warn(`Attempted to get article with invalid slug: "${slug}"`);
-    return undefined;
-  }
-  const articles = getArticles(); // This will already have filtered out hidden articles
-  return articles.find(article => article.slug === slug);
+    if (process.env.NODE_ENV === 'production' && articleCache.has(slug)) {
+        return articleCache.get(slug);
+    }
+
+    const metadata = readArticleMetadata(slug);
+    if (!metadata || metadata.hidden) {
+        return undefined;
+    }
+
+    const contentPath = path.join(articlesDirectory, slug, 'content.yaml');
+    if (!fs.existsSync(contentPath)) {
+        console.warn(`content.yaml not found for slug "${slug}"`);
+        return undefined;
+    }
+
+    try {
+        const contentContents = fs.readFileSync(contentPath, 'utf8');
+        const contentData = yaml.load(contentContents) as ArticleContentData;
+
+        if (!contentData?.content) {
+            console.warn(`Missing content field in content.yaml for slug "${slug}"`);
+            return undefined;
+        }
+        
+        const article: Article = {
+            slug,
+            title: metadata.title,
+            description: metadata.description,
+            categories: Array.isArray(metadata.categories) ? metadata.categories : [],
+            pinned: metadata.pinned === true,
+            date_updated: metadata.date_updated,
+            date_updated_shown: metadata.date_updated_shown === true,
+            hidden: metadata.hidden,
+            frontpage_display: metadata.frontpage_display === true,
+            imageUrl: contentData.imageUrl,
+            imageCaption: contentData.imageCaption,
+            content: contentData.content,
+        };
+        
+        if (process.env.NODE_ENV === 'production') {
+            articleCache.set(slug, article);
+        }
+
+        return article;
+
+    } catch (error) {
+        console.error(`Error reading or parsing content.yaml for slug "${slug}":`, error);
+        return undefined;
+    }
 }

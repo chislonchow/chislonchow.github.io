@@ -4,7 +4,8 @@ import React, { Suspense } from 'react';
 import MarkdownDisplay from '@/components/shared/markdown-display';
 import ContentPageClientLayout from '@/components/shared/content-page-client-layout';
 import ContentPageSkeleton from '@/components/shared/content-page-skeleton';
-import { getTranslations } from '@/lib/translations';
+import { getTranslatedString } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations.server';
 import { getStaticPageData } from '@/lib/static-page-data'; 
 import type { Language } from '@/contexts/language-context';
 
@@ -14,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   
   const descriptionTemplate = pageData.metadata_description?.[lang] || "";
   const translations = getTranslations(new Date().getFullYear());
-  const siteName = typeof translations.siteName === 'string' ? translations.siteName : '';
+  const siteName = getTranslatedString(translations.siteName, lang, '');
   const description = descriptionTemplate.replace('{siteName}', siteName);
 
   return {
@@ -36,14 +37,9 @@ export default async function ProfilePageZh() {
   const skeletonLoader = <ContentPageSkeleton itemCount={3} />;
 
   const langEn: Language = "en";
-  const rawErrorLoadingTitleEn = translations.markdownErrorLoadingTitle;
-  const errorLoadingTitleEn = typeof rawErrorLoadingTitleEn === 'object' && rawErrorLoadingTitleEn !== null && typeof rawErrorLoadingTitleEn[langEn] === "string" ? rawErrorLoadingTitleEn[langEn] : (typeof rawErrorLoadingTitleEn === 'string' ? rawErrorLoadingTitleEn : '');
-
-  const rawErrorInvalidContentMessageEn = translations.markdownErrorInvalidContent;
-  const errorInvalidContentMessageEn = typeof rawErrorInvalidContentMessageEn === 'object' && rawErrorInvalidContentMessageEn !== null && typeof rawErrorInvalidContentMessageEn[langEn] === "string" ? rawErrorInvalidContentMessageEn[langEn] : (typeof rawErrorInvalidContentMessageEn === 'string' ? rawErrorInvalidContentMessageEn : '');
-
-  const rawErrorProcessingFailedMessageEn = translations.markdownErrorProcessingFailed;
-  const errorProcessingFailedMessageEn = typeof rawErrorProcessingFailedMessageEn === 'object' && rawErrorProcessingFailedMessageEn !== null && typeof rawErrorProcessingFailedMessageEn[langEn] === "string" ? rawErrorProcessingFailedMessageEn[langEn] : (typeof rawErrorProcessingFailedMessageEn === 'string' ? rawErrorProcessingFailedMessageEn : '');
+  const errorLoadingTitleEn = getTranslatedString(translations.markdownErrorLoadingTitle, langEn);
+  const errorInvalidContentMessageEn = getTranslatedString(translations.markdownErrorInvalidContent, langEn);
+  const errorProcessingFailedMessageEn = getTranslatedString(translations.markdownErrorProcessingFailed, langEn);
 
   const markdownEnNode = (
     <Suspense fallback={skeletonLoader}>
@@ -57,14 +53,9 @@ export default async function ProfilePageZh() {
   );
 
   const langZh: Language = "zh";
-  const rawErrorLoadingTitleZh = translations.markdownErrorLoadingTitle;
-  const errorLoadingTitleZh = typeof rawErrorLoadingTitleZh === 'object' && rawErrorLoadingTitleZh !== null && typeof rawErrorLoadingTitleZh[langZh] === "string" ? rawErrorLoadingTitleZh[langZh] : (typeof rawErrorLoadingTitleZh === 'string' ? rawErrorLoadingTitleZh : '');
-
-  const rawErrorInvalidContentMessageZh = translations.markdownErrorInvalidContent;
-  const errorInvalidContentMessageZh = typeof rawErrorInvalidContentMessageZh === 'object' && rawErrorInvalidContentMessageZh !== null && typeof rawErrorInvalidContentMessageZh[langZh] === "string" ? rawErrorInvalidContentMessageZh[langZh] : (typeof rawErrorInvalidContentMessageZh === 'string' ? rawErrorInvalidContentMessageZh : '');
-  
-  const rawErrorProcessingFailedMessageZh = translations.markdownErrorProcessingFailed;
-  const errorProcessingFailedMessageZh = typeof rawErrorProcessingFailedMessageZh === 'object' && rawErrorProcessingFailedMessageZh !== null && typeof rawErrorProcessingFailedMessageZh[langZh] === "string" ? rawErrorProcessingFailedMessageZh[langZh] : (typeof rawErrorProcessingFailedMessageZh === 'string' ? rawErrorProcessingFailedMessageZh : '');
+  const errorLoadingTitleZh = getTranslatedString(translations.markdownErrorLoadingTitle, langZh);
+  const errorInvalidContentMessageZh = getTranslatedString(translations.markdownErrorInvalidContent, langZh);
+  const errorProcessingFailedMessageZh = getTranslatedString(translations.markdownErrorProcessingFailed, langZh);
 
   const markdownZhNode = (
     <Suspense fallback={skeletonLoader}>

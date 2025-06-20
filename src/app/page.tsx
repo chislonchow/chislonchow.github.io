@@ -1,8 +1,9 @@
 
 import type { Metadata } from 'next';
 import HomePageClientContents from './home/home-page-client-contents';
-import { getTranslations } from '@/lib/translations';
-import { getArticles } from '@/lib/articles-data';
+import { getTranslatedString } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations.server';
+import { getArticleListItems } from '@/lib/articles-data';
 import type { Language } from '@/contexts/language-context';
 import { getNotificationData } from '@/lib/notification-data';
 import HomePageNotifier from '@/components/home/home-page-notifier';
@@ -13,17 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const translations = getTranslations(currentYear);
   const lang: Language = "en";
   
-  const rawHomePageTitle = translations.homePageTitle;
-  const title = 
-    typeof rawHomePageTitle === 'object' && rawHomePageTitle !== null && typeof rawHomePageTitle[lang] === "string"
-      ? rawHomePageTitle[lang]
-      : (typeof rawHomePageTitle === 'string' ? rawHomePageTitle : '');
-  
-  const rawHomePageMetaDescription = translations.homePageMetaDescription;
-  const description = 
-    typeof rawHomePageMetaDescription === 'object' && rawHomePageMetaDescription !== null && typeof rawHomePageMetaDescription[lang] === "string"
-      ? rawHomePageMetaDescription[lang]
-      : (typeof rawHomePageMetaDescription === 'string' ? rawHomePageMetaDescription : '');
+  const title = getTranslatedString(translations.homePageTitle, lang);
+  const description = getTranslatedString(translations.homePageMetaDescription, lang);
 
   return {
     title: {
@@ -41,12 +33,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const allArticles = getArticles(); // Fetch all articles
+  const allArticles = getArticleListItems(); // Use the optimized function
   const notificationConfig = await getNotificationData();
 
   return (
     <>
-      <HomePageClientContents allArticles={allArticles} /> {/* Pass all articles */}
+      <HomePageClientContents allArticles={allArticles} /> {/* Pass optimized article list */}
       <HomePageNotifier notificationConfig={notificationConfig} />
     </>
   );

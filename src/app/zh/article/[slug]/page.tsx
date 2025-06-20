@@ -2,9 +2,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getArticleBySlug, getArticles } from "@/lib/articles-data";
+import { getArticleBySlug, getArticleListItems } from "@/lib/articles-data";
 import MarkdownDisplay from "@/components/shared/markdown-display";
-import { getTranslations } from "@/lib/translations";
+import { getTranslatedString } from "@/lib/translations";
+import { getTranslations } from "@/lib/translations.server";
 import { format } from "date-fns";
 import { zhTW } from "date-fns/locale";
 import { Badge } from "@/components/ui/badge";
@@ -24,21 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(param.slug);
   const lang: Language = "zh";
 
-  const rawSiteName = translations.siteName;
-  const siteName = typeof rawSiteName === "string" ? rawSiteName : "";
+  const siteName = getTranslatedString(translations.siteName, lang, "");
 
   if (!article) {
-    const rawArticleNotFoundMetaTitleEntry =
-      translations.articleNotFoundMetaTitle;
-    const notFoundTitleText =
-      typeof rawArticleNotFoundMetaTitleEntry === "object" &&
-      rawArticleNotFoundMetaTitleEntry !== null &&
-      typeof rawArticleNotFoundMetaTitleEntry[lang] === "string"
-        ? rawArticleNotFoundMetaTitleEntry[lang]
-        : typeof rawArticleNotFoundMetaTitleEntry === "string"
-        ? rawArticleNotFoundMetaTitleEntry
-        : "";
-
+    const notFoundTitleText = getTranslatedString(translations.articleNotFoundMetaTitle, lang);
     const notFoundTitle = (notFoundTitleText || "{siteName}").replace(
       "{siteName}",
       siteName
@@ -62,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const articles = getArticles();
+  const articles = getArticleListItems();
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -78,47 +68,10 @@ export default async function ArticlePageZh({ params }: Props) {
   }
 
   const lang: Language = "zh";
-  const rawUpdatedOnText = translations.updatedOn;
-  const updatedOnText =
-    typeof rawUpdatedOnText === "object" &&
-    rawUpdatedOnText !== null &&
-    typeof rawUpdatedOnText[lang] === "string"
-      ? rawUpdatedOnText[lang]
-      : typeof rawUpdatedOnText === "string"
-      ? rawUpdatedOnText
-      : "";
-
-  const rawErrorLoadingTitle = translations.markdownErrorLoadingTitle;
-  const errorLoadingTitle =
-    typeof rawErrorLoadingTitle === "object" &&
-    rawErrorLoadingTitle !== null &&
-    typeof rawErrorLoadingTitle[lang] === "string"
-      ? rawErrorLoadingTitle[lang]
-      : typeof rawErrorLoadingTitle === "string"
-      ? rawErrorLoadingTitle
-      : "";
-
-  const rawErrorInvalidContentMessage =
-    translations.markdownErrorInvalidContent;
-  const errorInvalidContentMessage =
-    typeof rawErrorInvalidContentMessage === "object" &&
-    rawErrorInvalidContentMessage !== null &&
-    typeof rawErrorInvalidContentMessage[lang] === "string"
-      ? rawErrorInvalidContentMessage[lang]
-      : typeof rawErrorInvalidContentMessage === "string"
-      ? rawErrorInvalidContentMessage
-      : "";
-
-  const rawErrorProcessingFailedMessage =
-    translations.markdownErrorProcessingFailed;
-  const errorProcessingFailedMessage =
-    typeof rawErrorProcessingFailedMessage === "object" &&
-    rawErrorProcessingFailedMessage !== null &&
-    typeof rawErrorProcessingFailedMessage[lang] === "string"
-      ? rawErrorProcessingFailedMessage[lang]
-      : typeof rawErrorProcessingFailedMessage === "string"
-      ? rawErrorProcessingFailedMessage
-      : "";
+  const updatedOnText = getTranslatedString(translations.updatedOn, lang);
+  const errorLoadingTitle = getTranslatedString(translations.markdownErrorLoadingTitle, lang);
+  const errorInvalidContentMessage = getTranslatedString(translations.markdownErrorInvalidContent, lang);
+  const errorProcessingFailedMessage = getTranslatedString(translations.markdownErrorProcessingFailed, lang);
 
   return (
     <>
@@ -134,15 +87,7 @@ export default async function ArticlePageZh({ params }: Props) {
             <div className="text-sm text-muted-foreground">
               <div className="flex items-center flex-wrap mb-2">
                 {article.categories.map((category, index) => {
-                  const categoryTranslation = translations[category];
-                  const categoryText =
-                    (typeof categoryTranslation === "object" &&
-                    categoryTranslation !== null &&
-                    typeof categoryTranslation[lang] === "string"
-                      ? categoryTranslation[lang]
-                      : typeof categoryTranslation === "string"
-                      ? categoryTranslation
-                      : "") || category; // Fallback to category key
+                  const categoryText = getTranslatedString(translations[category], lang, category);
                   return (
                     <Badge
                       key={index}

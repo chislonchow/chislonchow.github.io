@@ -1,10 +1,3 @@
-
-title:
-  en: "Mental Health Is..."
-  zh: "心理健康是..."
-description:
-  en: "What is mental health? Discover definitions, cultural views, and key wellness qualities."
-  zh: "心理健康是什麼？探索定義、文化觀點及關鍵健康特質。"
 #imageUrl: ""
 #imageCaption:
 #  en: ""
@@ -99,10 +92,3 @@ content:
       「情緒取向個人治療是一種基於依附科學和轉變核心情感體驗力量的心理治療，旨在成長和擴展自我及其能力。引發、整理及調節核心的混亂、陌生或被否認的情感體驗，以致塑造每人的情感平衡和情感整合。從混亂走向有序，從反應性走向平衡，從自我否定走向自我接納，從無助走向自我主導。」
 
       <sub>- Johnson, S.M., & Campbell, T.L. (2021). _A Primer for Emotionally Focused Individual Therapy (EFIT): Cultivating Fitness and Growth in Every Client_. Routledge. </sub>
-
-categories:
-  - "Mental Health Literacy"
-pinned: true
-frontpage_display: true
-date_updated: "2025-06-17"
-date_updated_shown: false

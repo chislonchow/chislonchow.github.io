@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Info, Mail, X } from "lucide-react";
 import { useLanguage, type Language } from "@/contexts/language-context";
+import { getTranslatedString } from "@/lib/translations";
 import { useLayoutVisibility } from "@/contexts/layout-visibility-context";
 import { cn } from "@/lib/utils";
 
@@ -22,10 +23,7 @@ export default function ContactPopover() {
   const [mounted, setMounted] = useState(false);
   const [dynamicMailtoLink, setDynamicMailtoLink] = useState<string>("#");
 
-  const contactEmailString =
-    typeof translations.contactEmailValue === "string"
-      ? translations.contactEmailValue
-      : "";
+  const contactEmailString = getTranslatedString(translations.contactEmailValue, language);
 
   useEffect(() => {
     setMounted(true);
@@ -33,37 +31,8 @@ export default function ContactPopover() {
 
   useEffect(() => {
     const emailAddress = contactEmailString;
-
-    const emailSubjectKey = "heroMailSubject";
-    const emailBodyKey = "heroMailBodyTemplate";
-
-    const rawSubject = translations[emailSubjectKey];
-    let subject: string;
-    if (
-      typeof rawSubject === "object" &&
-      rawSubject !== null &&
-      typeof rawSubject[language] === "string"
-    ) {
-      subject = rawSubject[language];
-    } else if (typeof rawSubject === "string") {
-      subject = rawSubject;
-    } else {
-      subject = "";
-    }
-
-    const rawBody = translations[emailBodyKey];
-    let body: string;
-    if (
-      typeof rawBody === "object" &&
-      rawBody !== null &&
-      typeof rawBody[language] === "string"
-    ) {
-      body = rawBody[language];
-    } else if (typeof rawBody === "string") {
-      body = rawBody;
-    } else {
-      body = "";
-    }
+    const subject = getTranslatedString(translations.heroMailSubject, language);
+    const body = getTranslatedString(translations.heroMailBodyTemplate, language);
 
     const constructedLink = emailAddress
       ? `mailto:${emailAddress}?subject=${encodeURIComponent(
@@ -75,18 +44,7 @@ export default function ContactPopover() {
 
   const getTranslatedText = (key: string): string => {
     if (!mounted) return "";
-    const translationEntry = translations[key];
-    if (
-      typeof translationEntry === "object" &&
-      translationEntry !== null &&
-      typeof translationEntry[language] === "string"
-    ) {
-      return translationEntry[language];
-    }
-    if (typeof translationEntry === "string") {
-      return translationEntry;
-    }
-    return "";
+    return getTranslatedString(translations[key], language);
   };
 
   const triggerAriaLabel = getTranslatedText("contactPopoverLabel");
@@ -147,8 +105,8 @@ export default function ContactPopover() {
                   <Image
                     src="/images/profile.webp"
                     alt={profileImageAlt}
-                    width={200}
-                    height={200}
+                    fill
+                    sizes="(max-width: 319px) 128px, 192px"
                     className="rounded-md object-cover"
                     data-ai-hint="person portrait"
                   />
@@ -172,4 +130,3 @@ export default function ContactPopover() {
     </div>
   );
 }
-

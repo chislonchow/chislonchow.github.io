@@ -79,7 +79,7 @@ export default function NotificationToast({ notificationConfig }: NotificationTo
       return;
     }
 
-    if (notificationConfig && notificationConfig.isEnabled && localizedContent && localizedContent.descriptionHtml) {
+    if (notificationConfig && localizedContent && localizedContent.descriptionHtml) {
       const { durationSeconds } = notificationConfig;
 
       if (durationSeconds > 0) {

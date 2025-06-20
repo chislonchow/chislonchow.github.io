@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { useLanguage, type Language } from "@/contexts/language-context";
+import { getTranslatedString } from "@/lib/translations";
 import LanguageToggle from "@/components/shared/language-toggle";
 import {
   Home,
@@ -52,10 +53,11 @@ const baseNavLinks: NavLinkInfo[] = [
 ];
 
 const getLocalizedPath = (baseHref: string, lang: Language): string => {
+  const slashedHref = baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
   if (lang === "zh") {
-    return baseHref === "/" ? "/zh" : `/zh${baseHref}`;
+    return slashedHref === "/" ? "/zh/" : `/zh${slashedHref.substring(1)}`;
   }
-  return baseHref;
+  return slashedHref;
 };
 
 const NavLinkItem = ({
@@ -103,21 +105,7 @@ export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
 
   const navLinks = baseNavLinks.map((linkInfo) => {
-    const labelTranslation = translations[linkInfo.labelKey];
-    let labelText: string = ''; 
-
-    if (
-      typeof labelTranslation === "object" &&
-      labelTranslation !== null &&
-      labelTranslation[language]
-    ) {
-      labelText = labelTranslation[language] as string;
-    } else if (typeof labelTranslation === "string") {
-      labelText = labelTranslation;
-    } else {
-      labelText = linkInfo.labelKey; // Fallback to key if translation is truly missing
-    }
-
+    const labelText = getTranslatedString(translations[linkInfo.labelKey], language, linkInfo.labelKey);
     return {
       href: getLocalizedPath(linkInfo.baseHref, language),
       label: labelText,
@@ -129,45 +117,12 @@ export default function Header() {
     setIsSheetOpen(false);
   };
 
-  let displaySiteName: string;
-  const headerSiteNameEntry = translations.headerSiteName;
-  const siteNameEntry = translations.siteName;
+  const displaySiteName = getTranslatedString(translations.headerSiteName, 'en') || 
+                          getTranslatedString(translations.siteName, 'en') || 
+                          "Chislon Chow, R.P.";
 
-  if (
-    typeof headerSiteNameEntry === "string" &&
-    headerSiteNameEntry.trim() !== ""
-  ) {
-    displaySiteName = headerSiteNameEntry;
-  } else if (
-    typeof siteNameEntry === "string" &&
-    siteNameEntry.trim() !== ""
-  ) {
-    displaySiteName = siteNameEntry;
-  } else {
-    displaySiteName = "Chislon Chow, R.P."; // Ultimate fallback if YAML keys missing
-  }
-
-  const mainNavLabelRaw = translations.mainNavigationLabel;
-  let mainNavLabel: string;
-  if (typeof mainNavLabelRaw === 'object' && mainNavLabelRaw !== null && mainNavLabelRaw[language]) {
-    mainNavLabel = mainNavLabelRaw[language];
-  } else if (typeof mainNavLabelRaw === 'string') {
-    mainNavLabel = mainNavLabelRaw;
-  } else {
-    mainNavLabel = '';
-  }
-  
-  const mobileMenuTriggerLabelRaw = translations.mobileNavMenuTitle;
-  let mobileMenuTriggerLabel: string;
-
-  if (typeof mobileMenuTriggerLabelRaw === 'object' && mobileMenuTriggerLabelRaw !== null && mobileMenuTriggerLabelRaw[language]) {
-    mobileMenuTriggerLabel = mobileMenuTriggerLabelRaw[language];
-  } else if (typeof mobileMenuTriggerLabelRaw === 'string') {
-    mobileMenuTriggerLabel = mobileMenuTriggerLabelRaw;
-  } else {
-    mobileMenuTriggerLabel = '';
-  }
-
+  const mainNavLabel = getTranslatedString(translations.mainNavigationLabel, language);
+  const mobileMenuTriggerLabel = getTranslatedString(translations.mobileNavMenuTitle, language);
 
   return (
     <header 

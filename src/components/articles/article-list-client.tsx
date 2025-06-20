@@ -3,26 +3,27 @@
 
 import type React from 'react';
 import { useState, useMemo, useEffect, useRef } from 'react';
-import type { Article } from '@/lib/articles-data';
+import type { ArticleListItem } from '@/lib/articles-data';
 import ArticleCard from './article-card';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ChevronDown, ListFilter, ArrowUpDown, Star, ArrowDownAZ, ArrowUpZA, ChevronLeft, ChevronRight, Home } from 'lucide-react';
 import { useLanguage, type Language } from '@/contexts/language-context';
+import { getTranslatedString } from '@/lib/translations';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Toolbar } from '@/components/ui/toolbar';
 import { useRouter } from 'next/navigation';
 import { cn } from "@/lib/utils";
 
 interface ArticleListClientProps {
-  articles: Article[];
+  articles: ArticleListItem[];
   currentPageFromUrl: number;
   basePath: string;
   articlesPerPage: number;
 }
 
-const sortArticlesByTitleHelper = (data: Article[], order: 'asc' | 'desc', language: Language) => {
+const sortArticlesByTitleHelper = (data: ArticleListItem[], order: 'asc' | 'desc', language: Language) => {
   return [...data].sort((a, b) => {
     const titleA = a.title[language] || '';
     const titleB = b.title[language] || '';
@@ -85,14 +86,10 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
     }, new Set<string>());
 
     return Array.from(allCategoryKeys)
-      .map(key => {
-        const categoryTranslation = translations[key];
-        const label = (typeof categoryTranslation === 'object' && categoryTranslation !== null && typeof categoryTranslation[language] === "string" ? categoryTranslation[language] : (typeof categoryTranslation === 'string' ? categoryTranslation : '')) || key;
-        return {
-          key: key,
-          label: label,
-        };
-      })
+      .map(key => ({
+        key: key,
+        label: getTranslatedString(translations[key], language, key),
+      }))
       .sort((a, b) => a.label.localeCompare(b.label, language, { sensitivity: 'base' }));
   }, [articles, language, translations]);
 
@@ -139,7 +136,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
   };
 
   const handlePageNavigation = (newPageNumber: number) => {
-    router.push(`${basePath}/${newPageNumber}`);
+    router.push(`${basePath}/${newPageNumber}/`);
   };
 
   useEffect(() => {
@@ -159,53 +156,22 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
     }
   }, [clientSideCurrentPage, currentPageFromUrl, componentReady]);
 
-  const rawControlsToolbarLabel = translations.articleControlsToolbarLabel;
-  const controlsToolbarLabel = typeof rawControlsToolbarLabel === 'object' && rawControlsToolbarLabel !== null && typeof rawControlsToolbarLabel[language] === 'string' ? rawControlsToolbarLabel[language] : (typeof rawControlsToolbarLabel === 'string' ? rawControlsToolbarLabel : '');
-
-  const rawArticlesListAriaLabelText = translations.articlesListAriaLabel;
-  const articlesListAriaLabelText = typeof rawArticlesListAriaLabelText === 'object' && rawArticlesListAriaLabelText !== null && typeof rawArticlesListAriaLabelText[language] === 'string' ? rawArticlesListAriaLabelText[language] : (typeof rawArticlesListAriaLabelText === 'string' ? rawArticlesListAriaLabelText : '');
-
-  const rawSelectCategoriesPlaceholder = translations.selectCategoriesPlaceholder;
-  const selectCategoriesPlaceholderText = typeof rawSelectCategoriesPlaceholder === 'object' && rawSelectCategoriesPlaceholder !== null && typeof rawSelectCategoriesPlaceholder[language] === 'string' ? rawSelectCategoriesPlaceholder[language] : (typeof rawSelectCategoriesPlaceholder === 'string' ? rawSelectCategoriesPlaceholder : '');
-
-  const rawCategoriesSelected = translations.categoriesSelected;
-  const categoriesSelectedTemplate = typeof rawCategoriesSelected === 'object' && rawCategoriesSelected !== null && typeof rawCategoriesSelected[language] === 'string' ? rawCategoriesSelected[language] : (typeof rawCategoriesSelected === 'string' ? rawCategoriesSelected : '');
-
-  const rawFilterLabel = translations.filterLabel;
-  const filterLabelText = typeof rawFilterLabel === 'object' && rawFilterLabel !== null && typeof rawFilterLabel[language] === 'string' ? rawFilterLabel[language] : (typeof rawFilterLabel === 'string' ? rawFilterLabel : '');
-
-  const rawClearAllCategories = translations.clearAllCategories;
-  const clearAllCategoriesText = typeof rawClearAllCategories === 'object' && rawClearAllCategories !== null && typeof rawClearAllCategories[language] === 'string' ? rawClearAllCategories[language] : (typeof rawClearAllCategories === 'string' ? rawClearAllCategories : '');
-
-  const rawNoCategoriesAvailable = translations.noCategoriesAvailable;
-  const noCategoriesAvailableText = typeof rawNoCategoriesAvailable === 'object' && rawNoCategoriesAvailable !== null && typeof rawNoCategoriesAvailable[language] === "string" ? rawNoCategoriesAvailable[language] : (typeof rawNoCategoriesAvailable === 'string' ? rawNoCategoriesAvailable : '');
-
-  const rawSortLabel = translations.sortLabel;
-  const sortLabelText = typeof rawSortLabel === 'object' && rawSortLabel !== null && typeof rawSortLabel[language] === 'string' ? rawSortLabel[language] : (typeof rawSortLabel === 'string' ? rawSortLabel : '');
-
-  const rawPrioritizePinnedTooltip = translations.prioritizePinnedToggleTooltip;
-  const prioritizePinnedTooltipText = typeof rawPrioritizePinnedTooltip === 'object' && rawPrioritizePinnedTooltip !== null && typeof rawPrioritizePinnedTooltip[language] === 'string' ? rawPrioritizePinnedTooltip[language] : (typeof rawPrioritizePinnedTooltip === 'string' ? rawPrioritizePinnedTooltip : '');
-
-  const rawPrioritizeFrontpageTooltip = translations.prioritizeFrontpageToggleTooltip;
-  const prioritizeFrontpageToggleTooltipText = typeof rawPrioritizeFrontpageTooltip === 'object' && rawPrioritizeFrontpageTooltip !== null && typeof rawPrioritizeFrontpageTooltip[language] === 'string' ? rawPrioritizeFrontpageTooltip[language] : (typeof rawPrioritizeFrontpageTooltip === 'string' ? rawPrioritizeFrontpageTooltip : '');
-
-  const rawSortTitleTooltip = translations.sortTitleToggleTooltip;
-  const sortTitleTooltipText = typeof rawSortTitleTooltip === 'object' && rawSortTitleTooltip !== null && typeof rawSortTitleTooltip[language] === 'string' ? rawSortTitleTooltip[language] : (typeof rawSortTitleTooltip === 'string' ? rawSortTitleTooltip : '');
-
-  const rawNoArticlesFound = translations.noArticlesFound;
-  const noArticlesFoundText = typeof rawNoArticlesFound === 'object' && rawNoArticlesFound !== null && typeof rawNoArticlesFound[language] === 'string' ? rawNoArticlesFound[language] : (typeof rawNoArticlesFound === 'string' ? rawNoArticlesFound : '');
-
-  const rawPaginationPrevious = translations.paginationPrevious;
-  const paginationPreviousText = typeof rawPaginationPrevious === 'object' && rawPaginationPrevious !== null && typeof rawPaginationPrevious[language] === 'string' ? rawPaginationPrevious[language] : (typeof rawPaginationPrevious === 'string' ? rawPaginationPrevious : '');
-
-  const rawPaginationPageInfo = translations.paginationPageInfo;
-  const paginationPageInfoTemplate = typeof rawPaginationPageInfo === 'object' && rawPaginationPageInfo !== null && typeof rawPaginationPageInfo[language] === 'string' ? rawPaginationPageInfo[language] : (typeof rawPaginationPageInfo === 'string' ? rawPaginationPageInfo : '');
-
-  const rawPaginationItemsInfo = translations.paginationItemsInfo;
-  const paginationItemsInfoTemplate = typeof rawPaginationItemsInfo === 'object' && rawPaginationItemsInfo !== null && typeof rawPaginationItemsInfo[language] === 'string' ? rawPaginationItemsInfo[language] : (typeof rawPaginationItemsInfo === 'string' ? rawPaginationItemsInfo : '');
-
-  const rawPaginationNext = translations.paginationNext;
-  const paginationNextText = typeof rawPaginationNext === 'object' && rawPaginationNext !== null && typeof rawPaginationNext[language] === 'string' ? rawPaginationNext[language] : (typeof rawPaginationNext === 'string' ? rawPaginationNext : '');
+  const controlsToolbarLabel = getTranslatedString(translations.articleControlsToolbarLabel, language);
+  const articlesListAriaLabelText = getTranslatedString(translations.articlesListAriaLabel, language);
+  const selectCategoriesPlaceholderText = getTranslatedString(translations.selectCategoriesPlaceholder, language);
+  const categoriesSelectedTemplate = getTranslatedString(translations.categoriesSelected, language);
+  const filterLabelText = getTranslatedString(translations.filterLabel, language);
+  const clearAllCategoriesText = getTranslatedString(translations.clearAllCategories, language);
+  const noCategoriesAvailableText = getTranslatedString(translations.noCategoriesAvailable, language);
+  const sortLabelText = getTranslatedString(translations.sortLabel, language);
+  const prioritizePinnedTooltipText = getTranslatedString(translations.prioritizePinnedToggleTooltip, language);
+  const prioritizeFrontpageToggleTooltipText = getTranslatedString(translations.prioritizeFrontpageToggleTooltip, language);
+  const sortTitleTooltipText = getTranslatedString(translations.sortTitleToggleTooltip, language);
+  const noArticlesFoundText = getTranslatedString(translations.noArticlesFound, language);
+  const paginationPreviousText = getTranslatedString(translations.paginationPrevious, language);
+  const paginationPageInfoTemplate = getTranslatedString(translations.paginationPageInfo, language);
+  const paginationItemsInfoTemplate = getTranslatedString(translations.paginationItemsInfo, language);
+  const paginationNextText = getTranslatedString(translations.paginationNext, language);
 
 
   if (!componentReady) {
@@ -436,4 +402,3 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
     </div>
   );
 }
-

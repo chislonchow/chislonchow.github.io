@@ -1,7 +1,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getArticles } from '../src/lib/articles-data'; // Adjust path as necessary
+import { getArticleListItems } from '../src/lib/articles-data'; // Adjust path as necessary
 
 const BASE_URL = 'https://chislonchow.com';
 
@@ -12,7 +12,7 @@ const formatDate = (dateInput: Date | string): string => {
 };
 
 async function generateSitemap() {
-  const articles = getArticles(); // This is synchronous as currently written in articles-data.ts
+  const articles = getArticleListItems(); // This is synchronous as currently written in articles-data.ts
   const today = formatDate(new Date());
 
   const urls = [

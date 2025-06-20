@@ -1,9 +1,10 @@
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getArticles } from "@/lib/articles-data";
+import { getArticleListItems } from "@/lib/articles-data";
 import ArticleListClient from "@/components/articles/article-list-client";
-import { getTranslations } from "@/lib/translations";
+import { getTranslatedString } from "@/lib/translations";
+import { getTranslations } from "@/lib/translations.server";
 import { ARTICLES_PER_PAGE } from "@/lib/site-config";
 import type { Language } from "@/contexts/language-context";
 
@@ -14,7 +15,7 @@ type Props = {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const articles = getArticles();
+  const articles = getArticleListItems();
   if (!articles || articles.length === 0) {
     return [{ pageNumber: "1" }];
   }
@@ -30,20 +31,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const translations = getTranslations(new Date().getFullYear());
   const pageNumber = parseInt(param.pageNumber, 10);
   
-  const rawSiteName = translations.siteName;
-  const siteName = typeof rawSiteName === 'string' ? rawSiteName : '';
+  const siteName = getTranslatedString(translations.siteName, lang, '');
 
-  const articles = getArticles();
+  const articles = getArticleListItems();
   const totalItems = articles.length;
   const totalPages =
     totalItems === 0 ? 1 : Math.ceil(totalItems / ARTICLES_PER_PAGE);
 
   if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
-    const rawArticlesListPageNotFoundMetaTitle = translations.articlesListPageNotFoundMetaTitle;
-    const notFoundTitleText =
-      typeof rawArticlesListPageNotFoundMetaTitle === "object" && rawArticlesListPageNotFoundMetaTitle !== null && typeof rawArticlesListPageNotFoundMetaTitle[lang] === "string"
-        ? rawArticlesListPageNotFoundMetaTitle[lang]
-        : (typeof rawArticlesListPageNotFoundMetaTitle === "string" ? rawArticlesListPageNotFoundMetaTitle : '');
+    const notFoundTitleText = getTranslatedString(translations.articlesListPageNotFoundMetaTitle, lang);
     const notFoundTitle = (
       notFoundTitleText || "{siteName}" 
     ).replace("{siteName}", siteName);
@@ -53,20 +49,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     };
   }
 
-  const rawArticlesListMetaPageTitle = translations.articlesListMetaPageTitle;
-  const pageTitleTemplate =
-    typeof rawArticlesListMetaPageTitle === "object" && rawArticlesListMetaPageTitle !== null && typeof rawArticlesListMetaPageTitle[lang] === "string"
-      ? rawArticlesListMetaPageTitle[lang]
-      : (typeof rawArticlesListMetaPageTitle === "string" ? rawArticlesListMetaPageTitle : '');
+  const pageTitleTemplate = getTranslatedString(translations.articlesListMetaPageTitle, lang);
   const pageTitle = pageTitleTemplate
     .replace("{pageNumber}", pageNumber.toString())
     .replace("{siteName}", siteName);
 
-  const rawArticlesListMetaDescription = translations.articlesListMetaDescription;
-  const metaDescriptionTemplate =
-    typeof rawArticlesListMetaDescription === "object" && rawArticlesListMetaDescription !== null && typeof rawArticlesListMetaDescription[lang] === "string"
-      ? rawArticlesListMetaDescription[lang]
-      : (typeof rawArticlesListMetaDescription === "string" ? rawArticlesListMetaDescription : '');
+  const metaDescriptionTemplate = getTranslatedString(translations.articlesListMetaDescription, lang);
   const metaDescriptionText = metaDescriptionTemplate
     .replace("{siteName}", siteName)
     .replace("{pageNumber}", pageNumber.toString());
@@ -99,7 +87,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function PaginatedArticlesPage({ params }: Props) {
   const param = await params;
   const lang: Language = "en";
-  const articlesData = getArticles();
+  const articlesData = getArticleListItems();
   const generalTranslations = getTranslations(new Date().getFullYear());
 
   const pageNumber = parseInt(param.pageNumber, 10);
@@ -111,28 +99,14 @@ export default async function PaginatedArticlesPage({ params }: Props) {
     notFound();
   }
 
-  const rawArticlesPageTitle = generalTranslations.articlesPageTitle;
-  const articlesPageTitleText =
-    typeof rawArticlesPageTitle === "object" && rawArticlesPageTitle !== null && typeof rawArticlesPageTitle[lang] === "string"
-      ? rawArticlesPageTitle[lang]
-      : (typeof rawArticlesPageTitle === "string" ? rawArticlesPageTitle : '');
-
-  const rawArticlesPageGenericTitle = generalTranslations.articlesPageGenericTitle;
-  const articlesPageGenericTitleText = 
-    typeof rawArticlesPageGenericTitle === "object" && rawArticlesPageGenericTitle !== null && typeof rawArticlesPageGenericTitle[lang] === "string"
-      ? rawArticlesPageGenericTitle[lang]
-      : (typeof rawArticlesPageGenericTitle === "string" ? rawArticlesPageGenericTitle : '');
+  const articlesPageTitleText = getTranslatedString(generalTranslations.articlesPageTitle, lang);
+  const articlesPageGenericTitleText = getTranslatedString(generalTranslations.articlesPageGenericTitle, lang);
   
   const pageTitleText = articlesPageTitleText || articlesPageGenericTitleText;
 
-  const rawSiteName = generalTranslations.siteName;
-  const siteName = typeof rawSiteName === 'string' ? rawSiteName : '';
+  const siteName = getTranslatedString(generalTranslations.siteName, lang, '');
   
-  const rawArticlesListPageBodyDescription = generalTranslations.articlesListPageBodyDescription;
-  const onPageDescriptionTemplate =
-    typeof rawArticlesListPageBodyDescription === "object" && rawArticlesListPageBodyDescription !== null && typeof rawArticlesListPageBodyDescription[lang] === "string"
-      ? rawArticlesListPageBodyDescription[lang]
-      : (typeof rawArticlesListPageBodyDescription === "string" ? rawArticlesListPageBodyDescription : '');
+  const onPageDescriptionTemplate = getTranslatedString(generalTranslations.articlesListPageBodyDescription, lang);
   const onPageDescriptionText = onPageDescriptionTemplate.replace(
     "{siteName}",
     siteName

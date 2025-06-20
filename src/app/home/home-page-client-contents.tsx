@@ -22,9 +22,10 @@ import {
   Phone,
 } from "lucide-react";
 import { useLanguage, type Language } from "@/contexts/language-context";
+import { getTranslatedString } from "@/lib/translations";
 import Link from "next/link";
 import CanadaFlagIcon from "@/components/icons/canada-flag-icon";
-import type { Article } from "@/lib/articles-data";
+import type { ArticleListItem } from "@/lib/articles-data";
 import {
   Accordion,
   AccordionContent,
@@ -40,10 +41,13 @@ interface ServiceCardProps {
 }
 
 const getLocalizedPath = (baseHref: string, lang: Language): string => {
-  if (lang === "zh") {
-    return baseHref === "/" ? "/zh" : `/zh${baseHref}`;
+  const slashedHref = baseHref === '/' ? baseHref : `${baseHref}/`;
+
+  if (lang === 'zh') {
+    return slashedHref === '/' ? '/zh/' : `/zh${slashedHref.substring(1)}`;
   }
-  return baseHref;
+
+  return slashedHref;
 };
 
 function ServiceCard({ title, description, href }: ServiceCardProps) {
@@ -100,7 +104,7 @@ const crisisHotlines: HotlineInfo[] = [
 ];
 
 interface HomePageClientContentsProps {
-  allArticles: Article[];
+  allArticles: ArticleListItem[];
 }
 
 export default function HomePageClientContents({
@@ -117,25 +121,8 @@ export default function HomePageClientContents({
     const emailDomain = "chislonchow.com";
     const emailAddress = `${emailUser}@${emailDomain}`;
 
-    const rawHeroMailSubject = translations.heroMailSubject;
-    const emailSubject =
-      typeof rawHeroMailSubject === "object" &&
-      rawHeroMailSubject !== null &&
-      typeof rawHeroMailSubject[language] === "string"
-        ? rawHeroMailSubject[language]
-        : typeof rawHeroMailSubject === "string"
-        ? rawHeroMailSubject
-        : "";
-
-    const rawHeroMailBodyTemplate = translations.heroMailBodyTemplate;
-    const emailBody =
-      typeof rawHeroMailBodyTemplate === "object" &&
-      rawHeroMailBodyTemplate !== null &&
-      typeof rawHeroMailBodyTemplate[language] === "string"
-        ? rawHeroMailBodyTemplate[language]
-        : typeof rawHeroMailBodyTemplate === "string"
-        ? rawHeroMailBodyTemplate
-        : "";
+    const emailSubject = getTranslatedString(translations.heroMailSubject, language);
+    const emailBody = getTranslatedString(translations.heroMailBodyTemplate, language);
 
     const constructedLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
       emailSubject
@@ -160,22 +147,11 @@ export default function HomePageClientContents({
   const ctaTitleId = "cta-title";
   const pageBottomTitleId = "page-bottom-title-h2";
 
-  const rawHeroSubtitle = translations.heroSubtitle;
-  const heroSubtitleRawText =
-    typeof rawHeroSubtitle === "object" &&
-    rawHeroSubtitle !== null &&
-    typeof rawHeroSubtitle[language] === "string"
-      ? rawHeroSubtitle[language]
-      : typeof rawHeroSubtitle === "string"
-      ? rawHeroSubtitle
-      : "";
-
+  const heroSubtitleRawText = getTranslatedString(translations.heroSubtitle, language);
   let heroSubtitleDisplay: React.ReactNode = heroSubtitleRawText;
-
   if (language === "zh" && heroSubtitleRawText) {
     const enPhraseWithProvinceReg = /Registered Psychotherapist\s?\(安省\)/;
     const match = heroSubtitleRawText.match(enPhraseWithProvinceReg);
-
     if (match) {
       const matchedPhrase = match[0];
       const parts = heroSubtitleRawText.split(matchedPhrase);
@@ -189,46 +165,10 @@ export default function HomePageClientContents({
     }
   }
 
-  const rawHeroButtonText = translations.heroButton;
-  const heroButtonText =
-    typeof rawHeroButtonText === "object" &&
-    rawHeroButtonText !== null &&
-    typeof rawHeroButtonText[language] === "string"
-      ? rawHeroButtonText[language]
-      : typeof rawHeroButtonText === "string"
-      ? rawHeroButtonText
-      : "";
-
-  const rawHeroButtonSecondaryText = translations.heroButtonSecondary;
-  const heroButtonSecondaryText =
-    typeof rawHeroButtonSecondaryText === "object" &&
-    rawHeroButtonSecondaryText !== null &&
-    typeof rawHeroButtonSecondaryText[language] === "string"
-      ? rawHeroButtonSecondaryText[language]
-      : typeof rawHeroButtonSecondaryText === "string"
-      ? rawHeroButtonSecondaryText
-      : "";
-
-  const rawPsychotherapyApproachSectionTitle =
-    translations.psychotherapyApproachSectionTitle;
-  const psychotherapyApproachSectionTitleText =
-    typeof rawPsychotherapyApproachSectionTitle === "object" &&
-    rawPsychotherapyApproachSectionTitle !== null &&
-    typeof rawPsychotherapyApproachSectionTitle[language] === "string"
-      ? rawPsychotherapyApproachSectionTitle[language]
-      : typeof rawPsychotherapyApproachSectionTitle === "string"
-      ? rawPsychotherapyApproachSectionTitle
-      : "";
-
-  const rawWelcomeTextContent = translations.welcomeText;
-  const welcomeTextContent =
-    typeof rawWelcomeTextContent === "object" &&
-    rawWelcomeTextContent !== null &&
-    typeof rawWelcomeTextContent[language] === "string"
-      ? rawWelcomeTextContent[language]
-      : typeof rawWelcomeTextContent === "string"
-      ? rawWelcomeTextContent
-      : "";
+  const heroButtonText = getTranslatedString(translations.heroButton, language);
+  const heroButtonSecondaryText = getTranslatedString(translations.heroButtonSecondary, language);
+  const psychotherapyApproachSectionTitleText = getTranslatedString(translations.psychotherapyApproachSectionTitle, language);
+  const welcomeTextContent = getTranslatedString(translations.welcomeText, language);
 
   const { firstSentence: welcomeFirstSentence, restOfText: welcomeRestOfText } = useMemo(() => {
     if (!welcomeTextContent) return { firstSentence: '', restOfText: '' };
@@ -269,196 +209,28 @@ export default function HomePageClientContents({
   }, [welcomeTextContent, language]);
 
 
-  const rawNetworkListingsLabel = translations.sectionNetworkListingsLabel;
-  const networkListingsLabel =
-    typeof rawNetworkListingsLabel === "object" &&
-    rawNetworkListingsLabel !== null &&
-    typeof rawNetworkListingsLabel[language] === "string"
-      ? rawNetworkListingsLabel[language]
-      : typeof rawNetworkListingsLabel === "string"
-      ? rawNetworkListingsLabel
-      : "";
+  const networkListingsLabel = getTranslatedString(translations.sectionNetworkListingsLabel, language);
+  const network1TitleText = getTranslatedString(translations.network1Title, language);
+  const network1DescText = getTranslatedString(translations.network1Desc, language);
+  const network2TitleText = getTranslatedString(translations.network2Title, language);
+  const network2DescText = getTranslatedString(translations.network2Desc, language);
+  const network3TitleText = getTranslatedString(translations.network3Title, language);
+  const network3DescText = getTranslatedString(translations.network3Desc, language);
 
-  const rawNetwork1Title = translations.network1Title;
-  const network1TitleText =
-    typeof rawNetwork1Title === "object" &&
-    rawNetwork1Title !== null &&
-    typeof rawNetwork1Title[language] === "string"
-      ? rawNetwork1Title[language]
-      : typeof rawNetwork1Title === "string" // This handles the case where it's a direct string
-      ? rawNetwork1Title
-      : "";
+  const crisisInfoLabel = getTranslatedString(translations.sectionCrisisInfoLabel, language);
+  const crisisCard1TitleText = getTranslatedString(translations.crisisCard1Title, language);
+  const crisisCard1P1Text = getTranslatedString(translations.crisisCard1P1, language);
+  const crisisCard1P2Text = getTranslatedString(translations.crisisCard1P2, language);
+  const crisisCard2TitleText = getTranslatedString(translations.crisisCard2Title, language);
+  const crisisCard2P1Text = getTranslatedString(translations.crisisCard2P1, language);
 
+  const ctaLabel = getTranslatedString(translations.sectionCtaLabel, language);
+  const ctaTextContent = getTranslatedString(translations.ctaText, language);
+  const ctaAccordionReadArticleText = getTranslatedString(translations.ctaAccordionReadArticle, language);
+  const ctaButtonArticlesText = getTranslatedString(translations.ctaButtonArticles, language);
 
-  const rawNetwork1Desc = translations.network1Desc;
-  const network1DescText =
-    typeof rawNetwork1Desc === "object" &&
-    rawNetwork1Desc !== null &&
-    typeof rawNetwork1Desc[language] === "string"
-      ? rawNetwork1Desc[language]
-      : typeof rawNetwork1Desc === "string"
-      ? rawNetwork1Desc
-      : "";
-
-  const rawNetwork2Title = translations.network2Title;
-  const network2TitleText =
-    typeof rawNetwork2Title === "object" &&
-    rawNetwork2Title !== null &&
-    typeof rawNetwork2Title[language] === "string"
-      ? rawNetwork2Title[language]
-      : typeof rawNetwork2Title === "string" // This handles the case where it's a direct string
-      ? rawNetwork2Title
-      : "";
-
-  const rawNetwork2Desc = translations.network2Desc;
-  const network2DescText =
-    typeof rawNetwork2Desc === "object" &&
-    rawNetwork2Desc !== null &&
-    typeof rawNetwork2Desc[language] === "string"
-      ? rawNetwork2Desc[language]
-      : typeof rawNetwork2Desc === "string"
-      ? rawNetwork2Desc
-      : "";
-
-  const rawNetwork3Title = translations.network3Title;
-  const network3TitleText =
-    typeof rawNetwork3Title === "object" &&
-    rawNetwork3Title !== null &&
-    typeof rawNetwork3Title[language] === "string"
-      ? rawNetwork3Title[language]
-      : typeof rawNetwork3Title === "string"
-      ? rawNetwork3Title
-      : "";
-
-  const rawNetwork3Desc = translations.network3Desc;
-  const network3DescText =
-    typeof rawNetwork3Desc === "object" &&
-    rawNetwork3Desc !== null &&
-    typeof rawNetwork3Desc[language] === "string"
-      ? rawNetwork3Desc[language]
-      : typeof rawNetwork3Desc === "string"
-      ? rawNetwork3Desc
-      : "";
-
-  const rawCrisisInfoLabel = translations.sectionCrisisInfoLabel;
-  const crisisInfoLabel =
-    typeof rawCrisisInfoLabel === "object" &&
-    rawCrisisInfoLabel !== null &&
-    typeof rawCrisisInfoLabel[language] === "string"
-      ? rawCrisisInfoLabel[language]
-      : typeof rawCrisisInfoLabel === "string"
-      ? rawCrisisInfoLabel
-      : "";
-
-  const rawCrisisCard1Title = translations.crisisCard1Title;
-  const crisisCard1TitleText =
-    typeof rawCrisisCard1Title === "object" &&
-    rawCrisisCard1Title !== null &&
-    typeof rawCrisisCard1Title[language] === "string"
-      ? rawCrisisCard1Title[language]
-      : typeof rawCrisisCard1Title === "string"
-      ? rawCrisisCard1Title
-      : "";
-
-  const rawCrisisCard1P1 = translations.crisisCard1P1;
-  const crisisCard1P1Text =
-    typeof rawCrisisCard1P1 === "object" &&
-    rawCrisisCard1P1 !== null &&
-    typeof rawCrisisCard1P1[language] === "string"
-      ? rawCrisisCard1P1[language]
-      : typeof rawCrisisCard1P1 === "string"
-      ? rawCrisisCard1P1
-      : "";
-
-  const rawCrisisCard1P2 = translations.crisisCard1P2;
-  const crisisCard1P2Text =
-    typeof rawCrisisCard1P2 === "object" &&
-    rawCrisisCard1P2 !== null &&
-    typeof rawCrisisCard1P2[language] === "string"
-      ? rawCrisisCard1P2[language]
-      : typeof rawCrisisCard1P2 === "string"
-      ? rawCrisisCard1P2
-      : "";
-
-  const rawCrisisCard2Title = translations.crisisCard2Title;
-  const crisisCard2TitleText =
-    typeof rawCrisisCard2Title === "object" &&
-    rawCrisisCard2Title !== null &&
-    typeof rawCrisisCard2Title[language] === "string"
-      ? rawCrisisCard2Title[language]
-      : typeof rawCrisisCard2Title === "string"
-      ? rawCrisisCard2Title
-      : "";
-
-  const rawCrisisCard2P1 = translations.crisisCard2P1;
-  const crisisCard2P1Text =
-    typeof rawCrisisCard2P1 === "object" &&
-    rawCrisisCard2P1 !== null &&
-    typeof rawCrisisCard2P1[language] === "string"
-      ? rawCrisisCard2P1[language]
-      : typeof rawCrisisCard2P1 === "string"
-      ? rawCrisisCard2P1
-      : "";
-
-  const rawCtaLabel = translations.sectionCtaLabel;
-  const ctaLabel =
-    typeof rawCtaLabel === "object" &&
-    rawCtaLabel !== null &&
-    typeof rawCtaLabel[language] === "string"
-      ? rawCtaLabel[language]
-      : typeof rawCtaLabel === "string"
-      ? rawCtaLabel
-      : "";
-
-  const rawCtaTextContent = translations.ctaText;
-  const ctaTextContent =
-    typeof rawCtaTextContent === "object" &&
-    rawCtaTextContent !== null &&
-    typeof rawCtaTextContent[language] === "string"
-      ? rawCtaTextContent[language]
-      : typeof rawCtaTextContent === "string"
-      ? rawCtaTextContent
-      : "";
-
-  const rawCtaAccordionReadArticleText = translations.ctaAccordionReadArticle;
-  const ctaAccordionReadArticleText =
-    typeof rawCtaAccordionReadArticleText === "object" &&
-    rawCtaAccordionReadArticleText !== null &&
-    typeof rawCtaAccordionReadArticleText[language] === "string"
-      ? rawCtaAccordionReadArticleText[language]
-      : typeof rawCtaAccordionReadArticleText === "string"
-      ? rawCtaAccordionReadArticleText
-      : "";
-
-  const rawCtaButtonArticlesText = translations.ctaButtonArticles;
-  const ctaButtonArticlesText =
-    typeof rawCtaButtonArticlesText === "object" &&
-    rawCtaButtonArticlesText !== null &&
-    typeof rawCtaButtonArticlesText[language] === "string"
-      ? rawCtaButtonArticlesText[language]
-      : typeof rawCtaButtonArticlesText === "string"
-      ? rawCtaButtonArticlesText
-      : "";
-
-  const rawPageBottomSectionTitle = translations.pageBottomSectionTitle;
-  const pageBottomSectionTitleText =
-    typeof rawPageBottomSectionTitle === "object" &&
-    rawPageBottomSectionTitle !== null &&
-    typeof rawPageBottomSectionTitle[language] === "string"
-      ? rawPageBottomSectionTitle[language]
-      : typeof rawPageBottomSectionTitle === "string"
-      ? rawPageBottomSectionTitle
-      : "";
-
-  const rawPageBottomSectionSubtitle = translations.pageBottomSectionSubtitle;
-  const pageBottomSectionSubtitleText =
-    typeof rawPageBottomSectionSubtitle === "object" &&
-    rawPageBottomSectionSubtitle !== null &&
-    typeof rawPageBottomSectionSubtitle[language] === "string"
-      ? rawPageBottomSectionSubtitle[language]
-      : typeof rawPageBottomSectionSubtitle === "string"
-      ? rawPageBottomSectionSubtitle
-      : "";
+  const pageBottomSectionTitleText = getTranslatedString(translations.pageBottomSectionTitle, language);
+  const pageBottomSectionSubtitleText = getTranslatedString(translations.pageBottomSectionSubtitle, language);
 
   return (
     <div className="flex flex-col font-headline">
@@ -774,15 +546,7 @@ export default function HomePageClientContents({
                     "list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
                   )}>
                   {crisisHotlines.map((hotline) => {
-                    const rawHotlineText = translations[hotline.key];
-                    const hotlineText =
-                      typeof rawHotlineText === "object" &&
-                      rawHotlineText !== null &&
-                      typeof rawHotlineText[language] === "string"
-                        ? rawHotlineText[language]
-                        : typeof rawHotlineText === "string"
-                        ? rawHotlineText
-                        : "";
+                    const hotlineText = getTranslatedString(translations[hotline.key], language);
                     return (
                       <li key={hotline.key}>
                         <a
@@ -843,4 +607,3 @@ export default function HomePageClientContents({
     </div>
   );
 }
-

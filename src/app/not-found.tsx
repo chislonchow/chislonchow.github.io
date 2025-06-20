@@ -4,12 +4,13 @@
 import { useEffect } from 'react';
 import { Home, AlertTriangle } from 'lucide-react';
 import { useLanguage, type Language } from '@/contexts/language-context';
+import { getTranslatedString } from '@/lib/translations';
 import { useLayoutVisibility } from '@/contexts/layout-visibility-context';
 import { cn } from "@/lib/utils";
 
 const getLocalizedPath = (baseHref: string, lang: Language): string => {
   if (lang === 'zh') {
-    return baseHref === '/' ? '/zh/' : `/zh${baseHref}`;
+    return baseHref === '/' ? '/zh/' : `/zh${baseHref}/`;
   }
   return baseHref === '/' ? '/' : `${baseHref}/`;
 };
@@ -43,14 +44,9 @@ export default function NotFound() {
 
   const homePath = getLocalizedPath('/', language);
 
-  const rawNotFoundTitleText = translations.notFoundTitle;
-  const notFoundTitleText = (typeof rawNotFoundTitleText === 'object' && rawNotFoundTitleText !== null ? rawNotFoundTitleText[language] : rawNotFoundTitleText) || '';
-  
-  const rawNotFoundMessageText = translations.notFoundMessage;
-  const notFoundMessageText = (typeof rawNotFoundMessageText === 'object' && rawNotFoundMessageText !== null ? rawNotFoundMessageText[language] : rawNotFoundMessageText) || '';
-  
-  const rawNotFoundGoHomeText = translations.notFoundGoHome;
-  const notFoundGoHomeText = (typeof rawNotFoundGoHomeText === 'object' && rawNotFoundGoHomeText !== null ? rawNotFoundGoHomeText[language] : rawNotFoundGoHomeText) || '';
+  const notFoundTitleText = getTranslatedString(translations.notFoundTitle, language);
+  const notFoundMessageText = getTranslatedString(translations.notFoundMessage, language);
+  const notFoundGoHomeText = getTranslatedString(translations.notFoundGoHome, language);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground text-center px-4 py-8">

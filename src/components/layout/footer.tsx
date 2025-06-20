@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Separator } from "@/components/ui/separator";
 import { useLanguage, type Language } from '@/contexts/language-context';
+import { getTranslatedString } from '@/lib/translations';
 
 const YouTubeIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boolean }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 576 512" aria-hidden={ariaHidden} focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597C11.412 132.305 11.412 132.305 11.412 256s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821C560.345 389.438 560.345 256 560.345 256S560.345 132.305 549.655 124.083zM232.491 336.508V175.185l142.739 80.662L232.491 336.508z"/></svg>
@@ -28,49 +29,24 @@ const BloggerIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boo
 );
 
 export default function Footer() {
-  const [clientDeterminedYear, setClientDeterminedYear] = useState<number | null>(null);
   const { language, translations } = useLanguage();
-
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [mailtoLink, setMailtoLink] = useState<string>('#');
 
   useEffect(() => {
-    setClientDeterminedYear(new Date().getFullYear());
-  }, []);
-
-  useEffect(() => {
-    const rawEmailEntry = translations.contactEmailValue;
-    const determinedEmailAddress = typeof rawEmailEntry === 'string' ? rawEmailEntry : '';
-
+    const determinedEmailAddress = getTranslatedString(translations.contactEmailValue, language);
     setEmailAddress(determinedEmailAddress);
     setMailtoLink(determinedEmailAddress ? `mailto:${determinedEmailAddress}` : '#');
-
-  }, [translations.contactEmailValue]);
-
-  const rawFooterCopyrightText = translations.footerCopyrightText;
-  const fullCopyrightText = typeof rawFooterCopyrightText === 'string' ? rawFooterCopyrightText : '';
-
-  const rawEmailLabel = translations.contactEmailLabel;
-  const emailLabelText = (typeof rawEmailLabel === 'object' && rawEmailLabel !== null && typeof rawEmailLabel[language] === 'string' ? rawEmailLabel[language] : (typeof rawEmailLabel === 'string' ? rawEmailLabel : ''));
-
-  const rawSocialNavLabel = translations.socialMediaNavLabel;
-  const socialNavLabelText = (typeof rawSocialNavLabel === 'object' && rawSocialNavLabel !== null && typeof rawSocialNavLabel[language] === 'string' ? rawSocialNavLabel[language] : (typeof rawSocialNavLabel === 'string' ? rawSocialNavLabel : ''));
-
-  const rawBloggerLabel = translations.socialBloggerLabel;
-  const bloggerLabelText = (typeof rawBloggerLabel === 'object' && rawBloggerLabel !== null && typeof rawBloggerLabel[language] === 'string' ? rawBloggerLabel[language] : (typeof rawBloggerLabel === 'string' ? rawBloggerLabel : ''));
-
-  const rawYoutubeLabel = translations.socialYoutubeLabel;
-  const youtubeLabelText = (typeof rawYoutubeLabel === 'object' && rawYoutubeLabel !== null && typeof rawYoutubeLabel[language] === 'string' ? rawYoutubeLabel[language] : (typeof rawYoutubeLabel === 'string' ? rawYoutubeLabel : ''));
-
-  const rawBlueskyLabel = translations.socialBlueskyLabel;
-  const blueskyLabelText = (typeof rawBlueskyLabel === 'object' && rawBlueskyLabel !== null && typeof rawBlueskyLabel[language] === 'string' ? rawBlueskyLabel[language] : (typeof rawBlueskyLabel === 'string' ? rawBlueskyLabel : ''));
-
-  const rawThreadsLabel = translations.socialThreadsLabel;
-  const threadsLabelText = (typeof rawThreadsLabel === 'object' && rawThreadsLabel !== null && typeof rawThreadsLabel[language] === 'string' ? rawThreadsLabel[language] : (typeof rawThreadsLabel === 'string' ? rawThreadsLabel : ''));
-
-  const rawFooterDisclaimer = translations.footerDisclaimer;
-  const footerDisclaimerText = (typeof rawFooterDisclaimer === 'object' && rawFooterDisclaimer !== null && typeof rawFooterDisclaimer[language] === 'string' ? rawFooterDisclaimer[language] : (typeof rawFooterDisclaimer === 'string' ? rawFooterDisclaimer : ''));
-
+  }, [language, translations]);
+  
+  const fullCopyrightText = getTranslatedString(translations.footerCopyrightText, language);
+  const emailLabelText = getTranslatedString(translations.contactEmailLabel, language);
+  const socialNavLabelText = getTranslatedString(translations.socialMediaNavLabel, language);
+  const bloggerLabelText = getTranslatedString(translations.socialBloggerLabel, language);
+  const youtubeLabelText = getTranslatedString(translations.socialYoutubeLabel, language);
+  const blueskyLabelText = getTranslatedString(translations.socialBlueskyLabel, language);
+  const threadsLabelText = getTranslatedString(translations.socialThreadsLabel, language);
+  const footerDisclaimerText = getTranslatedString(translations.footerDisclaimer, language);
 
   return (
     <footer className="bg-secondary/50 py-8 mt-auto">
@@ -147,4 +123,3 @@ export default function Footer() {
     </footer>
   );
 }
-

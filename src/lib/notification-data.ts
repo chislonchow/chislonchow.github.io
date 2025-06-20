@@ -28,11 +28,9 @@ export interface NotificationConfig {
   en: NotificationText;
   zh: NotificationText;
   durationSeconds: number;
-  isEnabled: boolean;
 }
 
 interface RawNotificationYaml {
-  enabled?: boolean;
   title?: { en?: string; zh?: string };
   description_markdown?: { en?: string; zh?: string };
   duration_seconds?: number;
@@ -77,7 +75,7 @@ export async function getNotificationData(): Promise<NotificationConfig | null> 
     const fileContents = fs.readFileSync(notificationConfigFile, 'utf8');
     const rawData = yaml.load(fileContents) as RawNotificationYaml | null;
 
-    if (!rawData || rawData.enabled === false || !rawData.duration_seconds || rawData.duration_seconds <= 0) {
+    if (!rawData || !rawData.duration_seconds || rawData.duration_seconds <= 0) {
       if (process.env.NODE_ENV === 'production') {
         cachedNotificationConfig = null;
       }
@@ -110,7 +108,6 @@ export async function getNotificationData(): Promise<NotificationConfig | null> 
         descriptionHtml: zhDescriptionHtml,
       },
       durationSeconds: rawData.duration_seconds,
-      isEnabled: true, 
     };
     
     if (process.env.NODE_ENV === 'production') {

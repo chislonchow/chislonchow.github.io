@@ -3,26 +3,24 @@
 
 import type React from 'react';
 import Link from 'next/link';
-import type { Article } from '@/lib/articles-data';
+import type { ArticleListItem } from '@/lib/articles-data';
 import { useLanguage, type Language } from '@/contexts/language-context';
+import { getTranslatedString } from '@/lib/translations';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star, Tag, ChevronRight } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 interface ArticleCardProps {
-  article: Article;
+  article: ArticleListItem;
 }
 
 export default function ArticleCard({ article }: ArticleCardProps) {
   const { language, translations } = useLanguage();
-  const articleUrl = `/${language === 'zh' ? 'zh/' : ''}article/${article.slug}`;
+  const articleUrl = `/${language === 'zh' ? 'zh/' : ''}article/${article.slug}/`;
 
-  const rawPinnedArticleText = translations.pinnedArticle;
-  const pinnedArticleText = typeof rawPinnedArticleText === 'object' && rawPinnedArticleText !== null && typeof rawPinnedArticleText[language] === 'string' ? rawPinnedArticleText[language] : (typeof rawPinnedArticleText === 'string' ? rawPinnedArticleText : '');
-
-  const rawReadArticleLabel = translations.readArticleLabel; 
-  const readArticleLabelText = typeof rawReadArticleLabel === 'object' && rawReadArticleLabel !== null && typeof rawReadArticleLabel[language] === 'string' ? rawReadArticleLabel[language] : (typeof rawReadArticleLabel === 'string' ? rawReadArticleLabel : '');
+  const pinnedArticleText = getTranslatedString(translations.pinnedArticle, language);
+  const readArticleLabelText = getTranslatedString(translations.readArticleLabel, language);
   const articleLinkAriaLabel = `${readArticleLabelText}: ${article.title[language]}`;
 
   return (
@@ -45,8 +43,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           {article.categories && article.categories.length > 0 && (
             <div className="mb-3">
               {article.categories.map((category, index) => {
-                const categoryTranslation = translations[category];
-                const categoryText = (typeof categoryTranslation === 'object' && categoryTranslation !== null && typeof categoryTranslation[language] === "string" ? categoryTranslation[language] : (typeof categoryTranslation === 'string' ? categoryTranslation : '')) || category;
+                const categoryText = getTranslatedString(translations[category], language, category);
                 return (
                   <Badge key={index} variant="outline" className="mr-1.5 mb-1.5 text-xs">
                     <Tag className="w-3.5 h-3.5 mr-1" aria-hidden="true" />
@@ -77,4 +74,3 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     </Link>
   );
 }
-

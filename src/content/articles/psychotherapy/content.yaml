@@ -1,10 +1,3 @@
-
-title:
-  en: "Psychotherapy Is..."
-  zh: "心理治療是..."
-description:
-  en: "What is psychotherapy? Understand its purpose, common reasons for seeking it, and how it can support mental well-being."
-  zh: "心理治療是什麼？了解其目的、尋求治療的常見原因，以及它如何支持心理健康。"
 #imageUrl: ""
 #imageCaption:
 #  en: ""
@@ -44,10 +37,3 @@ content:
     1. *科學的基礎* : 心理治療可能使用經科學研究證實的有效方法，特別是處理心理健康時。
     1. *改善療效* : 當與其他治療方法一起使用時，可能會改善治療效果。
     1. *成長與療癒* : 它可能促進成長與療癒。
-
-categories:
-  - "Mental Health Literacy"
-pinned: true
-frontpage_display: true
-date_updated: "2025-06-17"
-date_updated_shown: false
