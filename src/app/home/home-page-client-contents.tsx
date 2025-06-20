@@ -56,8 +56,7 @@ function ServiceCard({ title, description, href }: ServiceCardProps) {
       </CardHeader>
       <CardContent className="flex-grow p-6 pt-0">
         <p className={cn(
-            "text-secondary-foreground leading-relaxed text-xs xs:text-sm md:text-base text-left"
-            // font-headline is inherited
+            "text-secondary-foreground leading-relaxed text-xs xs:text-sm md:text-base text-left font-headline"
           )}>
           {description}
         </p>
@@ -467,6 +466,10 @@ export default function HomePageClientContents({
       <section
         className="relative bg-gradient-to-t from-[#fbf1e5] to-[#f3e6d7] pt-14 xs:pt-16 sm:pt-20 md:pt-20 md:pb-7 w-full"
         aria-labelledby="hero-title-h1"
+        style={{
+          backgroundImage: "url('/images/bg-fabric.tiled.webp'), linear-gradient(to top, hsl(33, 71%, 94%), hsl(33, 71%, 84%))",
+          backgroundRepeat: "repeat, no-repeat",
+        }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1
@@ -512,13 +515,14 @@ export default function HomePageClientContents({
 
       {/* Psychotherapy Approach Section */}
       <section
-        className="pt-20 pb-20 sm:pt-28 sm:pb-28 bg-gradient-to-r from-primary/10 to-accent/10"
+        className="pt-20 pb-24 sm:pt-20 sm:pb-24 bg-gradient-to-r from-primary/10 to-accent/10"
         aria-labelledby={psychotherapyApproachTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             id={psychotherapyApproachTitleId}
-            className="max-w-3xl mx-auto text-xl sm:text-3xl font-bold text-muted-foreground mb-4 text-left"
+            className="max-w-3xl mx-auto text-xl sm:text-3xl font-bold mb-4 text-left"
+            style={{ color: 'hsl(202, 20%, 70%)' }}
           >
             {psychotherapyApproachSectionTitleText}
           </h2>
@@ -583,7 +587,7 @@ export default function HomePageClientContents({
             <CardContent className="p-4 xs:p-6 md:p-10">
               <div className="md:flex md:items-center md:gap-8">
                 <div className="mb-8 md:mb-0 md:flex-grow">
-                  <p className="text-sm md:text-lg text-foreground/90 max-w-xl text-left mb-6">
+                  <p className="text-sm md:text-lg text-foreground/90 max-w-xl text-left mb-6 font-headline">
                     {ctaTextContent}
                   </p>
                   {articlesForFrontpageAccordion.length > 0 && (
@@ -739,14 +743,12 @@ export default function HomePageClientContents({
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90 text-left">
                 <p className={cn(
-                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed"
-                    // font-headline is inherited
+                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
                   )}>
                   {crisisCard1P1Text}
                 </p>
                 <p className={cn(
-                    "text-xs xs:text-sm md:text-base leading-relaxed"
-                    // font-headline is inherited
+                    "text-xs xs:text-sm md:text-base leading-relaxed font-headline"
                   )}>
                   {crisisCard1P2Text}
                 </p>
@@ -764,14 +766,12 @@ export default function HomePageClientContents({
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90">
                 <p className={cn(
-                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed"
-                    // font-headline is inherited
+                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
                   )}>
                   {crisisCard2P1Text}
                 </p>
                 <ul className={cn(
-                    "list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed"
-                    // font-headline is inherited
+                    "list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
                   )}>
                   {crisisHotlines.map((hotline) => {
                     const rawHotlineText = translations[hotline.key];
@@ -807,7 +807,12 @@ export default function HomePageClientContents({
       <section
         className="py-14 sm:py-20 w-full"
         aria-labelledby={pageBottomTitleId}
-        style={{ backgroundColor: "hsl(202, 10%, 92%)" }}
+        style={{
+          backgroundColor: "hsl(202, 10%, 92%)",
+          backgroundImage: "url('/images/bg-waves-tiled.webp')",
+          backgroundRepeat: "repeat",
+          backgroundPosition: "0 100%"
+        }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2
