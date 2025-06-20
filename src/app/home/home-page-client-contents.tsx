@@ -217,15 +217,14 @@ export default function HomePageClientContents({
         ? rawHeroButtonSecondaryText
         : "";
 
-  const rawSectionPsychotherapyApproachLabel =
-    translations.sectionPsychotherapyApproachLabel;
-  const sectionPsychotherapyApproachLabelText =
-    typeof rawSectionPsychotherapyApproachLabel === "object" &&
-      rawSectionPsychotherapyApproachLabel !== null &&
-      typeof rawSectionPsychotherapyApproachLabel[language] === "string"
-      ? rawSectionPsychotherapyApproachLabel[language]
-      : typeof rawSectionPsychotherapyApproachLabel === "string"
-        ? rawSectionPsychotherapyApproachLabel
+  const rawPsychotherapyApproachSectionTitle = translations.psychotherapyApproachSectionTitle;
+  const psychotherapyApproachSectionTitleText =
+    typeof rawPsychotherapyApproachSectionTitle === "object" &&
+    rawPsychotherapyApproachSectionTitle !== null &&
+    typeof rawPsychotherapyApproachSectionTitle[language] === "string"
+      ? rawPsychotherapyApproachSectionTitle[language]
+      : typeof rawPsychotherapyApproachSectionTitle === "string"
+        ? rawPsychotherapyApproachSectionTitle
         : "";
 
   const rawWelcomeTextContent = translations.welcomeText;
@@ -432,7 +431,7 @@ export default function HomePageClientContents({
     <div className="flex flex-col">
       {/* Hero Section */}
       <section
-        className="relative bg-gradient-to-t from-[#fbf1e5] to-[#f3e6d7] pt-5 pb-4 xs:pt-7 sm:pt-9 sm:pb-5 md:pt-11 md:pb-7 w-full"
+        className="relative bg-gradient-to-t from-[#fbf1e5] to-[#f3e6d7] pt-14 pb-4 xs:pt-16 sm:pt-20 sm:pb-5 md:pt-20 md:pb-7 w-full"
         aria-labelledby="hero-title-h1"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -449,7 +448,7 @@ export default function HomePageClientContents({
               aria-hidden="true"
             />
           </p>
-          <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pb-20">
             <a
               href={dynamicMailtoLink}
               className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-base font-headline border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center shadow-md hover:shadow-lg"
@@ -478,12 +477,15 @@ export default function HomePageClientContents({
 
       {/* Psychotherapy Approach Section */}
       <section
-        className="pt-2 pb-10 sm:pt-4 sm:pb-14 bg-background"
+        className="pt-20 pb-20 sm:pt-28 sm:pb-28 bg-gradient-to-r from-primary/10 to-accent/10"
         aria-labelledby={psychotherapyApproachTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id={psychotherapyApproachTitleId} className="sr-only">
-            {sectionPsychotherapyApproachLabelText}
+          <h2
+            id={psychotherapyApproachTitleId}
+            className="max-w-3xl mx-auto text-xl sm:text-3xl font-bold font-headline text-muted-foreground mb-4 text-left"
+          >
+            {psychotherapyApproachSectionTitleText}
           </h2>
           <Card className="max-w-3xl mx-auto bg-primary/10 p-4 xs:p-8 md:p-10 shadow-md">
             <CardContent className="p-0 text-left">
@@ -513,10 +515,10 @@ export default function HomePageClientContents({
 
       {/* Call to Action Section (Resources) */}
       <section
-        className="py-12 sm:py-16 bg-secondary"
+        className="py-12 sm:py-16 bg-secondary px-4 sm:px-6 lg:px-8"
         aria-labelledby={ctaTitleId}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
           <div className="h-10 w-10 xs:h-12 xs:w-12 sm:h-14 sm:w-14 flex justify-center mb-3 sm:mb-6 text-muted-foreground mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -736,7 +738,7 @@ export default function HomePageClientContents({
       <section
         className="py-14 sm:py-20 w-full"
         aria-labelledby={pageBottomTitleId}
-        style={{ backgroundColor: 'hsl(202, 50%, 92%)' }}
+        style={{ backgroundColor: "hsl(202, 10%, 92%)" }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2
@@ -747,7 +749,7 @@ export default function HomePageClientContents({
                 ? "text-2xl xs:text-4xl sm:text-5xl md:text-6xl"
                 : "text-lg xs:text-2xl sm:text-3xl md:text-4xl"
             )}
-            style={{ color: 'hsl(202, 50%, 30%)' }}
+            style={{ color: "hsl(202, 10%, 30%)" }}
           >
             {pageBottomSectionTitleText}
           </h2>
@@ -758,7 +760,7 @@ export default function HomePageClientContents({
                 ? "text-base xs:text-lg sm:text-xl md:text-2xl"
                 : "text-xs xs:text-sm sm:text-base md:text-lg"
             )}
-            style={{ color: 'hsl(202, 50%, 50%)' }}
+            style={{ color: "hsl(202, 10%, 50%)" }}
           >
             {pageBottomSectionSubtitleText}
           </p>
@@ -767,3 +769,4 @@ export default function HomePageClientContents({
     </div>
   );
 }
+
