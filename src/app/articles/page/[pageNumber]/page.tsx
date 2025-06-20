@@ -125,13 +125,6 @@ export default async function PaginatedArticlesPage({ params }: Props) {
   
   const pageTitleText = articlesPageTitleText || articlesPageGenericTitleText;
 
-
-  const rawPaginationPageInfo = generalTranslations.paginationPageInfo;
-  const paginationInfoText =
-    typeof rawPaginationPageInfo === "object" && rawPaginationPageInfo !== null && typeof rawPaginationPageInfo[lang] === "string"
-      ? rawPaginationPageInfo[lang]
-      : (typeof rawPaginationPageInfo === "string" ? rawPaginationPageInfo : '');
-
   const rawSiteName = generalTranslations.siteName;
   const siteName = typeof rawSiteName === 'string' ? rawSiteName : '';
   
@@ -149,12 +142,8 @@ export default async function PaginatedArticlesPage({ params }: Props) {
     <div className="container mx-auto py-6 px-2 sm:px-6 lg:px-8">
       <h1 className="text-2xl md:text-3xl font-bold font-headline text-foreground mb-3 text-center">
         {pageTitleText}
-        {totalItems > 0 &&
-          ` - ${paginationInfoText
-            .replace("{currentPage}", pageNumber.toString())
-            .replace("{totalPages}", totalPages.toString())}`}
       </h1>
-      <p className="text-sm font-body text-muted-foreground mb-6 max-w-2xl mx-auto text-center">
+      <p className="text-sm font-headline text-muted-foreground mb-6 max-w-2xl mx-auto text-center">
         {onPageDescriptionText}
       </p>
       <ArticleListClient

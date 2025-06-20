@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -9,6 +10,7 @@ import { zhTW } from "date-fns/locale";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, Tag } from "lucide-react";
 import type { Language } from "@/contexts/language-context";
+import { cn } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -154,7 +156,7 @@ export default async function ArticlePageZh({ params }: Props) {
                 })}
               </div>
               {article.date_updated_shown && (
-                <div className="flex items-center">
+                <div className={cn("flex items-center font-headline")}>
                   <CalendarDays className="w-4 h-4 mr-1.5" aria-hidden="true" />
                   <span>
                     {updatedOnText}{" "}
@@ -178,7 +180,7 @@ export default async function ArticlePageZh({ params }: Props) {
                 data-ai-hint="article illustration"
               />
               {article.imageCaption?.[lang] && (
-                <p className="text-xs text-muted-foreground mt-2 italic">
+                <p className="text-xs text-muted-foreground mt-2 italic font-headline">
                   {article.imageCaption[lang]}
                 </p>
               )}

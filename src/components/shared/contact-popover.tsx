@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -115,7 +116,10 @@ export default function ContactPopover() {
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-full max-w-xs md:max-w-md mb-1 bg-background text-foreground relative"
+          className={cn(
+            "w-full max-w-xs md:max-w-md mb-1 bg-background text-foreground relative font-headline",
+            "shadow-xl"
+            )}
           sideOffset={10}
           aria-labelledby={popoverTitleId}
         >
@@ -168,3 +172,4 @@ export default function ContactPopover() {
     </div>
   );
 }
+

@@ -69,9 +69,9 @@ export default function LanguageToggle() {
       onClick={toggleLanguage}
       className={cn(
         "font-headline text-sm md:text-xs flex items-center",
-        "hover:bg-background hover:text-foreground", 
+        "hover:bg-background hover:text-foreground hover:shadow-md", 
         "focus-visible:ring-0 focus-visible:ring-offset-0",
-        "scale-90 xs:scale-100" // Added scaling classes
+        "scale-90 xs:scale-100"
       )}
       aria-label={ariaLabelText}
       disabled={isPending} 

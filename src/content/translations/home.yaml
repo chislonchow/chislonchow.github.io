@@ -5,9 +5,6 @@ homePageTitle:
 homePageMetaDescription:
   en: "Chislon Chow (Registered Psychotherapist) offers mental wellness services in English and Cantonese Chinese."
   zh: "Chislon Chow (註冊心理治療師) 提供英語和粵語的心理健康服務。"
-heroTitle:
-  en: "Chislon Chow"
-  zh: "Chislon Chow"
 heroSubtitle:
   en: "Registered Psychotherapist (Ontario)"
   zh: "註冊心理治療師 Registered Psychotherapist (安省)"
@@ -23,27 +20,23 @@ heroMailSubject:
 heroMailBodyTemplate:
   en: "I would like to book a meeting with you. My details are as follows:\n\nName: [Your preferred name] \nPreferred Date and Time: [Give a few options]\nPurpose of meeting: [online one-time first consultation/online psychotherapy session/other]\n\nPlease arrange for this meeting, or let me know of your alternative availability."
   zh: "我想與你預約會談。我的詳細資訊如下：\n\n姓名：[你的姓名]\n首選日期和時間：[請提供幾個選項]\n會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]\n\n請你安排這次會談，或讓我知道你其他方便的時間。"
-welcomeTitle: # This key might be legacy or for a different context, new title is psychotherapyApproachSectionTitle
+welcomeTitle: 
   en: "Psychotherapy Approach"
   zh: "心理治療方針"
-psychotherapyApproachSectionTitle: # New title for the section
-  en: "Compassionate Psychotherapy"
-  zh: "以憐憫心出發的療癒之路"
+psychotherapyApproachSectionTitle: 
+  en: "Compassion-Led..."
+  zh: "以憐憫心出發..."
 welcomeText:
-  en: "My psychotherapy approach centers on : compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy. "
-  zh: "我的心理治療方針著重於 ： 憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。 "
+  en: "My psychotherapy approach centers on: compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy."
+  zh: "我的心理治療方針著重於：憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。"
 networkListingsTitle:
   en: "Network Affiliations"
   zh: "聯屬網絡"
-network1Title:
-  en: "Open Path Collective"
-  zh: "Open Path Collective"
+network1Title: "Open Path Collective"
 network1Desc:
   en: "Providing affordable psychotherapy to those in need."
   zh: "讓需要的人能以經濟實惠的價格進行心理治療。"
-network2Title:
-  en: "Asian Mental Health Collective"
-  zh: "Asian Mental Health Collective"
+network2Title: "Asian Mental Health Collective"
 network2Desc:
   en: "Building culturally sensitive mental‑health support for Asian communities."
   zh: "致力於為亞裔社群建立具文化敏感度的心理健康支援。"
@@ -95,7 +88,7 @@ ctaButtonArticles:
 ctaAccordionReadArticle:
   en: "See More"
   zh: "查看更多"
-sectionPsychotherapyApproachLabel: # This label can be kept for aria or removed if the new H2 fully replaces its semantic role.
+sectionPsychotherapyApproachLabel: 
   en: "Psychotherapy Approach"
   zh: "心理治療方法"
 sectionNetworkListingsLabel:
@@ -108,7 +101,7 @@ sectionCtaLabel:
   en: "Resources"
   zh: "資源"
 pageBottomSectionTitle:
-  en: "Let's Discover Your Safe Harbour"
+  en: "Discover Your Safe Harbour"
   zh: "走向安穩的避風港吧"
 pageBottomSectionSubtitle:
   en: "Move from disconnection toward healing"

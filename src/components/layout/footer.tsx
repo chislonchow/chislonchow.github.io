@@ -77,7 +77,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Separator className="mb-8" />
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 font-body">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 font-headline">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-8 mb-6">
           {/* Left Half: Social Media */}
           <div className="sm:w-1/2 mb-6 sm:mb-0">
@@ -86,7 +86,7 @@ export default function Footer() {
                 <a 
                   href="https://blog.chislonchow.com" 
                   aria-label={bloggerLabelText} 
-                  className="text-primary hover:text-primary/90 transition-colors"
+                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -95,7 +95,7 @@ export default function Footer() {
                 <a 
                   href="https://www.youtube.com/@ChislonChow" 
                   aria-label={youtubeLabelText} 
-                  className="text-primary hover:text-primary/90 transition-colors"
+                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,7 +104,7 @@ export default function Footer() {
                 <a 
                   href="https://bsky.app/profile/chislonchow.com" 
                   aria-label={blueskyLabelText} 
-                  className="text-primary hover:text-primary/90 transition-colors"
+                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -113,7 +113,7 @@ export default function Footer() {
                 <a 
                   href="https://www.threads.net/@chislonchow" 
                   aria-label={threadsLabelText} 
-                  className="text-primary hover:text-primary/90 transition-colors"
+                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

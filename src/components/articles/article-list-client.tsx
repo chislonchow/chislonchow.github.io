@@ -277,7 +277,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto flex items-center justify-between text-sm min-w-[200px] max-w-full"
+                  className="w-full sm:w-auto flex items-center justify-between text-sm min-w-[200px] max-w-full font-headline"
                 >
                   <div className="flex items-center truncate mr-2">
                     <ListFilter className="h-4 w-4 mr-1.5 shrink-0" aria-hidden="true" />
@@ -291,7 +291,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                   <ChevronDown className="h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-dropdown-menu-trigger-width]">
+              <DropdownMenuContent className={cn("w-[--radix-dropdown-menu-trigger-width]", "font-headline")}>
                 <DropdownMenuLabel>{filterLabelText}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {sortedCategoryFilters.map(filterItem => (
@@ -307,14 +307,14 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
                 <DropdownMenuItem
                   onSelect={() => setSelectedCategories([])}
                   disabled={selectedCategories.length === 0}
-                  className="text-sm text-destructive focus:text-destructive-foreground focus:bg-destructive"
+                  className="text-sm text-destructive focus:text-destructive-foreground focus:bg-destructive font-headline"
                 >
                   {clearAllCategoriesText}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-             <div className="flex items-center text-sm text-muted-foreground px-3 py-2 h-10 border border-transparent rounded-md w-full sm:w-auto">
+             <div className="flex items-center text-sm text-muted-foreground px-3 py-2 h-10 border border-transparent rounded-md w-full sm:w-auto font-headline">
                 <ListFilter className="h-4 w-4 mr-1.5 shrink-0" aria-hidden="true" />
                 <span>{noCategoriesAvailableText}</span>
              </div>
@@ -322,7 +322,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
         </div>
         <div className="w-full sm:w-auto flex items-center justify-center sm:justify-start space-x-2">
           <ArrowUpDown className="h-4 w-4 text-foreground" aria-hidden="true" />
-          <span className="text-sm font-medium text-foreground shrink-0">
+          <span className="text-sm font-headline text-foreground shrink-0">
             {sortLabelText}
           </span>
           <TooltipProvider>
@@ -391,7 +391,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
           ))}
         </div>
       ) : (
-        <p className="text-center text-muted-foreground py-10">
+        <p className="text-center text-muted-foreground py-10 font-headline">
           {noArticlesFoundText}
         </p>
       )}
@@ -407,7 +407,7 @@ export default function ArticleListClient({ articles, currentPageFromUrl, basePa
           >
             <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </Button>
-          <div className="text-sm text-muted-foreground text-center" role="status" aria-live="polite">
+          <div className="text-sm text-muted-foreground text-center font-headline" role="status" aria-live="polite">
             <div>
               {paginationPageInfoTemplate
                 .replace('{currentPage}', clientSideCurrentPage.toString())
