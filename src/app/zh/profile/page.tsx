@@ -9,29 +9,16 @@ import { getStaticPageData } from '@/lib/static-page-data';
 import type { Language } from '@/contexts/language-context';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const translations = getTranslations(new Date().getFullYear());
   const pageData = await getStaticPageData('profile');
   const lang: Language = "zh";
-
-  const rawSiteName = translations.siteName;
-  const siteName = typeof rawSiteName === 'string' ? rawSiteName : '';
-
-  const rawProfilePageMetaTitle = translations.profilePageMetaTitle;
-  const titleFromTranslations = 
-    typeof rawProfilePageMetaTitle === 'object' && rawProfilePageMetaTitle !== null && typeof rawProfilePageMetaTitle[lang] === "string"
-      ? rawProfilePageMetaTitle[lang]
-      : (typeof rawProfilePageMetaTitle === 'string' ? rawProfilePageMetaTitle : '');
-  const title = titleFromTranslations || pageData.title.zh;
-
-  const rawProfilePageMetaDescription = translations.profilePageMetaDescription;
-  const descriptionTemplate = 
-    typeof rawProfilePageMetaDescription === 'object' && rawProfilePageMetaDescription !== null && typeof rawProfilePageMetaDescription[lang] === "string"
-      ? rawProfilePageMetaDescription[lang]
-      : (typeof rawProfilePageMetaDescription === 'string' ? rawProfilePageMetaDescription : '');
+  
+  const descriptionTemplate = pageData.metadata_description?.[lang] || "";
+  const translations = getTranslations(new Date().getFullYear());
+  const siteName = typeof translations.siteName === 'string' ? translations.siteName : '';
   const description = descriptionTemplate.replace('{siteName}', siteName);
 
   return {
-    title: title,
+    title: pageData.title[lang] || "關於我", // Uses pageData.title now
     description: description,
     alternates: {
       canonical: '/zh/profile/',
@@ -93,9 +80,7 @@ export default async function ProfilePageZh() {
   return (
     <>
       <ContentPageClientLayout
-        titleKey="profile" 
-        defaultTitleEn={pageData.title.en} 
-        defaultTitleZh={pageData.title.zh} 
+        pageData={pageData}
         markdownEn={markdownEnNode}
         markdownZh={markdownZhNode}
       />

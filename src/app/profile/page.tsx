@@ -9,29 +9,16 @@ import { getStaticPageData } from '@/lib/static-page-data';
 import type { Language } from '@/contexts/language-context';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const translations = getTranslations(new Date().getFullYear());
   const pageData = await getStaticPageData('profile');
   const lang: Language = "en";
-
-  const rawSiteName = translations.siteName;
-  const siteName = typeof rawSiteName === 'string' ? rawSiteName : '';
   
-  const rawProfilePageMetaTitle = translations.profilePageMetaTitle;
-  const titleFromTranslations = 
-    typeof rawProfilePageMetaTitle === 'object' && rawProfilePageMetaTitle !== null && typeof rawProfilePageMetaTitle[lang] === "string"
-      ? rawProfilePageMetaTitle[lang]
-      : (typeof rawProfilePageMetaTitle === 'string' ? rawProfilePageMetaTitle : '');
-  const title = titleFromTranslations || pageData.title.en;
-  
-  const rawProfilePageMetaDescription = translations.profilePageMetaDescription;
-  const descriptionTemplate = 
-    typeof rawProfilePageMetaDescription === 'object' && rawProfilePageMetaDescription !== null && typeof rawProfilePageMetaDescription[lang] === "string"
-      ? rawProfilePageMetaDescription[lang]
-      : (typeof rawProfilePageMetaDescription === 'string' ? rawProfilePageMetaDescription : '');
+  const descriptionTemplate = pageData.metadata_description?.[lang] || "";
+  const translations = getTranslations(new Date().getFullYear()); 
+  const siteName = typeof translations.siteName === 'string' ? translations.siteName : '';
   const description = descriptionTemplate.replace('{siteName}', siteName);
   
   return {
-    title: title,
+    title: pageData.title[lang] || "Profile", // Uses pageData.title now
     description: description,
     alternates: {
       canonical: '/profile/',
@@ -75,7 +62,7 @@ export default async function ProfilePage() {
 
   const rawErrorInvalidContentMessageZh = translations.markdownErrorInvalidContent;
   const errorInvalidContentMessageZh = typeof rawErrorInvalidContentMessageZh === 'object' && rawErrorInvalidContentMessageZh !== null && typeof rawErrorInvalidContentMessageZh[langZh] === "string" ? rawErrorInvalidContentMessageZh[langZh] : (typeof rawErrorInvalidContentMessageZh === 'string' ? rawErrorInvalidContentMessageZh : '');
-
+  
   const rawErrorProcessingFailedMessageZh = translations.markdownErrorProcessingFailed;
   const errorProcessingFailedMessageZh = typeof rawErrorProcessingFailedMessageZh === 'object' && rawErrorProcessingFailedMessageZh !== null && typeof rawErrorProcessingFailedMessageZh[langZh] === "string" ? rawErrorProcessingFailedMessageZh[langZh] : (typeof rawErrorProcessingFailedMessageZh === 'string' ? rawErrorProcessingFailedMessageZh : '');
   
@@ -93,9 +80,7 @@ export default async function ProfilePage() {
   return (
     <>
       <ContentPageClientLayout
-        titleKey="profile" 
-        defaultTitleEn={pageData.title.en} 
-        defaultTitleZh={pageData.title.zh} 
+        pageData={pageData}
         markdownEn={markdownEnNode}
         markdownZh={markdownZhNode}
       />

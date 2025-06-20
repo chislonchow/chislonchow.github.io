@@ -1,3 +1,4 @@
+
 # src/content/translations/general.yaml
 
 # Site Identity & Branding
@@ -12,22 +13,6 @@ rootLayoutTitleDefault:
 rootLayoutMetaDescription:
   en: "Chislon Chow offers mental wellness services in English and Cantonese."
   zh: "Chislon Chow 提供英語和粵語的心理健康服務。"
-
-# Profile Page Metadata
-profilePageMetaTitle:
-  en: "About Chislon Chow, R.P."
-  zh: "關於 Chislon Chow, R.P."
-profilePageMetaDescription: # {siteName} will be replaced with translations.siteName
-  en: "Learn more about {siteName}: qualifications, approach to therapy, and commitment to your mental well-being. Bilingual services available."
-  zh: "了解更多關於{siteName}：資歷、治療方法以及對您心理健康的承諾。提供雙語服務。"
-
-# FAQ Page Metadata
-faqPageMetaTitle:
-  en: "Frequently Asked Questions"
-  zh: "常問問題"
-faqPageMetaDescription: # {siteName} will be replaced with translations.siteName
-  en: "Answers to common questions about therapy with {siteName}, covering services, appointments, fees, and the therapeutic process."
-  zh: "關於{siteName}心理治療服務的常見問題解答，涵蓋服務、預約、費用和治療過程。"
 
 # Article Pages Metadata
 articleNotFoundMetaTitle: # For metadata <title> if article not found e.g. "Article Not Found | SiteName"

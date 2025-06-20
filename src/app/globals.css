@@ -195,4 +195,19 @@
   [data-sonner-toast] a {
     @apply text-accent hover:underline;
   }
+
+  /* Feature Image Container for Static Pages */
+  .feature-image-container {
+    /* Mobile-first styles are applied via inline styles from the component */
+    /* This block is primarily for desktop overrides using CSS variables */
+  }
+
+  @media (min-width: 320px) { /* 'xs' breakpoint (Tailwind 'xs' is 20rem = 320px) */
+    .feature-image-container {
+      width: var(--feature-image-final-base-width, 250px) !important; /* Default to 250px if var not set */
+      height: var(--feature-image-final-base-height, 250px) !important; /* Default to 250px if var not set */
+      max-width: none !important; /* Reset mobile max-width */
+      /* aspect-ratio is handled by inline styles to ensure it's based on YAML values */
+    }
+  }
 }

@@ -1,7 +1,10 @@
 
-title:
+title: # This is for the H1 heading and now also the base for HTML <title>
   en: "Frequently Asked Questions"
-  zh: "常問問題"
+  zh: "常問問答"
+metadata_description:
+  en: "Answers to common questions about therapy, covering services, appointments, fees, and the therapeutic process."
+  zh: "關於心理治療服務的常見問題解答，涵蓋服務、預約、費用和治療過程。"
 markdown_content:
   en: |
     ## General Questions

@@ -9,29 +9,16 @@ import { getStaticPageData } from '@/lib/static-page-data';
 import type { Language } from '@/contexts/language-context';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const translations = getTranslations(new Date().getFullYear());
   const pageData = await getStaticPageData('faq');
   const lang: Language = "en";
   
-  const rawSiteName = translations.siteName;
-  const siteName = typeof rawSiteName === 'string' ? rawSiteName : ''; 
-  
-  const rawFaqPageMetaTitle = translations.faqPageMetaTitle;
-  const titleFromTranslations = 
-    typeof rawFaqPageMetaTitle === 'object' && rawFaqPageMetaTitle !== null && typeof rawFaqPageMetaTitle[lang] === "string" 
-      ? rawFaqPageMetaTitle[lang] 
-      : (typeof rawFaqPageMetaTitle === 'string' ? rawFaqPageMetaTitle : '');
-  const title = titleFromTranslations || pageData.title.en;
-  
-  const rawFaqPageMetaDescription = translations.faqPageMetaDescription;
-  const descriptionTemplate = 
-    typeof rawFaqPageMetaDescription === 'object' && rawFaqPageMetaDescription !== null && typeof rawFaqPageMetaDescription[lang] === "string"
-      ? rawFaqPageMetaDescription[lang]
-      : (typeof rawFaqPageMetaDescription === 'string' ? rawFaqPageMetaDescription : '');
+  const descriptionTemplate = pageData.metadata_description?.[lang] || "";
+  const translations = getTranslations(new Date().getFullYear()); 
+  const siteName = typeof translations.siteName === 'string' ? translations.siteName : ''; 
   const description = descriptionTemplate.replace('{siteName}', siteName);
   
   return {
-    title: title,
+    title: pageData.title[lang] || "FAQ", // Uses pageData.title now
     description: description,
     alternates: {
       canonical: '/faq/',
@@ -93,9 +80,7 @@ export default async function FAQPage() {
   return (
     <>
       <ContentPageClientLayout
-        titleKey="faq" 
-        defaultTitleEn={pageData.title.en} 
-        defaultTitleZh={pageData.title.zh} 
+        pageData={pageData}
         markdownEn={markdownEnNode}
         markdownZh={markdownZhNode}
       />
