@@ -22,6 +22,7 @@ import {
 import React from "react";
 import { useLayoutVisibility } from '@/contexts/layout-visibility-context';
 import { cn } from "@/lib/utils";
+import { getLocalizedPath } from "@/lib/path-utils";
 
 interface NavLinkInfo {
   baseHref: string;
@@ -51,14 +52,6 @@ const baseNavLinks: NavLinkInfo[] = [
     icon: <Newspaper className="w-4 h-4 mr-2" aria-hidden="true" />,
   },
 ];
-
-const getLocalizedPath = (baseHref: string, lang: Language): string => {
-  const slashedHref = baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
-  if (lang === "zh") {
-    return slashedHref === "/" ? "/zh/" : `/zh${slashedHref.substring(1)}`;
-  }
-  return slashedHref;
-};
 
 const NavLinkItem = ({
   href,

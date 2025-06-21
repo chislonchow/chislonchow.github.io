@@ -33,22 +33,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import { getLocalizedPath } from "@/lib/path-utils";
 
 interface ServiceCardProps {
   title: string;
   description: string;
   href?: string;
 }
-
-const getLocalizedPath = (baseHref: string, lang: Language): string => {
-  const slashedHref = baseHref === '/' ? baseHref : `${baseHref}/`;
-
-  if (lang === 'zh') {
-    return slashedHref === '/' ? '/zh/' : `/zh${slashedHref.substring(1)}`;
-  }
-
-  return slashedHref;
-};
 
 function ServiceCard({ title, description, href }: ServiceCardProps) {
   const cardInnerContent = (

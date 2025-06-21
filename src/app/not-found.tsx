@@ -7,13 +7,7 @@ import { useLanguage, type Language } from '@/contexts/language-context';
 import { getTranslatedString } from '@/lib/translations';
 import { useLayoutVisibility } from '@/contexts/layout-visibility-context';
 import { cn } from "@/lib/utils";
-
-const getLocalizedPath = (baseHref: string, lang: Language): string => {
-  if (lang === 'zh') {
-    return baseHref === '/' ? '/zh/' : `/zh${baseHref}/`;
-  }
-  return baseHref === '/' ? '/' : `${baseHref}/`;
-};
+import { getLocalizedPath } from '@/lib/path-utils';
 
 export default function NotFound() {
   const { language, translations } = useLanguage();
