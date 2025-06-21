@@ -3,6 +3,7 @@
 
 import type { Dispatch, SetStateAction } from 'react';
 import React, { createContext, useState, useMemo, useCallback, useContext } from 'react';
+import { usePathname } from 'next/navigation';
 
 export type Language = 'en' | 'zh';
 

@@ -57,7 +57,7 @@ export default function ContactPopover() {
 
   return (
     <div
-      className={cn("fixed bottom-4 left-4 z-50", {
+      className={cn("fixed bottom-4 left-4 z-50 contact-popover-container", {
         hidden: !showLayoutElements,
       })}
     >
@@ -101,12 +101,12 @@ export default function ContactPopover() {
             </div>
             <div className="grid gap-2.5">
               <div className="flex justify-center mb-1">
-                <div className="relative h-32 w-32 xs:h-48 xs:w-48">
+                <div className="relative h-40 w-40 xs:h-56 xs:w-56">
                   <Image
                     src="/images/profile.webp"
                     alt={profileImageAlt}
                     fill
-                    sizes="(max-width: 319px) 128px, 192px"
+                    sizes="(max-width: 319px) 160px, 224px"
                     className="rounded-md object-cover"
                     data-ai-hint="person portrait"
                   />
@@ -115,11 +115,14 @@ export default function ContactPopover() {
               <div className="flex flex-col items-center space-y-1.5 text-center">
                 <Button
                   asChild
-                  className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-2 py-1 text-[10px] leading-tight font-headline border transition-transform hover:scale-105 whitespace-nowrap"
+                  className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
                 >
                   <a href={dynamicMailtoLink}>
                     {emailButtonText}
-                    <Mail className="ml-1 h-3 w-3" aria-hidden="true" />
+                    <Mail
+                      className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4"
+                      aria-hidden="true"
+                    />
                   </a>
                 </Button>
               </div>

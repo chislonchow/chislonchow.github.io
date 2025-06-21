@@ -45,13 +45,13 @@ function ServiceCard({ title, description, href }: ServiceCardProps) {
   const cardInnerContent = (
     <Card className="transition-all duration-150 hover:shadow-lg h-full flex flex-col overflow-hidden shadow-md bg-card">
       <CardHeader className="p-6 pb-3">
-        <CardTitle className="text-base font-headline font-semibold text-primary">
+        <CardTitle className="text-xl sm:text-2xl font-headline font-semibold text-primary">
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow p-6 pt-0">
         <p className={cn(
-            "text-sm text-secondary-foreground leading-relaxed text-left font-headline"
+            "text-lg text-secondary-foreground leading-relaxed text-left font-headline"
           )}>
           {description}
         </p>
@@ -242,7 +242,7 @@ export default function HomePageClientContents({
             <span style={{ color: 'hsl(202 25% 20%)' }}>Chislon</span>{' '}
             <span style={{ color: 'hsl(202 25% 25%)' }}>Chow</span>
           </h1>
-          <p className="text-base xs:text-lg md:text-lg text-muted-foreground mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <p className="text-base xs:text-lg sm:text-lg md:text-lg text-muted-foreground mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto">
             <span>{heroSubtitleDisplay}</span>
             <CanadaFlagIcon
               className="h-[0.8em] w-[1.6em] inline-block ml-1.5 align-middle"
@@ -252,22 +252,22 @@ export default function HomePageClientContents({
           <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pb-20">
             <a
               href={dynamicMailtoLink}
-              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-base border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center shadow-md hover:shadow-lg"
+              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 py-2.5 text-base sm:px-6 sm:py-3 sm:text-lg border transition-transform hover:scale-105 whitespace-nowrap inline-flex items-center justify-center shadow-md hover:shadow-lg"
             >
               {heroButtonText}
               <Mail
-                className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
                 aria-hidden="true"
               />
             </a>
             <Button
               asChild
-              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-base border transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
+              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-5 py-2.5 text-base sm:px-6 sm:py-3 sm:text-lg border transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
             >
               <Link href={profilePath}>
                 {heroButtonSecondaryText}
                 <User
-                  className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                  className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
                   aria-hidden="true"
                 />
               </Link>
@@ -296,16 +296,16 @@ export default function HomePageClientContents({
                   "font-body", 
                   "text-[hsl(202,40%,30%)] mb-0.5 leading-normal",
                   language === "zh"
-                    ? "text-base xs:text-lg sm:text-xl md:text-2xl" 
-                    : "text-sm xs:text-base sm:text-lg md:text-xl"
+                    ? "text-xl xs:text-2xl sm:text-3xl md:text-4xl"
+                    : "text-lg xs:text-xl sm:text-2xl md:text-3xl"
                 )}
               >
                 <Quote
                   className={cn(
                     "inline-block text-primary/50 transform rotate-180 mr-2 mb-1 align-middle",
                     language === "zh"
-                      ? "w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                      : "w-3 h-3 xs:w-4 xs:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5"
+                      ? "w-5 h-5 xs:w-6 xs:h-6 sm:w-6 sm:h-6 md:w-7 md:h-7"
+                      : "w-4 h-4 xs:w-5 xs:h-5 sm:w-5 sm:h-5 md:w-6 md:h-6"
                   )}
                   aria-hidden="true"
                 />
@@ -350,7 +350,10 @@ export default function HomePageClientContents({
             <CardContent className="p-4 xs:p-6 md:p-10">
               <div className="md:flex md:items-center md:gap-8">
                 <div className="mb-8 md:mb-0 md:flex-grow">
-                  <p className="text-base md:text-lg text-foreground/90 max-w-xl text-left mb-6 font-headline">
+                  <p className={cn(
+                    "text-foreground/90 max-w-xl text-left mb-6 font-headline",
+                    language === "zh" ? "text-xl" : "text-lg sm:text-xl"
+                  )}>
                     {ctaTextContent}
                   </p>
                   {articlesForFrontpageAccordion.length > 0 && (
@@ -362,12 +365,12 @@ export default function HomePageClientContents({
                           className="border-x-0 border-t-0 first:border-t-0 last:border-b-0"
                         >
                           <AccordionTrigger className="text-base md:text-lg font-bold text-left hover:no-underline px-2 py-3.5">
-                            {article.title[language]}
+                            <span className="flex-1 text-left">{article.title[language]}</span>
                           </AccordionTrigger>
                           <AccordionContent className="pt-2 pb-4 px-4">
                             <p className={cn(
                                 "font-body",
-                                "text-base md:text-lg text-foreground/80 mb-4"
+                                "text-base sm:text-lg text-foreground/80 mb-4"
                               )}>
                               {article.description[language]}
                             </p>
@@ -402,12 +405,12 @@ export default function HomePageClientContents({
                   <Button
                     asChild
                     size="lg"
-                    className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs sm:px-7 sm:py-3.5 sm:text-base md:px-7 md:py-3.5 md:text-lg border transition-transform hover:scale-105 whitespace-nowrap md:w-auto shadow-md hover:shadow-lg"
+                    className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-xl md:px-7 md:py-3.5 md:text-lg border transition-transform hover:scale-105 whitespace-nowrap md:w-auto shadow-md hover:shadow-lg"
                   >
                     <Link href={articlesPath}>
                       {ctaButtonArticlesText}
                       <Newspaper
-                        className="ml-2 h-2.5 w-2.5 sm:h-4 sm:w-4"
+                        className="ml-2 h-5 w-5 sm:h-6 sm:w-6"
                         aria-hidden="true"
                       />
                     </Link>
@@ -500,18 +503,18 @@ export default function HomePageClientContents({
                   className="w-8 h-8 mx-auto mb-0 sm:mb-2 text-accent"
                   aria-hidden="true"
                 />
-                <CardTitle className="text-base xs:text-lg md:text-lg text-foreground font-semibold font-headline mb-1">
+                <CardTitle className="text-lg text-foreground font-semibold font-headline mb-1">
                   {crisisCard1TitleText}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90 text-left">
                 <p className={cn(
-                    "mb-3 text-sm leading-relaxed font-headline"
+                    "mb-3 leading-relaxed font-headline text-xl"
                   )}>
                   {crisisCard1P1Text}
                 </p>
                 <p className={cn(
-                    "text-sm leading-relaxed font-headline"
+                    "leading-relaxed font-headline text-xl"
                   )}>
                   {crisisCard1P2Text}
                 </p>
@@ -523,18 +526,18 @@ export default function HomePageClientContents({
                   className="w-8 h-8 mx-auto  mb-0 sm:mb-2 text-primary"
                   aria-hidden="true"
                 />
-                <CardTitle className="text-base xs:text-lg md:text-lg text-foreground font-semibold font-headline mb-1">
+                <CardTitle className="text-lg text-foreground font-semibold font-headline mb-1">
                   {crisisCard2TitleText}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90">
                 <p className={cn(
-                    "mb-3 text-sm leading-relaxed font-headline"
+                    "mb-3 text-xl leading-relaxed font-headline"
                   )}>
                   {crisisCard2P1Text}
                 </p>
                 <ul className={cn(
-                    "list-disc pl-5 space-y-1.5 text-sm leading-relaxed font-headline"
+                    "list-disc pl-5 space-y-1.5 text-xl leading-relaxed font-headline"
                   )}>
                   {crisisHotlines.map((hotline) => {
                     const hotlineText = getTranslatedString(translations[hotline.key], language);
@@ -575,7 +578,7 @@ export default function HomePageClientContents({
             className={cn(
               "font-extrabold mb-4", 
               language === "zh"
-                ? "text-lg xs:text-2xl sm:text-4xl md:text-4xl"
+                ? "text-lg xs:text-xl sm:text-4xl md:text-4xl"
                 : "text-lg xs:text-2xl sm:text-2xl md:text-2xl"
             )}
             style={{ color: "hsl(202, 10%, 30%)" }}
@@ -585,9 +588,7 @@ export default function HomePageClientContents({
           <p
             className={cn( 
               "mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto",
-              language === "zh"
-                ? "text-base xs:text-xl sm:text-xl md:text-2xl"
-                : "text-sm xs:text-lg sm:text-base md:text-lg"
+              "text-base md:text-lg"
             )}
             style={{ color: "hsl(202, 10%, 60%)" }}
           >
@@ -598,3 +599,7 @@ export default function HomePageClientContents({
     </div>
   );
 }
+
+    
+
+    

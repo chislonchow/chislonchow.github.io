@@ -101,13 +101,13 @@ export default function Footer() {
 
           {/* Right Half: Contact Info and Disclaimer Text */}
           <div className="sm:w-1/2 text-left sm:text-right">
-            <p className="text-muted-foreground text-sm mb-2">
+            <p className="text-muted-foreground text-base mb-2">
               <span className="mr-1">{emailLabelText}</span>
               <a href={mailtoLink} className="hover:text-primary hover:underline">
                 {emailAddress}
               </a>
             </p>
-            <p className="text-muted-foreground text-sm italic font-normal">
+            <p className="text-muted-foreground text-base italic font-normal">
               {footerDisclaimerText}
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function Footer() {
 
         {/* Copyright Information - Full Width Below */}
         <div className="text-center">
-          <p className="text-muted-foreground text-sm font-normal">
+          <p className="text-muted-foreground text-base font-normal">
             {fullCopyrightText}
           </p>
         </div>

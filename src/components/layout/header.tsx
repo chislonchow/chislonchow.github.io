@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -15,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTitle,
   SheetTrigger,
@@ -75,21 +75,20 @@ const MobileNavLinkItem = ({
   href,
   label,
   icon,
-  onItemClick,
 }: {
   href: string;
   label: string;
   icon: React.ReactNode;
-  onItemClick?: () => void;
 }) => (
-  <Link
-    href={href}
-    onClick={onItemClick}
-    className="flex items-center text-base font-medium font-headline hover:text-primary transition-colors py-3 px-4 w-full hover:bg-accent/20 rounded-md"
-  >
-    {icon}
-    {label}
-  </Link>
+  <SheetClose asChild>
+    <Link
+      href={href}
+      className="flex items-center text-2xl font-medium font-headline hover:text-primary transition-colors py-3 px-4 w-full hover:bg-accent/20 rounded-md"
+    >
+      {icon}
+      {label}
+    </Link>
+  </SheetClose>
 );
 
 export default function Header() {
@@ -105,10 +104,6 @@ export default function Header() {
       icon: linkInfo.icon,
     };
   });
-
-  const handleMobileLinkClick = () => {
-    setIsSheetOpen(false);
-  };
 
   const displaySiteName = getTranslatedString(translations.headerSiteName, 'en') || 
                           getTranslatedString(translations.siteName, 'en') || 
@@ -168,7 +163,7 @@ export default function Header() {
               <SheetContent
                 id="mobile-menu-content"
                 side="right"
-                className="w-[180px] p-0 pt-12 bg-background"
+                className="w-[216px] p-0 pt-12 bg-background"
               >
                 <SheetTitle className="sr-only">Menu</SheetTitle>
                 <nav
@@ -181,7 +176,6 @@ export default function Header() {
                       href={link.href}
                       label={link.label}
                       icon={link.icon}
-                      onItemClick={handleMobileLinkClick}
                     />
                   ))}
                 </nav>
