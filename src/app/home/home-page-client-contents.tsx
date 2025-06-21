@@ -45,13 +45,13 @@ function ServiceCard({ title, description, href }: ServiceCardProps) {
   const cardInnerContent = (
     <Card className="transition-all duration-150 hover:shadow-lg h-full flex flex-col overflow-hidden shadow-md bg-card">
       <CardHeader className="p-6 pb-3">
-        <CardTitle className="text-sm xs:text-base md:text-base font-headline font-semibold text-primary">
+        <CardTitle className="text-base font-headline font-semibold text-primary">
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow p-6 pt-0">
         <p className={cn(
-            "text-secondary-foreground leading-relaxed text-xs xs:text-sm md:text-base text-left font-headline"
+            "text-sm text-secondary-foreground leading-relaxed text-left font-headline"
           )}>
           {description}
         </p>
@@ -237,12 +237,12 @@ export default function HomePageClientContents({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1
             id="hero-title-h1"
-            className="text-2xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4"
           >
             <span style={{ color: 'hsl(202 25% 20%)' }}>Chislon</span>{' '}
             <span style={{ color: 'hsl(202 25% 25%)' }}>Chow</span>
           </h1>
-          <p className="text-xs xs:text-sm sm:text-base md:text-lg text-muted-foreground mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <p className="text-base xs:text-lg md:text-lg text-muted-foreground mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto">
             <span>{heroSubtitleDisplay}</span>
             <CanadaFlagIcon
               className="h-[0.8em] w-[1.6em] inline-block ml-1.5 align-middle"
@@ -350,7 +350,7 @@ export default function HomePageClientContents({
             <CardContent className="p-4 xs:p-6 md:p-10">
               <div className="md:flex md:items-center md:gap-8">
                 <div className="mb-8 md:mb-0 md:flex-grow">
-                  <p className="text-sm md:text-lg text-foreground/90 max-w-xl text-left mb-6 font-headline">
+                  <p className="text-base md:text-lg text-foreground/90 max-w-xl text-left mb-6 font-headline">
                     {ctaTextContent}
                   </p>
                   {articlesForFrontpageAccordion.length > 0 && (
@@ -361,13 +361,13 @@ export default function HomePageClientContents({
                           key={article.slug}
                           className="border-x-0 border-t-0 first:border-t-0 last:border-b-0"
                         >
-                          <AccordionTrigger className="text-xs md:text-sm font-bold text-left hover:no-underline px-2 py-3.5">
+                          <AccordionTrigger className="text-base md:text-lg font-bold text-left hover:no-underline px-2 py-3.5">
                             {article.title[language]}
                           </AccordionTrigger>
                           <AccordionContent className="pt-2 pb-4 px-4">
                             <p className={cn(
                                 "font-body",
-                                "text-xs md:text-base text-foreground/80 mb-4"
+                                "text-base md:text-lg text-foreground/80 mb-4"
                               )}>
                               {article.description[language]}
                             </p>
@@ -506,12 +506,12 @@ export default function HomePageClientContents({
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90 text-left">
                 <p className={cn(
-                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
+                    "mb-3 text-sm leading-relaxed font-headline"
                   )}>
                   {crisisCard1P1Text}
                 </p>
                 <p className={cn(
-                    "text-xs xs:text-sm md:text-base leading-relaxed font-headline"
+                    "text-sm leading-relaxed font-headline"
                   )}>
                   {crisisCard1P2Text}
                 </p>
@@ -529,12 +529,12 @@ export default function HomePageClientContents({
               </CardHeader>
               <CardContent className="p-2 flex-grow text-foreground/90">
                 <p className={cn(
-                    "mb-3 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
+                    "mb-3 text-sm leading-relaxed font-headline"
                   )}>
                   {crisisCard2P1Text}
                 </p>
                 <ul className={cn(
-                    "list-disc pl-5 space-y-1.5 text-xs xs:text-sm md:text-base leading-relaxed font-headline"
+                    "list-disc pl-5 space-y-1.5 text-sm leading-relaxed font-headline"
                   )}>
                   {crisisHotlines.map((hotline) => {
                     const hotlineText = getTranslatedString(translations[hotline.key], language);
@@ -575,7 +575,7 @@ export default function HomePageClientContents({
             className={cn(
               "font-extrabold mb-4", 
               language === "zh"
-                ? "text-2xl xs:text-4xl sm:text-4xl md:text-4xl"
+                ? "text-lg xs:text-2xl sm:text-4xl md:text-4xl"
                 : "text-lg xs:text-2xl sm:text-2xl md:text-2xl"
             )}
             style={{ color: "hsl(202, 10%, 30%)" }}
@@ -586,8 +586,8 @@ export default function HomePageClientContents({
             className={cn( 
               "mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto",
               language === "zh"
-                ? "text-base xs:text-lg sm:text-xl md:text-2xl"
-                : "text-xs xs:text-sm sm:text-base md:text-lg"
+                ? "text-base xs:text-xl sm:text-xl md:text-2xl"
+                : "text-sm xs:text-lg sm:text-base md:text-lg"
             )}
             style={{ color: "hsl(202, 10%, 60%)" }}
           >

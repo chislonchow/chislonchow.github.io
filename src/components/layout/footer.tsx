@@ -107,7 +107,7 @@ export default function Footer() {
                 {emailAddress}
               </a>
             </p>
-            <p className="text-muted-foreground text-xs italic font-normal">
+            <p className="text-muted-foreground text-sm italic font-normal">
               {footerDisclaimerText}
             </p>
           </div>
