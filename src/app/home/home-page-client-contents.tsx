@@ -523,7 +523,13 @@ export default function HomePageClientContents({
       {/* Free Consultation Section */}
       <section
         id="free-consultation-section"
-        className="py-12 sm:py-16 w-full bg-gradient-to-r from-primary/10 to-accent/10"
+        className="py-12 sm:py-16 w-full"
+        style={{
+          backgroundColor: "hsl(202, 10%, 92%)",
+          backgroundImage: "url('/images/bg-waves-tiled.webp')",
+          backgroundRepeat: "repeat",
+          backgroundPosition: "0 100%",
+        }}
         aria-labelledby={freeConsultationTitleId}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -749,7 +755,7 @@ export default function HomePageClientContents({
 
               {articlesForFrontpageAccordion.length > 0 ? (
                 <div className="flex flex-col">
-                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-y-4 sm:gap-x-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-y-4 sm:gap-x-4">
                     <div className="flex-grow">
                       <Accordion type="single" collapsible className="w-full">
                         {articlesForFrontpageAccordion.map((article) => (
