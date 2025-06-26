@@ -8,6 +8,8 @@ import type { Language } from '@/contexts/language-context';
 import { getNotificationData } from '@/lib/notification-data';
 import HomePageNotifier from '@/components/home/home-page-notifier';
 import React from 'react';
+import { JsonLd } from '@/lib/seo/schema-utils';
+import { generateProfessionalServiceSchema } from '@/lib/seo/professional-service-schema';
 
 export async function generateMetadata(): Promise<Metadata> {
   const currentYear = new Date().getFullYear();
@@ -27,18 +29,22 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': '/',
         'zh': '/zh/',
+        'x-default': '/',
       },
     },
   };
 }
 
 export default async function Page() {
-  const allArticles = getArticleListItems(); // Use the optimized function
+  const allArticles = getArticleListItems();
   const notificationConfig = await getNotificationData();
+  const translations = getTranslations(new Date().getFullYear());
+  const professionalServiceSchema = generateProfessionalServiceSchema('en', translations);
 
   return (
     <>
-      <HomePageClientContents allArticles={allArticles} /> {/* Pass optimized article list */}
+      <JsonLd schema={professionalServiceSchema} />
+      <HomePageClientContents allArticles={allArticles} />
       <HomePageNotifier notificationConfig={notificationConfig} />
     </>
   );

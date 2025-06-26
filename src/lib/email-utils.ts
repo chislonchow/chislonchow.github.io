@@ -1,6 +1,4 @@
 
-'use client';
-
 import type { Language } from '@/contexts/language-context';
 import type { ProcessedTranslations } from '@/lib/translations';
 import { getTranslatedString } from '@/lib/translations';

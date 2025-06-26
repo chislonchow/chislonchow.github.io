@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -62,9 +63,7 @@ function InfoCard({ icon, title, description }: InfoCardProps) {
       <div className="flex items-center justify-center bg-primary/10 rounded-full h-12 w-12 sm:h-16 sm:w-16 mb-4">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold font-headline text-foreground mb-2">
-        {title}
-      </h3>
+      <h3 className="text-lg font-semibold font-headline text-foreground mb-2">{title}</h3>
       <p className="text-base text-muted-foreground">{description}</p>
     </div>
   );
@@ -76,20 +75,14 @@ interface ServiceHighlightCardProps {
   description: React.ReactNode;
 }
 
-function ServiceHighlightCard({
-  icon,
-  title,
-  description,
-}: ServiceHighlightCardProps) {
+function ServiceHighlightCard({ icon, title, description }: ServiceHighlightCardProps) {
   return (
     <Card className="h-full flex flex-col shadow-md bg-card/50">
       <CardHeader className="items-center pb-2 text-center">
         <div className="flex items-center justify-center rounded-full h-12 w-12 sm:h-16 sm:w-16 text-primary">
           {icon}
         </div>
-        <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">
-          {title}
-        </CardTitle>
+        <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow pt-2">
         <div className="text-base text-muted-foreground leading-relaxed service-glance-description">
@@ -107,12 +100,7 @@ interface ApproachStepProps {
   isLast?: boolean;
 }
 
-function ApproachStep({
-  icon,
-  title,
-  description,
-  isLast = false,
-}: ApproachStepProps) {
+function ApproachStep({ icon, title, description, isLast = false }: ApproachStepProps) {
   return (
     <div className="flex">
       {/* Icon Column */}
@@ -124,15 +112,11 @@ function ApproachStep({
         </div>
         {!isLast && <div className="w-px h-full min-h-[8rem] bg-border" />}
       </div>
-
+      
       {/* Content Column */}
       <div className="pb-2">
-        <h3 className="text-lg font-headline font-semibold text-foreground mb-1">
-          {title}
-        </h3>
-        <div className="text-base text-muted-foreground approach-description">
-          {description}
-        </div>
+        <h3 className="text-lg font-headline font-semibold text-foreground mb-1">{title}</h3>
+        <div className="text-base text-muted-foreground approach-description">{description}</div>
       </div>
     </div>
   );
@@ -146,16 +130,14 @@ const ResourcesIcon = ({ className }: { className?: string }) => (
   >
     <defs>
       <linearGradient id="gradient-cta-icon" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style={{ stopColor: "hsl(202, 20%, 63%)" }} />
-        <stop offset="100%" style={{ stopColor: "hsl(202, 20%, 55%)" }} />
+        <stop offset="0%" style={{ stopColor: 'hsl(202, 20%, 63%)' }} />
+        <stop offset="100%" style={{ stopColor: 'hsl(202, 20%, 55%)' }} />
       </linearGradient>
     </defs>
-    <path
-      fill="url(#gradient-cta-icon)"
-      d="M11 17.05V7.2q-1.025-.6-2.175-.9T6.5 6q-.9 0-1.788.175T3 6.7v9.9q.875-.3-1.738-.45T6.5 16q1.175 0 2.288.263T11 17.05M12 20q-1.2-.95-2.6-1.475T6.5 18q-1.05 0-2.062.275T2.5 19.05q-.525.275-1.012-.025T1 18.15V6.1q0-.275.138-.525T1.55 5.2q1.15-.6 2.4-.9T6.5 4q1.85 0 3.15.425t2.8 1.3q.275.15.413.35T13 6.6v10.45q1.1-.525 2.213-.788T17.5 16q.9 0 1.763.15T21 16.6V4.575q.375.125.738.275t.712.35q.275.125.413.375T23 6.1v12.05q0 .575-.488.875t-1.012.025q-.925-.5-1.937-.775T17.5 18q-1.5 0-2.9.525T12 20m3.5-6V3l3-1v11zM7 11.525"
-    />
+    <path fill="url(#gradient-cta-icon)" d="M11 17.05V7.2q-1.025-.6-2.175-.9T6.5 6q-.9 0-1.788.175T3 6.7v9.9q.875-.3-1.738-.45T6.5 16q1.175 0 2.288.263T11 17.05M12 20q-1.2-.95-2.6-1.475T6.5 18q-1.05 0-2.062.275T2.5 19.05q-.525.275-1.012-.025T1 18.15V6.1q0-.275.138-.525T1.55 5.2q1.15-.6 2.4-.9T6.5 4q1.85 0 3.15.425t2.8 1.3q.275.15.413.35T13 6.6v10.45q1.1-.525 2.213-.788T17.5 16q.9 0 1.763.15T21 16.6V4.575q.375.125.738.275t.712.35q.275.125.413.375T23 6.1v12.05q0 .575-.488.875t-1.012.025q-.925-.5-1.937-.775T17.5 18q-1.5 0-2.9.525T12 20m3.5-6V3l3-1v11zM7 11.525" />
   </svg>
 );
+
 
 interface HomePageClientContentsProps {
   allArticles: ArticleListItem[];
@@ -171,118 +153,83 @@ export default function HomePageClientContents({
   const articlesPath = getLocalizedPath("/articles/page/1", language);
   const faqPath = getLocalizedPath("/faq", language);
 
-  const serviceFeesDescMarkdown = getTranslatedString(
-    translations.serviceFeesDescMarkdown,
-    language
-  );
-  const serviceLocationDescMarkdown = getTranslatedString(
-    translations.serviceLocationDescMarkdown,
-    language
-  );
-  const serviceFocusAreasDescMarkdown = getTranslatedString(
-    translations.serviceFocusAreasDescMarkdown,
-    language
-  );
-  const serviceQuestionsDescMarkdown = getTranslatedString(
-    translations.serviceQuestionsDescMarkdown,
-    language
-  );
-  const approach1DescMarkdown = getTranslatedString(
-    translations.approach1Desc,
-    language
-  );
-  const approach2DescMarkdown = getTranslatedString(
-    translations.approach2Desc,
-    language
-  );
-  const approach3DescMarkdown = getTranslatedString(
-    translations.approach3Desc,
-    language
-  );
+  const serviceFeesDescMarkdown = getTranslatedString(translations.serviceFeesDescMarkdown, language);
+  const serviceLocationDescMarkdown = getTranslatedString(translations.serviceLocationDescMarkdown, language);
+  const serviceFocusAreasDescMarkdown = getTranslatedString(translations.serviceFocusAreasDescMarkdown, language);
+  const serviceQuestionsDescMarkdown = getTranslatedString(translations.serviceQuestionsDescMarkdown, language);
+  const approach1DescMarkdown = getTranslatedString(translations.approach1Desc, language);
+  const approach2DescMarkdown = getTranslatedString(translations.approach2Desc, language);
+  const approach3DescMarkdown = getTranslatedString(translations.approach3Desc, language);
 
-  const [serviceFeesHtml, setServiceFeesHtml] = useState("");
-  const [serviceLocationHtml, setServiceLocationHtml] = useState("");
-  const [serviceFocusAreasHtml, setServiceFocusAreasHtml] = useState("");
-  const [serviceQuestionsHtml, setServiceQuestionsHtml] = useState("");
-  const [approach1Html, setApproach1Html] = useState("");
-  const [approach2Html, setApproach2Html] = useState("");
-  const [approach3Html, setApproach3Html] = useState("");
+  const [serviceFeesHtml, setServiceFeesHtml] = useState('');
+  const [serviceLocationHtml, setServiceLocationHtml] = useState('');
+  const [serviceFocusAreasHtml, setServiceFocusAreasHtml] = useState('');
+  const [serviceQuestionsHtml, setServiceQuestionsHtml] = useState('');
+  const [approach1Html, setApproach1Html] = useState('');
+  const [approach2Html, setApproach2Html] = useState('');
+  const [approach3Html, setApproach3Html] = useState('');
 
   const handleScrollToNext = () => {
-    const element = document.getElementById("free-consultation-section");
+    const element = document.getElementById('free-consultation-section');
     if (element) {
-      // The header is sticky and has a height of h-14 (56px).
-      const headerOffset = 56;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerOffset;
+        // The header is sticky and has a height of h-14 (56px).
+        const headerOffset = 56;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     }
   };
 
   useEffect(() => {
     const processMarkdown = async () => {
-      const processor = remark()
-        .use(remarkRehype, { allowDangerousHtml: true })
-        .use(rehypeRaw)
-        .use(rehypeSanitize, customSchema)
-        .use(rehypeStringify);
+        const processor = remark()
+            .use(remarkRehype, { allowDangerousHtml: true })
+            .use(rehypeRaw)
+            .use(rehypeSanitize, customSchema)
+            .use(rehypeStringify);
+        
+        const feesPromise = processor.process(serviceFeesDescMarkdown);
+        const locationPromise = processor.process(serviceLocationDescMarkdown);
+        const focusPromise = processor.process(serviceFocusAreasDescMarkdown);
+        const questionsPromise = processor.process(serviceQuestionsDescMarkdown);
+        const approach1Promise = processor.process(approach1DescMarkdown);
+        const approach2Promise = processor.process(approach2DescMarkdown);
+        const approach3Promise = processor.process(approach3DescMarkdown);
 
-      const feesPromise = processor.process(serviceFeesDescMarkdown);
-      const locationPromise = processor.process(serviceLocationDescMarkdown);
-      const focusPromise = processor.process(serviceFocusAreasDescMarkdown);
-      const questionsPromise = processor.process(serviceQuestionsDescMarkdown);
-      const approach1Promise = processor.process(approach1DescMarkdown);
-      const approach2Promise = processor.process(approach2DescMarkdown);
-      const approach3Promise = processor.process(approach3DescMarkdown);
+        const [feesFile, locationFile, focusFile, questionsFile, approach1File, approach2File, approach3File] = await Promise.all([
+            feesPromise, 
+            locationPromise, 
+            focusPromise, 
+            questionsPromise,
+            approach1Promise,
+            approach2Promise,
+            approach3Promise
+        ]);
 
-      const [
-        feesFile,
-        locationFile,
-        focusFile,
-        questionsFile,
-        approach1File,
-        approach2File,
-        approach3File,
-      ] = await Promise.all([
-        feesPromise,
-        locationPromise,
-        focusPromise,
-        questionsPromise,
-        approach1Promise,
-        approach2Promise,
-        approach3Promise,
-      ]);
-
-      setServiceFeesHtml(String(feesFile));
-      setServiceLocationHtml(String(locationFile));
-      setServiceFocusAreasHtml(String(focusFile));
-      setServiceQuestionsHtml(String(questionsFile));
-      setApproach1Html(String(approach1File));
-      setApproach2Html(String(approach2File));
-      setApproach3Html(String(approach3File));
-    };
-    if (
-      serviceFeesDescMarkdown &&
-      serviceLocationDescMarkdown &&
-      serviceFocusAreasDescMarkdown &&
-      serviceQuestionsDescMarkdown
-    ) {
+        setServiceFeesHtml(String(feesFile));
+        setServiceLocationHtml(String(locationFile));
+        setServiceFocusAreasHtml(String(focusFile));
+        setServiceQuestionsHtml(String(questionsFile));
+        setApproach1Html(String(approach1File));
+        setApproach2Html(String(approach2File));
+        setApproach3Html(String(approach3File));
+    }
+    if (serviceFeesDescMarkdown && serviceLocationDescMarkdown && serviceFocusAreasDescMarkdown && serviceQuestionsDescMarkdown) {
       processMarkdown();
     }
   }, [
-    language,
-    serviceFeesDescMarkdown,
-    serviceLocationDescMarkdown,
-    serviceFocusAreasDescMarkdown,
+    language, 
+    serviceFeesDescMarkdown, 
+    serviceLocationDescMarkdown, 
+    serviceFocusAreasDescMarkdown, 
     serviceQuestionsDescMarkdown,
     approach1DescMarkdown,
     approach2DescMarkdown,
-    approach3DescMarkdown,
+    approach3DescMarkdown
   ]);
 
   useEffect(() => {
@@ -304,10 +251,7 @@ export default function HomePageClientContents({
   const resourcesTitleId = "resources-title";
   const pageBottomTitleId = "page-bottom-title-h2";
 
-  const heroSubtitleRawText = getTranslatedString(
-    translations.heroSubtitle,
-    language
-  );
+  const heroSubtitleRawText = getTranslatedString(translations.heroSubtitle, language);
   let heroSubtitleDisplay: React.ReactNode = heroSubtitleRawText;
   if (language === "zh" && heroSubtitleRawText) {
     const enPhraseWithProvinceReg = /Registered Psychotherapist\s?\(安省\)/;
@@ -326,133 +270,44 @@ export default function HomePageClientContents({
   }
 
   const heroButtonText = getTranslatedString(translations.heroButton, language);
-  const heroButtonSecondaryText = getTranslatedString(
-    translations.heroButtonSecondary,
-    language
-  );
+  const heroButtonSecondaryText = getTranslatedString(translations.heroButtonSecondary, language);
 
-  const freeConsultationTitleText = getTranslatedString(
-    translations.freeConsultationTitle,
-    language
-  );
-  const freeConsultationSubtitleText = getTranslatedString(
-    translations.freeConsultationSubtitle,
-    language
-  );
-  const freeConsultationDescriptionText = getTranslatedString(
-    translations.freeConsultationDescription,
-    language
-  );
+  const freeConsultationTitleText = getTranslatedString(translations.freeConsultationTitle, language);
+  const freeConsultationSubtitleText = getTranslatedString(translations.freeConsultationSubtitle, language);
+  const freeConsultationDescriptionText = getTranslatedString(translations.freeConsultationDescription, language);
 
-  const whyChoosePsychotherapyTitleText = getTranslatedString(
-    translations.whyChoosePsychotherapyTitle,
-    language
-  );
-  const whyChooseCard1TitleText = getTranslatedString(
-    translations.whyChooseCard1Title,
-    language
-  );
-  const whyChooseCard1DescText = getTranslatedString(
-    translations.whyChooseCard1Desc,
-    language
-  );
-  const whyChooseCard2TitleText = getTranslatedString(
-    translations.whyChooseCard2Title,
-    language
-  );
-  const whyChooseCard2DescText = getTranslatedString(
-    translations.whyChooseCard2Desc,
-    language
-  );
-  const whyChooseCard3TitleText = getTranslatedString(
-    translations.whyChooseCard3Title,
-    language
-  );
-  const whyChooseCard3DescText = getTranslatedString(
-    translations.whyChooseCard3Desc,
-    language
-  );
-  const whyChooseCard4TitleText = getTranslatedString(
-    translations.whyChooseCard4Title,
-    language
-  );
-  const whyChooseCard4DescText = getTranslatedString(
-    translations.whyChooseCard4Desc,
-    language
-  );
+  const whyChoosePsychotherapyTitleText = getTranslatedString(translations.whyChoosePsychotherapyTitle, language);
+  const whyChooseCard1TitleText = getTranslatedString(translations.whyChooseCard1Title, language);
+  const whyChooseCard1DescText = getTranslatedString(translations.whyChooseCard1Desc, language);
+  const whyChooseCard2TitleText = getTranslatedString(translations.whyChooseCard2Title, language);
+  const whyChooseCard2DescText = getTranslatedString(translations.whyChooseCard2Desc, language);
+  const whyChooseCard3TitleText = getTranslatedString(translations.whyChooseCard3Title, language);
+  const whyChooseCard3DescText = getTranslatedString(translations.whyChooseCard3Desc, language);
+  const whyChooseCard4TitleText = getTranslatedString(translations.whyChooseCard4Title, language);
+  const whyChooseCard4DescText = getTranslatedString(translations.whyChooseCard4Desc, language);
 
-  const myApproachTitleText = getTranslatedString(
-    translations.myApproachTitle,
-    language
-  );
-  const approach1TitleText = getTranslatedString(
-    translations.approach1Title,
-    language
-  );
-  const approach2TitleText = getTranslatedString(
-    translations.approach2Title,
-    language
-  );
-  const approach3TitleText = getTranslatedString(
-    translations.approach3Title,
-    language
-  );
+  const myApproachTitleText = getTranslatedString(translations.myApproachTitle, language);
+  const approach1TitleText = getTranslatedString(translations.approach1Title, language);
+  const approach2TitleText = getTranslatedString(translations.approach2Title, language);
+  const approach3TitleText = getTranslatedString(translations.approach3Title, language);
+  
+  const serviceSectionTitleText = getTranslatedString(translations.serviceSectionTitle, language);
+  const serviceFeesTitleText = getTranslatedString(translations.serviceFeesTitle, language);
+  const serviceLocationTitleText = getTranslatedString(translations.serviceLocationTitle, language);
+  const serviceFocusAreasTitleText = getTranslatedString(translations.serviceFocusAreasTitle, language);
+  
+  const serviceQuestionsTitleText = getTranslatedString(translations.serviceQuestionsTitle, language);
+  const serviceQuestionsButtonFAQText = getTranslatedString(translations.serviceQuestionsButtonFAQ, language);
+  const serviceQuestionsButtonEmailText = getTranslatedString(translations.serviceQuestionsButtonEmail, language);
 
-  const serviceSectionTitleText = getTranslatedString(
-    translations.serviceSectionTitle,
-    language
-  );
-  const serviceFeesTitleText = getTranslatedString(
-    translations.serviceFeesTitle,
-    language
-  );
-  const serviceLocationTitleText = getTranslatedString(
-    translations.serviceLocationTitle,
-    language
-  );
-  const serviceFocusAreasTitleText = getTranslatedString(
-    translations.serviceFocusAreasTitle,
-    language
-  );
 
-  const serviceQuestionsTitleText = getTranslatedString(
-    translations.serviceQuestionsTitle,
-    language
-  );
-  const serviceQuestionsButtonFAQText = getTranslatedString(
-    translations.serviceQuestionsButtonFAQ,
-    language
-  );
-  const serviceQuestionsButtonEmailText = getTranslatedString(
-    translations.serviceQuestionsButtonEmail,
-    language
-  );
+  const resourcesSectionLabel = getTranslatedString(translations.sectionResourcesLabel, language);
+  const resourcesTextContent = getTranslatedString(translations.resourcesTextContent, language);
+  const resourcesAccordionReadArticleText = getTranslatedString(translations.resourcesAccordionReadArticleText, language);
+  const resourcesButtonArticlesText = getTranslatedString(translations.resourcesButtonArticlesText, language);
 
-  const resourcesSectionLabel = getTranslatedString(
-    translations.sectionResourcesLabel,
-    language
-  );
-  const resourcesTextContent = getTranslatedString(
-    translations.resourcesTextContent,
-    language
-  );
-  const resourcesAccordionReadArticleText = getTranslatedString(
-    translations.resourcesAccordionReadArticleText,
-    language
-  );
-  const resourcesButtonArticlesText = getTranslatedString(
-    translations.resourcesButtonArticlesText,
-    language
-  );
-
-  const pageBottomSectionTitleText = getTranslatedString(
-    translations.pageBottomSectionTitle,
-    language
-  );
-  const pageBottomSectionSubtitleText = getTranslatedString(
-    translations.pageBottomSectionSubtitle,
-    language
-  );
+  const pageBottomSectionTitleText = getTranslatedString(translations.pageBottomSectionTitle, language);
+  const pageBottomSectionSubtitleText = getTranslatedString(translations.pageBottomSectionSubtitle, language);
 
   return (
     <div className="flex flex-col font-headline">
@@ -460,7 +315,7 @@ export default function HomePageClientContents({
       <section
         className="relative pt-14 xs:pt-16 sm:pt-20 md:pt-20 pb-20 w-full bg-cover bg-bottom bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/bg-hero.webp'), linear-gradient(to top, hsl(33, 71%, 97%), hsl(33, 71%, 92%))`,
+          backgroundImage: `url('/images/bg-hero.webp'), linear-gradient(to top, hsl(33, 71%, 97%), hsl(33, 71%, 92%))`
         }}
         aria-labelledby="hero-title-h1"
       >
@@ -469,12 +324,12 @@ export default function HomePageClientContents({
             id="hero-title-h1"
             className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black mb-4"
           >
-            <span style={{ color: "hsl(202 25% 20%)" }}>Chislon</span>{" "}
-            <span style={{ color: "hsl(202 25% 25%)" }}>Chow</span>
+            <span style={{ color: 'hsl(202 25% 20%)' }}>Chislon</span>{' '}
+            <span style={{ color: 'hsl(202 25% 25%)' }}>Chow</span>
           </h1>
-          <p
+          <p 
             className="text-base xs:text-lg sm:text-lg md:text-lg mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto font-light"
-            style={{ color: "hsl(202 25% 25%)" }}
+            style={{ color: 'hsl(202 25% 25%)' }}
           >
             <span>{heroSubtitleDisplay}</span>
             <CanadaFlagIcon
@@ -528,7 +383,7 @@ export default function HomePageClientContents({
           backgroundColor: "hsl(202, 10%, 92%)",
           backgroundImage: "url('/images/bg-waves-tiled.webp')",
           backgroundRepeat: "repeat",
-          backgroundPosition: "0 100%",
+          backgroundPosition: "0 100%"
         }}
         aria-labelledby={freeConsultationTitleId}
       >
@@ -560,7 +415,7 @@ export default function HomePageClientContents({
           </Card>
         </div>
       </section>
-
+      
       {/* Why Talk Therapy? Section */}
       <section
         className="py-12 sm:py-16 bg-secondary"
@@ -574,25 +429,23 @@ export default function HomePageClientContents({
             {whyChoosePsychotherapyTitleText}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4 sm:gap-8 max-w-5xl mx-auto">
-            <InfoCard
+            <InfoCard 
               icon={<Ear className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
               title={whyChooseCard1TitleText}
               description={whyChooseCard1DescText}
             />
-            <InfoCard
+            <InfoCard 
               icon={<LifeBuoy className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
               title={whyChooseCard2TitleText}
               description={whyChooseCard2DescText}
             />
-            <InfoCard
+            <InfoCard 
               icon={<DoorOpen className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
               title={whyChooseCard3TitleText}
               description={whyChooseCard3DescText}
             />
-            <InfoCard
-              icon={
-                <FolderLock className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-              }
+            <InfoCard 
+              icon={<FolderLock className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
               title={whyChooseCard4TitleText}
               description={whyChooseCard4DescText}
             />
@@ -617,29 +470,17 @@ export default function HomePageClientContents({
               <ApproachStep
                 icon={<HeartHandshake className="h-6 w-6 sm:h-8 sm:w-8" />}
                 title={approach1TitleText}
-                description={
-                  <div className="markdown-content">
-                    {parse(approach1Html, parserOptions)}
-                  </div>
-                }
+                description={<div className="markdown-content">{parse(approach1Html, parserOptions)}</div>}
               />
               <ApproachStep
                 icon={<DraftingCompass className="h-6 w-6 sm:h-8 sm:w-8" />}
                 title={approach2TitleText}
-                description={
-                  <div className="markdown-content">
-                    {parse(approach2Html, parserOptions)}
-                  </div>
-                }
+                description={<div className="markdown-content">{parse(approach2Html, parserOptions)}</div>}
               />
               <ApproachStep
                 icon={<UserCog className="h-6 w-6 sm:h-8 sm:w-8" />}
                 title={approach3TitleText}
-                description={
-                  <div className="markdown-content">
-                    {parse(approach3Html, parserOptions)}
-                  </div>
-                }
+                description={<div className="markdown-content">{parse(approach3Html, parserOptions)}</div>}
                 isLast={true}
               />
             </div>
@@ -663,62 +504,37 @@ export default function HomePageClientContents({
             <ServiceHighlightCard
               icon={<Wallet className="h-6 w-6 sm:h-8 sm:w-8" />}
               title={serviceFeesTitleText}
-              description={
-                <div className="markdown-content">
-                  {parse(serviceFeesHtml, parserOptions)}
-                </div>
-              }
+              description={<div className="markdown-content">{parse(serviceFeesHtml, parserOptions)}</div>}
             />
             <ServiceHighlightCard
               icon={<Navigation className="h-6 w-6 sm:h-8 sm:w-8" />}
               title={serviceLocationTitleText}
-              description={
-                <div className="markdown-content">
-                  {parse(serviceLocationHtml, parserOptions)}
-                </div>
-              }
+              description={<div className="markdown-content">{parse(serviceLocationHtml, parserOptions)}</div>}
             />
             <ServiceHighlightCard
               icon={<SearchCode className="h-6 w-6 sm:h-8 sm:w-8" />}
               title={serviceFocusAreasTitleText}
-              description={
-                <div className="markdown-content">
-                  {parse(serviceFocusAreasHtml, parserOptions)}
-                </div>
-              }
+              description={<div className="markdown-content">{parse(serviceFocusAreasHtml, parserOptions)}</div>}
             />
             <Card className="h-full flex flex-col shadow-md bg-card/75">
               <CardHeader className="items-center pb-2 text-center">
-                <div className="flex items-center justify-center rounded-full h-12 w-12 sm:h-16 sm:w-16 text-primary">
-                  <MessageCircleQuestion className="h-6 w-6 sm:h-8 sm:w-8" />
-                </div>
-                <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">
-                  {serviceQuestionsTitleText}
-                </CardTitle>
+                  <div className="flex items-center justify-center rounded-full h-12 w-12 sm:h-16 sm:w-16 text-primary">
+                      <MessageCircleQuestion className="h-6 w-6 sm:h-8 sm:w-8" />
+                  </div>
+                  <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">{serviceQuestionsTitleText}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col pt-2">
-                <div className="text-base text-muted-foreground leading-relaxed text-left have-questions-description">
-                  <div className="markdown-content">
-                    {parse(serviceQuestionsHtml, parserOptions)}
+                  <div className="text-base text-muted-foreground leading-relaxed text-left have-questions-description">
+                      <div className="markdown-content">{parse(serviceQuestionsHtml, parserOptions)}</div>
                   </div>
-                </div>
               </CardContent>
               <CardFooter className="flex flex-col xs:flex-row gap-2 w-full justify-center items-center pt-2 pb-6 px-6">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg"
-                >
-                  <Link href={faqPath}>{serviceQuestionsButtonFAQText}</Link>
-                </Button>
-                <Button
-                  asChild
-                  className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg"
-                >
-                  <a href={dynamicMailtoLink}>
-                    {serviceQuestionsButtonEmailText}
-                  </a>
-                </Button>
+                  <Button asChild variant="outline" className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg">
+                      <Link href={faqPath}>{serviceQuestionsButtonFAQText}</Link>
+                  </Button>
+                  <Button asChild className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg">
+                      <a href={dynamicMailtoLink}>{serviceQuestionsButtonEmailText}</a>
+                  </Button>
               </CardFooter>
             </Card>
           </div>
@@ -743,16 +559,14 @@ export default function HomePageClientContents({
           </h2>
           <Card className="bg-card max-w-3xl mx-auto shadow-md">
             <CardContent className="p-4 xs:p-6 md:p-10">
-              <p
-                className={cn(
-                  "text-left mb-6 font-headline",
-                  "text-base",
-                  "text-foreground/90"
-                )}
-              >
+              <p className={cn(
+                "text-left mb-6 font-headline",
+                "text-base",
+                "text-foreground/90"
+              )}>
                 {resourcesTextContent}
               </p>
-
+              
               {articlesForFrontpageAccordion.length > 0 ? (
                 <div className="flex flex-col">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-y-4 sm:gap-x-4">
@@ -765,16 +579,12 @@ export default function HomePageClientContents({
                             className="border-x-0 border-t-0 first:border-t-0 last:border-b-0"
                           >
                             <AccordionTrigger className="text-base md:text-lg font-bold text-left hover:no-underline px-2 py-3.5">
-                              <span className="flex-1 text-left">
-                                {article.title[language]}
-                              </span>
+                              <span className="flex-1 text-left">{article.title[language]}</span>
                             </AccordionTrigger>
                             <AccordionContent className="pt-2 pb-4 px-4">
-                              <p
-                                className={cn(
+                              <p className={cn(
                                   "text-base text-foreground/80 mb-4 font-body"
-                                )}
-                              >
+                                )}>
                                 {article.description[language]}
                               </p>
                               <div className="flex justify-end">
@@ -842,14 +652,14 @@ export default function HomePageClientContents({
           backgroundColor: "hsl(202, 10%, 92%)",
           backgroundImage: "url('/images/bg-waves-tiled.webp')",
           backgroundRepeat: "repeat",
-          backgroundPosition: "0 100%",
+          backgroundPosition: "0 100%"
         }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2
             id={pageBottomTitleId}
             className={cn(
-              "font-extrabold mb-4",
+              "font-extrabold mb-4", 
               language === "zh"
                 ? "text-lg xs:text-xl sm:text-4xl md:text-4xl"
                 : "text-lg xs:text-2xl sm:text-2xl md:text-2xl"
@@ -859,7 +669,7 @@ export default function HomePageClientContents({
             {pageBottomSectionTitleText}
           </h2>
           <p
-            className={cn(
+            className={cn( 
               "mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto",
               "text-base md:text-lg"
             )}

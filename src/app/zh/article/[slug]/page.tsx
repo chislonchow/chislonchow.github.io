@@ -12,6 +12,8 @@ import { Badge } from "@/components/ui/badge";
 import { CalendarDays, Tag } from "lucide-react";
 import type { Language } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
+import { JsonLd } from "@/lib/seo/schema-utils";
+import { generateArticleSchema } from "@/lib/seo/article-schema";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -38,14 +40,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   const pageTitle = `${article.title.zh} | ${siteName}`;
+  const enCanonicalUrl = `/article/${param.slug}/`;
+  const zhCanonicalUrl = `/zh/article/${param.slug}/`;
+
   return {
     title: { absolute: pageTitle },
     description: article.description.zh,
     alternates: {
-      canonical: `/zh/article/${param.slug}/`,
+      canonical: zhCanonicalUrl,
       languages: {
-        en: `/article/${param.slug}/`,
-        zh: `/zh/article/${param.slug}/`,
+        en: enCanonicalUrl,
+        zh: zhCanonicalUrl,
+        'x-default': enCanonicalUrl,
       },
     },
   };
@@ -68,6 +74,8 @@ export default async function ArticlePageZh({ params }: Props) {
   }
 
   const lang: Language = "zh";
+  const articleSchema = generateArticleSchema(article, lang);
+
   const updatedOnText = getTranslatedString(translations.updatedOn, lang);
   const errorLoadingTitle = getTranslatedString(translations.markdownErrorLoadingTitle, lang);
   const errorInvalidContentMessage = getTranslatedString(translations.markdownErrorInvalidContent, lang);
@@ -75,6 +83,7 @@ export default async function ArticlePageZh({ params }: Props) {
 
   return (
     <>
+      <JsonLd schema={articleSchema} />
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-10rem)]">
         <article className="max-w-3xl mx-auto bg-card p-3 xs:p-6 sm:p-8 md:p-10 rounded-xl border">
           <header className="mb-8 border-b pb-6">

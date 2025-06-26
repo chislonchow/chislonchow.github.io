@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Noto_Sans_TC, Noto_Serif_TC } from 'next/font/google';
@@ -49,6 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': '/',
         'zh': '/zh/',
+        'x-default': '/',
       },
     },
     icons: {}, 

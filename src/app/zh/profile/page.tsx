@@ -8,6 +8,8 @@ import { getTranslatedString } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations.server';
 import { getStaticPageData } from '@/lib/static-page-data'; 
 import type { Language } from '@/contexts/language-context';
+import { JsonLd } from '@/lib/seo/schema-utils';
+import { generateProfessionalServiceSchema } from '@/lib/seo/professional-service-schema';
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getStaticPageData('profile');
@@ -26,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': '/profile/',
         'zh': '/zh/profile/',
+        'x-default': '/profile/',
       },
     },
   };
@@ -34,6 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ProfilePageZh() {
   const pageData = await getStaticPageData('profile');
   const translations = getTranslations(new Date().getFullYear());
+  const professionalServiceSchema = generateProfessionalServiceSchema('zh', translations);
   const skeletonLoader = <ContentPageSkeleton itemCount={3} />;
 
   const langEn: Language = "en";
@@ -70,6 +74,7 @@ export default async function ProfilePageZh() {
 
   return (
     <>
+      <JsonLd schema={professionalServiceSchema} />
       <ContentPageClientLayout
         pageData={pageData}
         markdownEn={markdownEnNode}

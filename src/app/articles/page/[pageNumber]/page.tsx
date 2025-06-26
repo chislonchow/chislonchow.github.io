@@ -7,6 +7,8 @@ import { getTranslatedString } from "@/lib/translations";
 import { getTranslations } from "@/lib/translations.server";
 import { ARTICLES_PER_PAGE } from "@/lib/site-config";
 import type { Language } from "@/contexts/language-context";
+import { JsonLd } from "@/lib/seo/schema-utils";
+import { generateItemListSchema } from "@/lib/seo/item-list-schema";
 
 type Props = {
   params: Promise<{ pageNumber: string }>;
@@ -66,14 +68,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     languages: {
       en: canonicalUrl,
       zh: `/zh/articles/page/${pageNumber}/`,
+      'x-default': canonicalUrl,
     },
   };
 
   const robotsSettings: Metadata['robots'] = {
-    index: pageNumber === 1,
+    index: true,
     follow: true,
-    noarchive: pageNumber !== 1,
-    nosnippet: pageNumber !== 1,
   };
 
   return {
@@ -99,6 +100,10 @@ export default async function PaginatedArticlesPage({ params }: Props) {
     notFound();
   }
 
+  const startIndex = (pageNumber - 1) * ARTICLES_PER_PAGE;
+  const articlesOnPage = articlesData.slice(startIndex, startIndex + ARTICLES_PER_PAGE);
+  const itemListSchema = generateItemListSchema(articlesOnPage, lang, pageNumber, '/articles/page');
+
   const articlesPageTitleText = getTranslatedString(generalTranslations.articlesPageTitle, lang);
   const articlesPageGenericTitleText = getTranslatedString(generalTranslations.articlesPageGenericTitle, lang);
   
@@ -113,19 +118,22 @@ export default async function PaginatedArticlesPage({ params }: Props) {
   );
 
   return (
-    <div className="container mx-auto py-6 px-2 sm:px-6 lg:px-8">
-      <h1 className="text-2xl md:text-3xl font-bold font-headline text-foreground mb-3 text-center">
-        {pageTitleText}
-      </h1>
-      <p className="text-sm font-headline text-muted-foreground mb-6 max-w-2xl mx-auto text-center">
-        {onPageDescriptionText}
-      </p>
-      <ArticleListClient
-        articles={articlesData}
-        currentPageFromUrl={pageNumber}
-        basePath="/articles/page"
-        articlesPerPage={ARTICLES_PER_PAGE}
-      />
-    </div>
+    <>
+      <JsonLd schema={itemListSchema} />
+      <div className="container mx-auto py-6 px-2 sm:px-6 lg:px-8">
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 section-title">
+          {pageTitleText}
+        </h1>
+        <p className="text-sm font-headline text-muted-foreground mb-6 max-w-2xl mx-auto text-center">
+          {onPageDescriptionText}
+        </p>
+        <ArticleListClient
+          articles={articlesData}
+          currentPageFromUrl={pageNumber}
+          basePath="/articles/page"
+          articlesPerPage={ARTICLES_PER_PAGE}
+        />
+      </div>
+    </>
   );
 }

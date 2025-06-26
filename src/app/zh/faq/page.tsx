@@ -8,6 +8,8 @@ import { getTranslatedString } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations.server';
 import { getStaticPageData } from '@/lib/static-page-data'; 
 import type { Language } from '@/contexts/language-context';
+import { JsonLd } from '@/lib/seo/schema-utils';
+import { generateFaqSchema } from '@/lib/seo/faq-schema';
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getStaticPageData('faq');
@@ -26,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': '/faq/',
         'zh': '/zh/faq/',
+        'x-default': '/faq/',
       },
     },
   };
@@ -34,6 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FAQPageZh() {
   const pageData = await getStaticPageData('faq');
   const translations = getTranslations(new Date().getFullYear());
+  const faqSchema = await generateFaqSchema(pageData, 'zh');
   const skeletonLoader = <ContentPageSkeleton itemCount={5} />;
 
   const langEn: Language = "en";
@@ -70,6 +74,7 @@ export default async function FAQPageZh() {
 
   return (
     <>
+      {faqSchema && <JsonLd schema={faqSchema} />}
       <ContentPageClientLayout
         pageData={pageData}
         markdownEn={markdownEnNode}
