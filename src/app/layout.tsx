@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { Noto_Sans_TC, Noto_Serif_TC } from 'next/font/google';
@@ -16,7 +15,7 @@ import type { Language } from '@/contexts/language-context';
 
 const noto_sans_tc = Noto_Sans_TC({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-noto-sans-tc',
   display: 'swap',
 });

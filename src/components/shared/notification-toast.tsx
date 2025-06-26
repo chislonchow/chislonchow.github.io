@@ -1,45 +1,36 @@
-
 "use client";
 
-import { useEffect, useMemo, useRef } from 'react';
-import { useLanguage } from '@/contexts/language-context';
-import { toast as sonnerToast } from 'sonner';
-import type { NotificationConfig } from '@/lib/notification-data';
-import parse, { domToReact, type HTMLReactParserOptions, type DOMNode, Element as HtmlParserElement } from 'html-react-parser';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import { useEffect, useMemo, useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
+import { toast as sonnerToast } from "sonner";
+import type { NotificationConfig } from "@/lib/notification-data";
+import parse, {
+  domToReact,
+  type HTMLReactParserOptions,
+  type DOMNode,
+  Element as HtmlParserElement,
+} from "html-react-parser";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { parserOptions } from "@/lib/markdown-parser-options";
 
 interface NotificationToastProps {
   notificationConfig: NotificationConfig | null;
 }
 
-const parserOptions: HTMLReactParserOptions = {
-  replace: (domNode: DOMNode) => {
+const localParserOptions: HTMLReactParserOptions = {
+  replace: (domNode: DOMNode, index: number) => {
     if (domNode instanceof HtmlParserElement && domNode.attribs) {
-      const children = domNode.children ? domToReact(domNode.children as DOMNode[], parserOptions) : null;
+      const baseResult = parserOptions.replace?.(domNode, index);
+      if (baseResult) return baseResult;
 
-      if (domNode.name === "a") {
-        const { href, ...attribs } = domNode.attribs;
-        if (href) {
-          const isInternal = href.startsWith("/") && !href.startsWith("//");
-          const isAnchorLink = href.startsWith("#");
+      const children = domNode.children
+        ? domToReact(domNode.children as DOMNode[], localParserOptions)
+        : null;
 
-          if (isAnchorLink) {
-            const { target, rel, ...safeAttribs } = attribs;
-            return <a href={href} {...safeAttribs}>{children}</a>;
-          }
-          if (isInternal) {
-            const { target, rel, ...safeAttribs } = attribs;
-            return <Link href={href} {...safeAttribs} legacyBehavior={false}>{children}</Link>;
-          } else {
-            return <a href={href} target="_blank" rel="noopener noreferrer" {...attribs}>{children}</a>;
-          }
-        }
-      } else if (domNode.name === "p") {
-        // Apply text size classes directly to the paragraph
-        const existingClasses = domNode.attribs.class || '';
-        const newClasses = cn(existingClasses, 'text-sm xs:text-base');
+      if (domNode.name === "p") {
+        const existingClasses = domNode.attribs.class || "";
+        const newClasses = cn(existingClasses, "text-sm xs:text-base");
         return (
           <p {...domNode.attribs} className={newClasses}>
             {children}
@@ -51,7 +42,9 @@ const parserOptions: HTMLReactParserOptions = {
   },
 };
 
-export default function NotificationToast({ notificationConfig }: NotificationToastProps) {
+export default function NotificationToast({
+  notificationConfig,
+}: NotificationToastProps) {
   const { language, translations } = useLanguage();
   const pathname = usePathname();
   const activeToastIdRef = useRef<string | number | undefined>();
@@ -74,17 +67,21 @@ export default function NotificationToast({ notificationConfig }: NotificationTo
       }
     };
 
-    if (pathname !== '/' && pathname !== '/zh/') {
+    if (pathname !== "/" && pathname !== "/zh/") {
       cleanup();
       return;
     }
 
-    if (notificationConfig && localizedContent && localizedContent.descriptionHtml) {
+    if (
+      notificationConfig &&
+      localizedContent &&
+      localizedContent.descriptionHtml
+    ) {
       const { durationSeconds } = notificationConfig;
 
       if (durationSeconds > 0) {
         const descriptionNode = localizedContent.descriptionHtml.trim()
-          ? parse(localizedContent.descriptionHtml, parserOptions)
+          ? parse(localizedContent.descriptionHtml, localParserOptions)
           : null;
 
         if (descriptionNode) {
@@ -92,9 +89,9 @@ export default function NotificationToast({ notificationConfig }: NotificationTo
             if (activeToastIdRef.current) {
               sonnerToast.dismiss(activeToastIdRef.current);
             }
-            
+
             const sonnerGeneratedId = sonnerToast(descriptionNode, {
-              duration: Infinity, 
+              duration: Infinity,
             });
             activeToastIdRef.current = sonnerGeneratedId;
 
@@ -104,8 +101,7 @@ export default function NotificationToast({ notificationConfig }: NotificationTo
                 activeToastIdRef.current = undefined;
               }
             }, durationSeconds * 1000);
-
-          }, 500); 
+          }, 500);
         }
       } else {
         cleanup();

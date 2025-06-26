@@ -10,7 +10,7 @@ rootLayoutTitleDefault:
   en: "Chislon Chow - Registered Psychotherapist"
   zh: "Chislon Chow - 註冊心理治療師"
 rootLayoutMetaDescription:
-  en: "Chislon Chow offers mental wellness services in English and Cantonese."
+  en: "Chislon Chow offers mental health services in English and Cantonese."
   zh: "Chislon Chow 提供英語和粵語的心理健康服務。"
 
 # Article Pages Metadata
@@ -23,20 +23,19 @@ articlesListMetaPageTitle: # Used for the <title> like "Resources - Page X | Sit
   en: "Resources - Page {pageNumber} | {siteName}"
   zh: "資源 - 第 {pageNumber} 頁 | {siteName}"
 articlesListMetaDescription: # {pageNumber} and {siteName} will be replaced - USED FOR METADATA
-  en: "Browse resources on mental health and well-being from {siteName}. Page {pageNumber}."
+  en: "Browse resources on mental health from {siteName}. Page {pageNumber}."
   zh: "瀏覽來自{siteName}的心理健康相關資源。第 {pageNumber} 頁。"
 articlesListPageBodyDescription: # {siteName} will be replaced - USED FOR ON-PAGE TEXT
-  en: "Browse resources on mental health and well-being."
-  zh: "瀏覽心理健康相關資源。"
+  en: "Browse resources on mental health"
+  zh: "瀏覽心理健康相關資源"
 articlesListBasePageDescription: # Description for the /articles/page.tsx redirector
-  en: "Browse resources on mental health and well-being from {siteName}."
+  en: "Browse resources on mental health from {siteName}."
   zh: "瀏覽來自{siteName}的心理健康相關資源。"
 articlesListPageNotFoundMetaTitle: # Used for <title> if page number is invalid
   en: "Page Not Found | {siteName}"
   zh: "頁面未找到 | {siteName}"
 
 # Contact Information (used in popover, footer, etc.)
-contactEmailValue: "contact@chislonchow.com" # Non-translatable value
 contactEmailLabel:
   en: "Email:"
   zh: "電郵："
@@ -66,9 +65,9 @@ markdownErrorLoadingTitle:
 
 # Footer
 footerDisclaimer:
-  en: "I cannot be held responsible for the content, privacy policies, or practices of any third-party websites or services mentioned on my site."
-  zh: "本網站提及的任何第三方網站或服務的內容、隱私政策或做法，本人概不負責。"
-footerCopyrightText: "© {year} Chislon Kei Lok Chow (周 基 樂), Canada"
+  en: "The information on this website is provided on an as-is basis. I cannot be immediately available for emergencies, please ensure safety by seeking the emergency supports you need (such as dialing 911). I cannot be held responsible for the content, privacy policies, or practices of any third-party websites or services mentioned on my site."
+  zh: "本網站上的資訊均以「現況」為基礎提供。我無法立即處理緊急情況，請確保尋求你需要的緊急支援以保障安全(例如撥打911)。本網站提及的任何第三方網站或服務的內容、隱私政策或做法，本人概不負責。"
+footerCopyrightText: "© {year} Chislon Chow (周基樂), Toronto, Ontario, Canada"
 
 # General UI elements
 languageToggle:
@@ -79,7 +78,7 @@ notFoundTitle: # For the 404 page body H2
   zh: "頁面未找到"
 notFoundMessage: # For the 404 page body paragraph
   en: "Sorry, the page you are looking for doesn't exist or has been moved."
-  zh: "抱歉，您正在尋找的頁面不存在或已被移動。"
+  zh: "抱歉，你正在尋找的頁面不存在或已被移動。"
 notFoundGoHome:
   en: "Go to Homepage"
   zh: "返回主頁"

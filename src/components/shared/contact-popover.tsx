@@ -15,6 +15,7 @@ import { useLanguage, type Language } from "@/contexts/language-context";
 import { getTranslatedString } from "@/lib/translations";
 import { useLayoutVisibility } from "@/contexts/layout-visibility-context";
 import { cn } from "@/lib/utils";
+import { generateInquiryMailtoLink } from "@/lib/email-utils";
 
 export default function ContactPopover() {
   const { language, translations } = useLanguage();
@@ -23,24 +24,13 @@ export default function ContactPopover() {
   const [mounted, setMounted] = useState(false);
   const [dynamicMailtoLink, setDynamicMailtoLink] = useState<string>("#");
 
-  const contactEmailString = getTranslatedString(translations.contactEmailValue, language);
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    const emailAddress = contactEmailString;
-    const subject = getTranslatedString(translations.heroMailSubject, language);
-    const body = getTranslatedString(translations.heroMailBodyTemplate, language);
-
-    const constructedLink = emailAddress
-      ? `mailto:${emailAddress}?subject=${encodeURIComponent(
-          subject
-        )}&body=${encodeURIComponent(body)}`
-      : "#";
-    setDynamicMailtoLink(constructedLink);
-  }, [language, translations, contactEmailString]);
+    setDynamicMailtoLink(generateInquiryMailtoLink(translations, language));
+  }, [language, translations]);
 
   const getTranslatedText = (key: string): string => {
     if (!mounted) return "";

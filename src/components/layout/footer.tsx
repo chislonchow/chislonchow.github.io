@@ -1,10 +1,10 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { Separator } from "@/components/ui/separator";
 import { useLanguage, type Language } from '@/contexts/language-context';
 import { getTranslatedString } from '@/lib/translations';
+import { getEmailAddress } from '@/lib/email-utils';
 
 const YouTubeIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boolean }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 576 512" aria-hidden={ariaHidden} focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597C11.412 132.305 11.412 132.305 11.412 256s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821C560.345 389.438 560.345 256 560.345 256S560.345 132.305 549.655 124.083zM232.491 336.508V175.185l142.739 80.662L232.491 336.508z"/></svg>
@@ -34,10 +34,10 @@ export default function Footer() {
   const [mailtoLink, setMailtoLink] = useState<string>('#');
 
   useEffect(() => {
-    const determinedEmailAddress = getTranslatedString(translations.contactEmailValue, language);
+    const determinedEmailAddress = getEmailAddress();
     setEmailAddress(determinedEmailAddress);
     setMailtoLink(determinedEmailAddress ? `mailto:${determinedEmailAddress}` : '#');
-  }, [language, translations]);
+  }, []);
   
   const fullCopyrightText = getTranslatedString(translations.footerCopyrightText, language);
   const emailLabelText = getTranslatedString(translations.contactEmailLabel, language);
@@ -54,9 +54,9 @@ export default function Footer() {
         <Separator className="mb-8" />
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 font-headline">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-8 mb-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:space-x-8 mb-6">
           {/* Left Half: Social Media */}
-          <div className="sm:w-1/2 mb-6 sm:mb-0">
+          <div className="md:w-1/3 mb-6 md:mb-0">
             <nav aria-label={socialNavLabelText}>
               <div className="flex items-center space-x-4">
                 <a 
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           {/* Right Half: Contact Info and Disclaimer Text */}
-          <div className="sm:w-1/2 text-left sm:text-right">
+          <div className="md:w-2/3 text-left md:text-right">
             <p className="text-muted-foreground text-base mb-2">
               <span className="mr-1">{emailLabelText}</span>
               <a href={mailtoLink} className="hover:text-primary hover:underline">
@@ -115,7 +115,7 @@ export default function Footer() {
 
         {/* Copyright Information - Full Width Below */}
         <div className="text-center">
-          <p className="text-muted-foreground text-base font-normal">
+          <p className="text-muted-foreground text-sm font-normal">
             {fullCopyrightText}
           </p>
         </div>
@@ -123,3 +123,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+    

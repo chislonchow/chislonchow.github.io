@@ -20,91 +20,129 @@ heroMailSubject:
 heroMailBodyTemplate:
   en: "I would like to book a meeting with you. My details are as follows:\n\nName: [Your preferred name] \nPreferred Date and Time: [Give a few options]\nPurpose of meeting: [online one-time first consultation/online psychotherapy session/other]\n\nPlease arrange for this meeting, or let me know of your alternative availability."
   zh: "我想與你預約會談。我的詳細資訊如下：\n\n姓名：[你的姓名]\n首選日期和時間：[請提供幾個選項]\n會議目的：[一次性初次網上諮詢／心理治療網上會談／其他]\n\n請你安排這次會談，或讓我知道你其他方便的時間。"
-welcomeTitle: 
-  en: "Psychotherapy Approach"
-  zh: "心理治療方針"
-psychotherapyApproachSectionTitle: 
-  en: "Compassion-Led..."
-  zh: "以憐憫心出發..."
-welcomeText:
-  en: "My psychotherapy approach centers on: compassion, attachment theory, and being trauma-informed. I have helped individuals, couples, and families who speak English and Cantonese. Coming to Canada from Hong Kong, I have insight into both cultures. Psychotherapeutic modalities I may use include Emotionally Focused Therapy and Dialectical Behavioural Therapy."
-  zh: "我的心理治療方針著重於：憐憫、依附理論、及創傷知情。我有為講英語和粵語的個人、配偶及家庭提供心理治療的經驗。從香港來到加拿大的我，對兩者的文化都有一定的了解。我能運用的心理治療方式包括情緒取向治療 (Emotionally Focused Therapy) 及辯證行為治療 (Dialectical Behavioural Therapy)。"
-networkListingsTitle:
-  en: "Network Affiliations"
-  zh: "聯屬網絡"
-network1Title: "Open Path Collective"
-network1Desc:
-  en: "Providing affordable psychotherapy to those in need."
-  zh: "讓需要的人能以經濟實惠的價格進行心理治療。"
-network2Title: "Asian Mental Health Collective"
-network2Desc:
-  en: "Building culturally sensitive mental‑health support for Asian communities."
-  zh: "致力於為亞裔社群建立具文化敏感度的心理健康支援。"
-network3Title:
-  en: "ICEEFT"
-  zh: "國際情緒取向治療卓越中心"
-network3Desc:
-  en: "International Centre for Excellence in Emotionally Focused Therapy Therapist Directory."
-  zh: "國際情緒取向治療卓越中心治療師目錄。"
-crisisInfoTitle:
-  en: "Mental Health Crisis Information"
-  zh: "心理健康危機資訊"
-crisisCard1Title:
-  en: "Immediate Emergency Protocol"
-  zh: "即時緊急情況應對"
-crisisCard1P1:
-  en: "I cannot be immediately available for emergencies, please ensure safety by seeking the emergency supports you need."
-  zh: "我無法立即處理緊急情況，請確保尋求您需要的緊急支援以保障安全。"
-crisisCard1P2:
-  en: "In the case of emergency, maybe you should immediately call your emergency hotline at 911 to call for help."
-  zh: "如遇緊急情況，請立即撥打您的緊急熱線911求助。"
-crisisCard2Title:
-  en: "Alternative Support Hotlines"
-  zh: "其他支援熱線"
-crisisCard2P1:
-  en: "You may also consider reaching out to local 24-hour Crisis Hotlines, such as:"
-  zh: "您也可以考慮聯繫當地的24小時危機熱線，例如："
-crisisCard2ListItem1:
-  en: "Suicide Crisis Helpline: 988"
-  zh: "防止自殺危機熱線：988"
-crisisCard2ListItem2:
-  en: "Distress Centre of Toronto Helpline: 416-408-4357"
-  zh: "多倫多支援中心熱線：416-408-4357"
-crisisCard2ListItem3:
-  en: "York Support Services Network Crisis Line: 1-855-310-2673"
-  zh: "約克區支援服務網絡危機熱線：1-855-310-2673"
-crisisCard2ListItem4:
-  en: "Kids Help Phone Helpline: 1-800-668-6868"
-  zh: "兒童幫助熱線：1-800-668-6868"
-ctaTitle:
-  en: "Resources"
-  zh: "資源"
-ctaText:
-  en: "Explore resources to learn more about mental health, well-being, and therapeutic approaches. Some featured resources are highlighted below."
-  zh: "探索關於心理健康、身心健康和治療方法的資源。部分精選資源列於下方。"
-ctaButtonArticles:
+freeConsultationTitle:
+  en: "Start from Your Free Intake Consultation"
+  zh: "從免費徵詢初談開始"
+freeConsultationSubtitle:
+  en: "Head toward Shore, Start to Heal"
+  zh: "靠岸吧，展開你的療癒之旅"
+freeConsultationDescription:
+  en: "This complimentary meeting (15-30 minutes) gives us a chance to get to know each other and see if we're a good fit before beginning psychotherapy. Email me to get started."
+  zh: "這是一次免費的 (15-30 分鐘)會談，讓我們有機會彼此認識，並了解是否適合展開正式的心理治療。有興趣的話，請以電郵與我聯絡。"
+myApproachTitle:
+  en: "Therapeutic Approach"
+  zh: "治療方針"
+approach1Title:
+  en: "Compassionate Support"
+  zh: "帶有憐憫心的支援"
+approach1Desc:
+  en: "Using a trauma-informed lens, I recognize how past experiences shape present struggles. In addition to professional training, I bring lived experience with mental health challenges and neurodivergence - offering empathy from someone who has known pain."
+  zh: "我以創傷知情的視角，理解過去的經歷如何影響當前的困境。除了專業訓練，我也親身經歷過心理健康困難與神經多樣性的挑戰，因此能以真切的同理心來了解你——來自一位也經歷過痛苦的人。"
+approach2Title:
+  en: "Emotionally Focused, Practical"
+  zh: "情緒取向，務實為本"
+approach2Desc:
+  en: "I primarily use *Emotionally Focused Therapy (EFT)* to help clients strengthen emotional connections and navigate mental health challenges. I also integrate practical tools such as those from *Dialectical Behaviour Therapy (DBT)* to address emotional dysregulation and support everyday coping."
+  zh: "我主要使用*情緒取向治療 (EFT)* 來幫助案主加強情感聯繫，並應對心理健康挑戰。同時，我也結合一些實用工具，例如*辯證行為療法（DBT）*中的技巧，支援情緒調節和提升日常應對的能力。"
+approach3Title:
+  en: "Personalized"
+  zh: "量身定制"
+approach3Desc:
+  en: "My psychotherapy approach is culturally and spiritually respectful. As a Cantonese-speaking ethnic minority immigrant from Hong Kong, I am aware of diverse cultural dynamics. If requested, I offer an integration of Christian beliefs into therapy."
+  zh: "我的治療方式尊重文化與靈性層面。作為一位來自香港、講粵語的少數族裔移民，我深知多元文化的差異與需求。若基督徒來談者有此需要，我能將基督徒信仰融入治療過程中。"
+serviceSectionTitle:
+  en: "Psychotherapy at a Glance"
+  zh: "心理輔導服務概覽"
+serviceFeesTitle:
+  en: "Fees"
+  zh: "費用"
+serviceFeesDescMarkdown:
+  en: |
+    - $150 for 50 minutes *(common for individual sessions)*
+    - $225 for 75 minutes *(common for couples/family sessions)*
+    - Sliding scale reduced fees available, please ask if cost is a concern
+  zh: |
+    - $150 / 50分鐘 *(一般適合於個人治療)*
+    - $225 / 75分鐘 *(一般適合於伴侶/家庭治療)*
+    - 如有經濟需要，歡迎查詢彈性減價收費
+serviceLocationTitle:
+  en: "Location"
+  zh: "地點"
+serviceLocationDescMarkdown:
+  en: |
+    - Sessions via online video call, available for Ontario
+    - Familiar with the Greater Toronto Area, particularly Markham, Richmond Hill, North York, and Scarborough
+    - Also through [Living Water Counselling Centre](https://lwcounselling.ca/) for in-person and virtual psychotherapy
+  zh: |
+    - 透過進行線上視像治療，服務遍及安大略省
+    - 熟悉大多倫多地區，特別是萬錦(Markham)、烈治文山(Richmond Hill)、北約克(North York)和士嘉堡(Scarborough)
+    - 也可透過[泉源輔導中心](https://lwcounselling.ca/)提供實體及線上心理治療服務
+serviceFocusAreasTitle:
+  en: "Focus Areas"
+  zh: "專長領域"
+serviceFocusAreasDescMarkdown:
+  en: |
+    - Depression, Anxiety, Stress, Burnout, Attention-Deficit/Hyperactivity Disorder (ADHD), autism spectrum, and more
+    - For individuals, couples, families (including children from preteen age)
+    - Bilingual service in Canadian English and Cantonese
+  zh: |
+    - 抑鬱、焦慮、壓力、過勞、注意力不足過動症(ADHD)、自閉症譜系(autism spectrum)等
+    - 為個人、伴侶及家庭提供（包括從青春期前期開始的兒童）
+    - 加式英語和粵語雙語服務
+serviceQuestionsTitle:
+  en: "Have Questions?"
+  zh: "還有疑問嗎？"
+serviceQuestionsDescMarkdown:
+  en: "Visit the FAQ page for more details. For other questions, feel free to inquire via email."
+  zh: "有關更多詳情，請瀏覽常見問答頁面。如有任何問題，歡迎隨時以電郵查詢。"
+serviceQuestionsButtonFAQ:
+  en: "View FAQ"
+  zh: "查看常見問答"
+serviceQuestionsButtonEmail:
+  en: "Email Inquiry"
+  zh: "電郵查詢"
+resourcesTextContent:
+  en: "Explore resources to learn more about mental health. Some featured resources are highlighted below."
+  zh: "探索關於心理健康的資源。部分精選資源列於下方。"
+resourcesButtonArticlesText:
   en: "View Resources"
   zh: "查看資源"
-ctaAccordionReadArticle:
+resourcesAccordionReadArticleText:
   en: "See More"
   zh: "查看更多"
-sectionPsychotherapyApproachLabel: 
-  en: "Psychotherapy Approach"
-  zh: "心理治療方法"
-sectionNetworkListingsLabel:
-  en: "Network Affiliations"
-  zh: "聯盟網絡"
-sectionCrisisInfoLabel:
-  en: "Mental Health Crisis Information"
-  zh: "心理健康危機資訊"
-sectionCtaLabel:
-  en: "Resources"
-  zh: "資源"
+sectionResourcesLabel:
+  en: "Resource Highlights"
+  zh: "資源精選"
 pageBottomSectionTitle:
   en: "Discover Your Safe Harbour"
   zh: "走向你的安穩避風港吧"
 pageBottomSectionSubtitle:
   en: "Move from disconnection toward healing"
   zh: "從疏離走向療癒"
-
-    
+whyChoosePsychotherapyTitle:
+  en: "Why Talk Therapy?"
+  zh: "為何選擇傾談治療？"
+whyChooseCard1Title:
+  en: "Feel Heard"
+  zh: "被聆聽"
+whyChooseCard1Desc:
+  en: "Be sincerely heard and understood by another person"
+  zh: "被人用心聆聽，深刻地理解你的感受"
+whyChooseCard2Title:
+  en: "Get Help"
+  zh: "獲得幫助"
+whyChooseCard2Desc:
+  en: "Professional support to address mental health challenges"
+  zh: "獲取專業支援，助你應對心理困擾、問題或障礙"
+whyChooseCard3Title:
+  en: "Get Unstuck"
+  zh: "擺脫困境"
+whyChooseCard3Desc:
+  en: "Build new skills and open the door to meaningful progress"
+  zh: "培養新技能，開啟實現改變與前進的可能"
+whyChooseCard4Title:
+  en: "Privacy"
+  zh: "安穩保密"
+whyChooseCard4Desc:
+  en: "Safer space to explore your thoughts and feelings"
+  zh: "更安穩地探索自己的想法和感受"

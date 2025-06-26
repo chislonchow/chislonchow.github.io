@@ -196,6 +196,17 @@
     @apply text-accent hover:underline;
   }
 
+  .service-glance-description .markdown-content p,
+  .service-glance-description .markdown-content ul,
+  .service-glance-description .markdown-content ol,
+  .service-glance-description .markdown-content li {
+    @apply font-headline indent-0 text-base;
+  }
+
+  .have-questions-description .markdown-content p {
+    @apply font-headline indent-0 text-base;
+  }
+
   /* Feature Image Container for Static Pages */
   .feature-image-container {
     /* Mobile-first styles are applied via inline styles from the component */
@@ -209,5 +220,15 @@
       max-width: none !important; /* Reset mobile max-width */
       /* aspect-ratio is handled by inline styles to ensure it's based on YAML values */
     }
+  }
+
+  .approach-description .markdown-content p {
+    @apply font-headline indent-0;
+  }
+
+  .approach-description .markdown-content ul,
+  .approach-description .markdown-content ol,
+  .approach-description .markdown-content li {
+    @apply font-headline;
   }
 }
