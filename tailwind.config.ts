@@ -27,6 +27,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        manrope: ['var(--font-manrope)', ...defaultTheme.fontFamily.sans],
         body: ['Noto Serif TC', 'Georgia', 'Times New Roman', 'Times', 'serif'],
         headline: ['Noto Sans TC', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
         code: ['Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'],

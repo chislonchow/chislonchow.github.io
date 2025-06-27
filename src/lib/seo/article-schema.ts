@@ -1,6 +1,6 @@
 import type { Article as ArticleData } from '@/lib/articles-data';
 import type { Language } from '@/contexts/language-context';
-import type { Article as SchemaArticle, Person, Organization, WithContext } from 'schema-dts';
+import type { Article as SchemaArticle, Person, Organization, WithContext, QuantitativeValue } from 'schema-dts';
 
 /**
  * @fileoverview Generates Article schema markup for an article page.
@@ -18,7 +18,7 @@ export function generateArticleSchema(articleData: ArticleData, lang: Language):
   
   const publisher: Organization = {
     '@type': 'Organization',
-    name: SITE_NAME
+    name: SITE_NAME,
   };
 
   const schema: SchemaArticle = {

@@ -203,6 +203,10 @@
     @apply font-headline indent-0 text-base;
   }
 
+  .lead-section-description .markdown-content p {
+    @apply font-headline indent-0 mb-2;
+  }
+
   .have-questions-description .markdown-content p {
     @apply font-headline indent-0 text-base;
   }
