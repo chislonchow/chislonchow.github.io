@@ -512,7 +512,7 @@ export default function HomePageClientContents({
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
           <button
             onClick={handleScrollToNext}
-            className="rounded-full p-2 text-muted-foreground/75 hover:bg-muted-foreground/10 transition-colors focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="rounded-full border p-2 text-gray-300 border-gray-300 transition-colors hover:text-white hover:border-white focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             aria-label="Scroll to next section"
           >
             <ChevronDown className="h-6 w-6" />
