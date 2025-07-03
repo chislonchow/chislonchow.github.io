@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getArticleListItems } from "@/lib/articles-data";
@@ -33,7 +32,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const translations = getTranslations(new Date().getFullYear());
   const pageNumber = parseInt(param.pageNumber, 10);
 
-  const siteName = getTranslatedString(translations.siteName, lang, '');
+  const siteName = getTranslatedString(translations.siteName, lang, "");
 
   const articles = getArticleListItems();
   const totalItems = articles.length;
@@ -41,22 +40,32 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     totalItems === 0 ? 1 : Math.ceil(totalItems / ARTICLES_PER_PAGE);
 
   if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
-    const notFoundTitleText = getTranslatedString(translations.articlesListPageNotFoundMetaTitle, lang);
-    const notFoundTitle = (
-      notFoundTitleText || "{siteName}" 
-    ).replace("{siteName}", siteName);
+    const notFoundTitleText = getTranslatedString(
+      translations.articlesListPageNotFoundMetaTitle,
+      lang
+    );
+    const notFoundTitle = (notFoundTitleText || "{siteName}").replace(
+      "{siteName}",
+      siteName
+    );
     return {
       title: { absolute: notFoundTitle },
-      robots: { index: false, follow: false }, 
+      robots: { index: false, follow: false },
     };
   }
 
-  const pageTitleTemplate = getTranslatedString(translations.articlesListMetaPageTitle, lang);
+  const pageTitleTemplate = getTranslatedString(
+    translations.articlesListMetaPageTitle,
+    lang
+  );
   const pageTitle = pageTitleTemplate
     .replace("{pageNumber}", pageNumber.toString())
     .replace("{siteName}", siteName);
 
-  const metaDescriptionTemplate = getTranslatedString(translations.articlesListMetaDescription, lang);
+  const metaDescriptionTemplate = getTranslatedString(
+    translations.articlesListMetaDescription,
+    lang
+  );
   const metaDescriptionText = metaDescriptionTemplate
     .replace("{siteName}", siteName)
     .replace("{pageNumber}", pageNumber.toString());
@@ -69,11 +78,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     languages: {
       en: enCanonicalUrl,
       zh: canonicalUrl,
-      'x-default': enCanonicalUrl,
+      "x-default": enCanonicalUrl,
     },
   };
 
-  const robotsSettings: Metadata['robots'] = {
+  const robotsSettings: Metadata["robots"] = {
     index: true,
     follow: true,
   };
@@ -100,19 +109,36 @@ export default async function PaginatedArticlesPageZh({ params }: Props) {
   if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
     notFound();
   }
-  
-  const startIndex = (pageNumber - 1) * ARTICLES_PER_PAGE;
-  const articlesOnPage = articlesData.slice(startIndex, startIndex + ARTICLES_PER_PAGE);
-  const itemListSchema = generateItemListSchema(articlesOnPage, lang, pageNumber, '/zh/articles/page');
 
-  const articlesPageTitleText = getTranslatedString(generalTranslations.articlesPageTitle, lang);
-  const articlesPageGenericTitleText = getTranslatedString(generalTranslations.articlesPageGenericTitle, lang);
-      
+  const startIndex = (pageNumber - 1) * ARTICLES_PER_PAGE;
+  const articlesOnPage = articlesData.slice(
+    startIndex,
+    startIndex + ARTICLES_PER_PAGE
+  );
+  const itemListSchema = generateItemListSchema(
+    articlesOnPage,
+    lang,
+    pageNumber,
+    "/zh/articles/page"
+  );
+
+  const articlesPageTitleText = getTranslatedString(
+    generalTranslations.articlesPageTitle,
+    lang
+  );
+  const articlesPageGenericTitleText = getTranslatedString(
+    generalTranslations.articlesPageGenericTitle,
+    lang
+  );
+
   const pageTitleText = articlesPageTitleText || articlesPageGenericTitleText;
 
-  const siteName = getTranslatedString(generalTranslations.siteName, lang, '');
-  
-  const onPageDescriptionTemplate = getTranslatedString(generalTranslations.articlesListPageBodyDescription, lang);
+  const siteName = getTranslatedString(generalTranslations.siteName, lang, "");
+
+  const onPageDescriptionTemplate = getTranslatedString(
+    generalTranslations.articlesListPageBodyDescription,
+    lang
+  );
   const onPageDescriptionText = onPageDescriptionTemplate.replace(
     "{siteName}",
     siteName
@@ -122,7 +148,7 @@ export default async function PaginatedArticlesPageZh({ params }: Props) {
     <>
       <JsonLd schema={itemListSchema} />
       <div className="container mx-auto py-6 px-2 sm:px-6 lg:px-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 section-title">
+        <h1 className="text-2xl md:text-3xl font-bold font-headline text-center mb-6 section-title">
           {pageTitleText}
         </h1>
         <p className="text-sm font-headline text-muted-foreground mb-6 max-w-2xl mx-auto text-center">
