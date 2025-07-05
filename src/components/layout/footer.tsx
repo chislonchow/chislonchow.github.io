@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { useLanguage, type Language } from '@/contexts/language-context';
 import { getTranslatedString } from '@/lib/translations';
 import { getEmailAddress } from '@/lib/email-utils';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const YouTubeIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boolean }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32" viewBox="0 0 576 512" aria-hidden={ariaHidden} focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597C11.412 132.305 11.412 132.305 11.412 256s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821C560.345 389.438 560.345 256 560.345 256S560.345 132.305 549.655 124.083zM232.491 336.508V175.185l142.739 80.662L232.491 336.508z"/></svg>
@@ -29,6 +30,12 @@ const BloggerIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boo
   </svg>
 );
 
+const FacebookIcon = ({ "aria-hidden": ariaHidden = true }: { "aria-hidden"?: boolean }) => (
+  <svg viewBox="0 0 320 512" fill="currentColor" className="w-7 h-7" aria-hidden={ariaHidden} focusable="false">
+    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+  </svg>
+);
+
 export default function Footer() {
   const { language, translations } = useLanguage();
   const [emailAddress, setEmailAddress] = useState<string>('');
@@ -44,6 +51,7 @@ export default function Footer() {
   const emailLabelText = getTranslatedString(translations.contactEmailLabel, language);
   const socialNavLabelText = getTranslatedString(translations.socialMediaNavLabel, language);
   const bloggerLabelText = getTranslatedString(translations.socialBloggerLabel, language);
+  const facebookLabelText = getTranslatedString(translations.socialFacebookLabel, language);
   const youtubeLabelText = getTranslatedString(translations.socialYoutubeLabel, language);
   const blueskyLabelText = getTranslatedString(translations.socialBlueskyLabel, language);
   const threadsLabelText = getTranslatedString(translations.socialThreadsLabel, language);
@@ -59,44 +67,80 @@ export default function Footer() {
           {/* Left Half: Social Media */}
           <div className="md:w-1/3 mb-6 md:mb-0">
             <nav aria-label={socialNavLabelText}>
-              <div className="flex items-center space-x-4">
-                <a 
-                  href="https://blog.chislonchow.com" 
-                  aria-label={bloggerLabelText} 
-                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <BloggerIcon />
-                </a>
-                <a 
-                  href="https://www.youtube.com/@ChislonChow" 
-                  aria-label={youtubeLabelText} 
-                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <YouTubeIcon />
-                </a>
-                <a 
-                  href="https://bsky.app/profile/chislonchow.com" 
-                  aria-label={blueskyLabelText} 
-                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <BlueskyIcon />
-                </a>
-                <a 
-                  href="https://www.threads.net/@chislonchow" 
-                  aria-label={threadsLabelText} 
-                  className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ThreadsIcon />
-                </a>
-              </div>
+              <TooltipProvider>
+                <div className="flex items-center space-x-4">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href="https://blog.chislonchow.com" 
+                        aria-label={bloggerLabelText} 
+                        className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BloggerIcon />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>{bloggerLabelText}</p></TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href="https://www.youtube.com/@ChislonChow" 
+                        aria-label={youtubeLabelText} 
+                        className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <YouTubeIcon />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>{youtubeLabelText}</p></TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href="https://bsky.app/profile/chislonchow.com" 
+                        aria-label={blueskyLabelText} 
+                        className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <BlueskyIcon />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>{blueskyLabelText}</p></TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href="https://www.facebook.com/chislonchow" 
+                        aria-label={facebookLabelText} 
+                        className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FacebookIcon />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>{facebookLabelText}</p></TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href="https://www.threads.net/@chislonchow" 
+                        aria-label={threadsLabelText} 
+                        className="text-primary hover:text-primary hover:scale-110 transition-all duration-150 ease-in-out"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ThreadsIcon />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>{threadsLabelText}</p></TooltipContent>
+                  </Tooltip>
+                </div>
+              </TooltipProvider>
             </nav>
           </div>
 

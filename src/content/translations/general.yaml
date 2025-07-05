@@ -138,14 +138,17 @@ socialYoutubeLabel:
   en: "Visit YouTube"
   zh: "前往 YouTube 頻道"
 socialBloggerLabel:
-  en: "Read blog on Blogger"
-  zh: "閱讀 Blogger 上的博客"
+  en: "Read blog on Blogger (English)"
+  zh: "閱讀 Blogger 上的博客 (英文)"
+socialFacebookLabel:
+  en: "Follow on Facebook (English)"
+  zh: "在 Facebook 上關注 (英文)"
 socialBlueskyLabel:
-  en: "Follow on Bluesky"
-  zh: "在 Bluesky 上關注"
+  en: "Follow on Bluesky (English)"
+  zh: "在 Bluesky 上關注 (英文)"
 socialThreadsLabel:
-  en: "Follow on Threads"
-  zh: "在 Threads 上關注"
+  en: "Follow on Threads (Chinese)"
+  zh: "在 Threads 上關注 (中文)"
 readArticleLabel: # This is a bit specific to articles, but can be general
   en: "Read article"
   zh: "閱讀文章"

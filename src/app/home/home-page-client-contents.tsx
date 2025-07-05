@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import {
   Anchor,
+  ArrowUp,
   ChevronDown,
   ChevronRight,
   DoorOpen,
@@ -186,6 +187,13 @@ export default function HomePageClientContents({
     }
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     const processMarkdown = async () => {
         const processor = remark()
@@ -313,6 +321,7 @@ export default function HomePageClientContents({
 
   const pageBottomSectionTitleText = getTranslatedString(translations.pageBottomSectionTitle, language);
   const pageBottomSectionSubtitleText = getTranslatedString(translations.pageBottomSectionSubtitle, language);
+  const scrollToTopText = getTranslatedString(translations.scrollToTop, language);
 
   return (
     <div className="flex flex-col font-headline">
@@ -536,10 +545,10 @@ export default function HomePageClientContents({
                   </div>
               </CardContent>
               <CardFooter className="flex flex-col xs:flex-row gap-2 w-full justify-center items-center pt-2 pb-6 px-6">
-                  <Button asChild variant="outline" className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg">
+                  <Button asChild variant="outline" className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg h-auto px-5 py-3 text-base">
                       <Link href={faqPath}>{serviceQuestionsButtonFAQText}</Link>
                   </Button>
-                  <Button asChild className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg">
+                  <Button asChild className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg h-auto px-5 py-3 text-base">
                       <a href={dynamicMailtoLink}>{serviceQuestionsButtonEmailText}</a>
                   </Button>
               </CardFooter>
@@ -624,7 +633,7 @@ export default function HomePageClientContents({
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg"
+                        className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg h-auto px-5 py-3 text-base"
                       >
                         <Link href={articlesPath}>
                           {resourcesButtonArticlesText}
@@ -638,7 +647,7 @@ export default function HomePageClientContents({
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg"
+                    className="w-full xs:w-auto transition-transform hover:scale-105 shadow-md hover:shadow-lg h-auto px-5 py-3 text-base"
                   >
                     <Link href={articlesPath}>
                       {resourcesButtonArticlesText}
@@ -684,6 +693,13 @@ export default function HomePageClientContents({
           >
             {pageBottomSectionSubtitleText}
           </p>
+          <button
+            onClick={handleScrollToTop}
+            className="inline-flex items-center gap-1.5 text-lg text-accent hover:underline font-headline"
+          >
+            <ArrowUp className="h-4 w-4" aria-hidden="true" />
+            {scrollToTopText}
+          </button>
         </div>
       </section>
     </div>
