@@ -152,7 +152,7 @@ export default function Footer() {
                 {emailAddress}
               </a>
             </p>
-            <p className="text-muted-foreground text-base italic font-light">
+            <p className="text-muted-foreground text-base font-light">
               {footerDisclaimerText}
             </p>
           </div>

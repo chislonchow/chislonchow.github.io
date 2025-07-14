@@ -2,7 +2,6 @@
 import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 import MarkdownDisplay from '@/components/shared/markdown-display';
-import ContentPageClientLayout from '@/components/shared/content-page-client-layout';
 import ContentPageSkeleton from '@/components/shared/content-page-skeleton';
 import { getTranslatedString } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations.server';
@@ -10,6 +9,7 @@ import { getStaticPageData } from '@/lib/static-page-data';
 import type { Language } from '@/contexts/language-context';
 import { JsonLd } from '@/lib/seo/schema-utils';
 import { generateProfessionalServiceSchema } from '@/lib/seo/professional-service-schema';
+import ProfilePageClient from '@/components/profile/profile-page-client';
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageData = await getStaticPageData('profile');
@@ -38,47 +38,12 @@ export default async function ProfilePage() {
   const pageData = await getStaticPageData('profile');
   const translations = getTranslations(new Date().getFullYear());
   const professionalServiceSchema = generateProfessionalServiceSchema('en', translations);
-  const skeletonLoader = <ContentPageSkeleton itemCount={3} />;
-
-  const langEn: Language = "en";
-  const errorLoadingTitleEn = getTranslatedString(translations.markdownErrorLoadingTitle, langEn);
-  const errorInvalidContentMessageEn = getTranslatedString(translations.markdownErrorInvalidContent, langEn);
-  const errorProcessingFailedMessageEn = getTranslatedString(translations.markdownErrorProcessingFailed, langEn);
-
-  const markdownEnNode = (
-    <Suspense fallback={skeletonLoader}>
-      <MarkdownDisplay
-        content={pageData.markdown_content.en}
-        errorLoadingTitle={errorLoadingTitleEn}
-        errorInvalidContentMessage={errorInvalidContentMessageEn}
-        errorProcessingFailedMessage={errorProcessingFailedMessageEn}
-      />
-    </Suspense>
-  );
-
-  const langZh: Language = "zh";
-  const errorLoadingTitleZh = getTranslatedString(translations.markdownErrorLoadingTitle, langZh);
-  const errorInvalidContentMessageZh = getTranslatedString(translations.markdownErrorInvalidContent, langZh);
-  const errorProcessingFailedMessageZh = getTranslatedString(translations.markdownErrorProcessingFailed, langZh);
   
-  const markdownZhNode = (
-    <Suspense fallback={skeletonLoader}>
-      <MarkdownDisplay
-        content={pageData.markdown_content.zh}
-        errorLoadingTitle={errorLoadingTitleZh}
-        errorInvalidContentMessage={errorInvalidContentMessageZh}
-        errorProcessingFailedMessage={errorProcessingFailedMessageZh}
-      />
-    </Suspense>
-  );
-
   return (
     <>
       <JsonLd schema={professionalServiceSchema} />
-      <ContentPageClientLayout
+      <ProfilePageClient
         pageData={pageData}
-        markdownEn={markdownEnNode}
-        markdownZh={markdownZhNode}
       />
     </>
   );

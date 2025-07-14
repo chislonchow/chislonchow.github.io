@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import './globals.css';
-import { Manrope, Noto_Sans_TC, Noto_Serif_TC } from 'next/font/google';
+import { Manrope, Noto_Sans_TC } from 'next/font/google';
 import { LanguageProvider } from '@/contexts/language-context';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -25,13 +25,6 @@ const noto_sans_tc = Noto_Sans_TC({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
   variable: '--font-noto-sans-tc',
-  display: 'swap',
-});
-
-const noto_serif_tc = Noto_Serif_TC({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-noto-serif-tc',
   display: 'swap',
 });
 
@@ -72,7 +65,7 @@ export default function RootLayout({
   const initialTranslations = getTranslations(new Date().getFullYear());
 
   return (
-    <html lang="en" className={`${manrope.variable} ${noto_sans_tc.variable} ${noto_serif_tc.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${noto_sans_tc.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>

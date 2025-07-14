@@ -32,10 +32,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="flex-grow pb-3">
-          <p className={cn(
-            "text-sm xs:text-base text-foreground/80 leading-relaxed line-clamp-4",
-            "font-body" // Changed back to font-body
-            )}>
+          <p className="text-sm xs:text-base text-foreground/80 leading-relaxed line-clamp-4">
             {article.description[language]}
           </p>
         </CardContent>

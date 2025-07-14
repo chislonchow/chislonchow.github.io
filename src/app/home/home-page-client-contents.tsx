@@ -338,8 +338,8 @@ export default function HomePageClientContents({
             id="hero-title-h1"
             className="font-manrope text-4xl xs:text-5xl sm:text-6xl font-extrabold mb-4"
           >
-            <span style={{ color: 'hsl(202 25% 20%)' }}>Chislon</span>{' '}
-            <span style={{ color: 'hsl(202 25% 45%)' }}>Chow</span>
+            <span style={{ color: 'hsl(202 40% 60%)' }}>Chislon</span>{' '}
+            <span style={{ color: 'hsl(202 10% 44%)' }}>Chow</span>
           </h1>
           <p 
             className="text-base xs:text-lg sm:text-lg md:text-lg mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto font-light"
@@ -506,7 +506,8 @@ export default function HomePageClientContents({
 
       {/* Psychotherapy Service Section */}
       <section
-        className="py-12 sm:py-16 bg-secondary"
+        className="py-12 sm:py-16 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/bg-pier.webp')" }}
         aria-labelledby="psychotherapy-service-title"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -706,5 +707,11 @@ export default function HomePageClientContents({
   );
 }
     
+
+    
+
+
+
+
 
     

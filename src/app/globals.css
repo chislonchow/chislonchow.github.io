@@ -72,22 +72,22 @@
     @apply text-base md:text-base font-semibold mb-1 font-headline text-foreground;
   }
   .markdown-content p {
-    @apply mb-4 text-base md:text-lg leading-normal font-body indent-4; /* Adjusted md size from text-lg to text-base, Added indent-4 */
+    @apply mb-4 text-sm md:text-base leading-normal font-body indent-4; /* Reduced text size */
   }
   .markdown-content a {
     @apply text-accent hover:underline;
   }
   .markdown-content ul {
-    @apply list-disc list-outside ml-4 mb-4 font-body text-base md:text-lg;
+    @apply list-disc list-outside ml-4 mb-4 font-body text-sm md:text-base; /* Reduced text size */
   }
   .markdown-content ol {
-    @apply list-decimal list-outside ml-4 mb-4 font-body text-base md:text-lg;
+    @apply list-decimal list-outside ml-4 mb-4 font-body text-sm md:text-base; /* Reduced text size */
   }
   .markdown-content li {
-    @apply mb-2 text-base md:text-lg;
+    @apply mb-2 text-sm md:text-base; /* Reduced text size */
   }
   .markdown-content blockquote {
-    @apply border-l-4 border-accent pl-4 italic my-4 text-muted-foreground text-base md:text-lg;
+    @apply border-l-4 border-accent pl-4 italic my-4 text-muted-foreground text-sm md:text-base; /* Reduced text size */
   }
   .markdown-content blockquote p { /* Reset indent for paragraphs inside blockquotes */
     @apply indent-0;
@@ -169,7 +169,7 @@
   body.lang-zh .markdown-content ul,
   body.lang-zh .markdown-content ol,
   body.lang-zh .markdown-content blockquote {
-    @apply text-lg md:text-xl; /* Increased from text-base md:text-lg */
+    @apply text-base md:text-lg; /* Reduced from text-lg md:text-xl */
   }
 
   body.lang-zh .markdown-content h1 { /* Rendered as <h2> from # H1 */

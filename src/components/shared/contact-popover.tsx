@@ -10,12 +10,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { Info, Mail, X } from "lucide-react";
+import { Info, Mail, X, User } from "lucide-react";
 import { useLanguage, type Language } from "@/contexts/language-context";
 import { getTranslatedString } from "@/lib/translations";
 import { useLayoutVisibility } from "@/contexts/layout-visibility-context";
 import { cn } from "@/lib/utils";
 import { generateInquiryMailtoLink } from "@/lib/email-utils";
+import { getLocalizedPath } from "@/lib/path-utils";
 
 export default function ContactPopover() {
   const { language, translations } = useLanguage();
@@ -23,6 +24,7 @@ export default function ContactPopover() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [dynamicMailtoLink, setDynamicMailtoLink] = useState<string>("#");
+  const [profilePath, setProfilePath] = useState<string>("/profile");
 
   useEffect(() => {
     setMounted(true);
@@ -30,6 +32,7 @@ export default function ContactPopover() {
 
   useEffect(() => {
     setDynamicMailtoLink(generateInquiryMailtoLink(translations, language));
+    setProfilePath(getLocalizedPath("/profile", language));
   }, [language, translations]);
 
   const getTranslatedText = (key: string): string => {
@@ -42,6 +45,7 @@ export default function ContactPopover() {
   const popoverTitleText = getTranslatedText("contactPopoverTitle");
   const profileImageAlt = getTranslatedText("contactPopoverProfileImageAlt");
   const emailButtonText = getTranslatedText("heroButton");
+  const aboutMeButtonText = getTranslatedText("heroButtonSecondary");
 
   const popoverTitleId = "contact-popover-title";
 
@@ -91,18 +95,18 @@ export default function ContactPopover() {
             </div>
             <div className="grid gap-2.5">
               <div className="flex justify-center mb-1">
-                <div className="relative h-40 w-40 xs:h-56 xs:w-56">
+                <div className="relative h-40 w-40 xs:h-56 xs:w-56 overflow-hidden rounded-md">
                   <Image
                     src="/images/profile.webp"
                     alt={profileImageAlt}
                     fill
                     sizes="(max-width: 319px) 160px, 224px"
-                    className="rounded-md object-cover"
+                    className="object-cover"
                     data-ai-hint="person portrait"
                   />
                 </div>
               </div>
-              <div className="flex flex-col items-center space-y-1.5 text-center">
+              <div className="flex flex-col items-center space-y-2.5 text-center">
                 <Button
                   asChild
                   className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
@@ -114,6 +118,18 @@ export default function ContactPopover() {
                       aria-hidden="true"
                     />
                   </a>
+                </Button>
+                <Button
+                  asChild
+                  className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
+                >
+                  <Link href={profilePath}>
+                    {aboutMeButtonText}
+                    <User
+                      className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4"
+                      aria-hidden="true"
+                    />
+                  </Link>
                 </Button>
               </div>
             </div>
