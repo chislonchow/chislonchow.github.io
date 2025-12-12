@@ -683,11 +683,11 @@ export default function HomePageClientContents({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             <ServiceHighlightCard
-              icon={<Wallet className="h-6 w-6 sm:h-8 sm:w-8" />}
-              title={serviceFeesTitleText}
+              icon={<SearchCode className="h-6 w-6 sm:h-8 sm:w-8" />}
+              title={serviceFocusAreasTitleText}
               description={
                 <div className="markdown-content">
-                  {parse(serviceFeesHtml, parserOptions)}
+                  {parse(serviceFocusAreasHtml, parserOptions)}
                 </div>
               }
             />
@@ -701,11 +701,11 @@ export default function HomePageClientContents({
               }
             />
             <ServiceHighlightCard
-              icon={<SearchCode className="h-6 w-6 sm:h-8 sm:w-8" />}
-              title={serviceFocusAreasTitleText}
+              icon={<Wallet className="h-6 w-6 sm:h-8 sm:w-8" />}
+              title={serviceFeesTitleText}
               description={
                 <div className="markdown-content">
-                  {parse(serviceFocusAreasHtml, parserOptions)}
+                  {parse(serviceFeesHtml, parserOptions)}
                 </div>
               }
             />
