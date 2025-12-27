@@ -18,7 +18,7 @@ heroGlassmorphismBody:
   zh: |
     打破困擾你的惡性循環，心理治療可以助你找到出路。
 
-    若果想進一步了解，可通過電郵聯絡我。
+    *若想進一步了解，可通過電郵聯絡我。*
 heroButton:
   en: "Email Inquiry"
   zh: "電郵查詢"
@@ -45,25 +45,25 @@ leadSectionDescription:
     *歡迎瀏覽本網站以了解更多關於我提供的心理治療服務。如有任何查詢，歡迎以電郵查詢。此外，如對費用有所顧慮，每節收費可按經濟狀況調整以符合你的負擔能力。*
 myApproachTitle:
   en: "My Therapeutic Approach"
-  zh: "我的治療方針"
+  zh: "我的治療理念"
 approach1Title:
   en: "Compassionate Support"
   zh: "帶有憐憫心的支援"
 approach1Desc:
   en: "Using a trauma-informed lens, I recognize how past experiences shape the present. In addition to professional training, I bring my lived experience with mental health challenges and neurodiversity - offering empathy as someone who has known difficulty."
-  zh: "我採用創傷知情的視角，理解過往經歷如何塑造當前狀況。在專業訓練之外，我亦帶入自己在心理健康挑戰和神經多樣性(neurodiversity)方面的親身經驗，從而以過來人的身份提供真切的同理心。"
+  zh: "我採用創傷知情的視角(trauma-informed lens)，理解過往經歷如何形塑當前狀況。在專業訓練之外，我亦帶入自己在心理健康挑戰和神經多樣性(neurodiversity)方面的親身經驗，從而以過來人的身份提供真切的同理心。"
 approach2Title:
   en: "Emotionally Focused, Practical"
   zh: "情緒取向，務實為本"
 approach2Desc:
-  en: "I primarily use *Emotionally Focused Therapy (EFT)* to help clients strengthen emotional connections and navigate mental health challenges. I also integrate practical tools such as those from *Dialectical Behaviour Therapy (DBT)* to address emotional dysregulation and support everyday coping."
-  zh: "我主要使用 *情緒取向治療 (EFT)* 來幫助案主加強情感聯繫，並應對心理健康挑戰。同時，我也結合一些實用工具，例如 *辯證行為療法(DBT)* 中的技巧，來支援情緒調節和提升日常應對的能力。"
+  en: "I primarily use *Emotionally Focused Therapy (EFT)* to help strengthen emotional connections and navigate mental health challenges. I also integrate practical tools such as those from *Dialectical Behaviour Therapy (DBT)* to address emotional dysregulation and support everyday coping."
+  zh: "我主要使用 *情緒取向治療 (EFT / Emotionally Focused Therapy)* 來加強情感聯繫並應對心理健康挑戰。同時，我也結合一些實用工具，例如 *辯證行為療法(DBT / Dialectical Behaviour Therapy)* 中的技巧，來支援情緒調節和提升日常應對的能力。"
 approach3Title:
   en: "Personalized"
   zh: "量身定制"
 approach3Desc:
   en: "My psychotherapy approach is culturally and spiritually respectful. As a Cantonese-speaking ethnic minority immigrant from Hong Kong, I am aware of diverse cultural dynamics. If requested, I can integrate the Christian faith with therapy."
-  zh: "我的治療方式尊重文化與靈性層面。作為一位來自香港、以粵語為母語的少數族裔移民，我對多元文化的動態有深刻的體察。應和你的要求，我亦可將基督信仰整合到治療過程中。"
+  zh: "我的治療方式尊重文化與靈性層面的需要。作為一位來自香港、以粵語為母語的少數族裔移民，我對多元文化的動態有深刻的體察。應和你的要求，我亦可將基督信仰整合到治療過程中。"
 serviceSectionTitle:
   en: "Psychotherapy at a Glance"
   zh: "心理輔導服務概覽"
@@ -163,7 +163,7 @@ whyChooseCard3Desc:
   zh: "培養新技能，開啟實現改變與前進的可能"
 whyChooseCard4Title:
   en: "Privacy"
-  zh: "安穩保密"
+  zh: "安全保密"
 whyChooseCard4Desc:
   en: "Safer space to explore your thoughts and feelings"
   zh: "更安穩地探索自己的想法和感受"
