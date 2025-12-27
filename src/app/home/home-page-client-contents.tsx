@@ -10,7 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import {
-  Anchor,
+  CirclePlay,
   ArrowUp,
   ChevronDown,
   ChevronRight,
@@ -84,13 +84,15 @@ function ServiceHighlightCard({
 }: ServiceHighlightCardProps) {
   return (
     <Card className="h-full flex flex-col shadow-md bg-card/50">
-      <CardHeader className="items-center pb-2 text-center">
-        <div className="flex items-center justify-center rounded-full h-12 w-12 sm:h-16 sm:w-16 text-primary">
+      <CardHeader className="flex-row items-center space-x-4 pb-2">
+        <div className="flex items-center justify-center rounded-full h-12 w-12 text-primary flex-shrink-0">
           {icon}
         </div>
-        <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">
-          {title}
-        </CardTitle>
+        <div className="flex items-center">
+          <CardTitle className="text-lg font-headline text-foreground pb-1">
+            {title}
+          </CardTitle>
+        </div>
       </CardHeader>
       <CardContent className="flex-grow pt-2">
         <div className="text-base text-muted-foreground leading-relaxed service-glance-description">
@@ -204,6 +206,10 @@ export default function HomePageClientContents({
     translations.leadSectionDescription,
     language
   );
+  const heroGlassmorphismBodyText = getTranslatedString(
+    translations.heroGlassmorphismBody,
+    language
+  );
 
   const [serviceFeesHtml, setServiceFeesHtml] = useState("");
   const [serviceLocationHtml, setServiceLocationHtml] = useState("");
@@ -213,6 +219,8 @@ export default function HomePageClientContents({
   const [approach2Html, setApproach2Html] = useState("");
   const [approach3Html, setApproach3Html] = useState("");
   const [leadSectionHtml, setLeadSectionHtml] = useState("");
+  const [heroGlassmorphismBodyHtml, setHeroGlassmorphismBodyHtml] =
+    useState("");
 
   const handleScrollToNext = () => {
     const element = document.getElementById("lead-section");
@@ -253,6 +261,7 @@ export default function HomePageClientContents({
       const approach2Promise = processor.process(approach2DescMarkdown);
       const approach3Promise = processor.process(approach3DescMarkdown);
       const leadDescPromise = processor.process(leadSectionDescriptionText);
+      const heroBodyPromise = processor.process(heroGlassmorphismBodyText);
 
       const [
         feesFile,
@@ -263,6 +272,7 @@ export default function HomePageClientContents({
         approach2File,
         approach3File,
         leadDescFile,
+        heroBodyFile,
       ] = await Promise.all([
         feesPromise,
         locationPromise,
@@ -272,6 +282,7 @@ export default function HomePageClientContents({
         approach2Promise,
         approach3Promise,
         leadDescPromise,
+        heroBodyPromise,
       ]);
 
       setServiceFeesHtml(String(feesFile));
@@ -282,13 +293,15 @@ export default function HomePageClientContents({
       setApproach2Html(String(approach2File));
       setApproach3Html(String(approach3File));
       setLeadSectionHtml(String(leadDescFile));
+      setHeroGlassmorphismBodyHtml(String(heroBodyFile));
     };
     if (
       serviceFeesDescMarkdown &&
       serviceLocationDescMarkdown &&
       serviceFocusAreasDescMarkdown &&
       serviceQuestionsDescMarkdown &&
-      leadSectionDescriptionText
+      leadSectionDescriptionText &&
+      heroGlassmorphismBodyText
     ) {
       processMarkdown();
     }
@@ -302,6 +315,7 @@ export default function HomePageClientContents({
     approach2DescMarkdown,
     approach3DescMarkdown,
     leadSectionDescriptionText,
+    heroGlassmorphismBodyText,
   ]);
 
   useEffect(() => {
@@ -344,6 +358,11 @@ export default function HomePageClientContents({
     }
   }
 
+  const heroGlassmorphismTitleText = getTranslatedString(
+    translations.heroGlassmorphismTitle,
+    language
+  );
+
   const heroButtonText = getTranslatedString(translations.heroButton, language);
   const heroButtonSecondaryText = getTranslatedString(
     translations.heroButtonSecondary,
@@ -352,10 +371,6 @@ export default function HomePageClientContents({
 
   const leadSectionTitleText = getTranslatedString(
     translations.leadSectionTitle,
-    language
-  );
-  const leadSectionSubtitleText = getTranslatedString(
-    translations.leadSectionSubtitle,
     language
   );
 
@@ -477,9 +492,10 @@ export default function HomePageClientContents({
     <div className="flex flex-col font-headline">
       {/* Hero Section */}
       <section
-        className="relative pt-14 xs:pt-16 sm:pt-20 md:pt-20 pb-20 w-full bg-cover bg-center bg-no-repeat"
+        className="relative pt-10 xs:pt-12 sm:pt-16 md:pt-16 pb-20 w-full bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url('/images/bg-hero.webp')`,
+          backgroundColor: "hsl(var(--background))",
         }}
         aria-labelledby="hero-title-h1"
       >
@@ -492,7 +508,7 @@ export default function HomePageClientContents({
             <span style={{ color: "hsl(202 10% 44%)" }}>Chow</span>
           </h1>
           <p
-            className="text-base xs:text-lg sm:text-lg md:text-lg mb-4 xs:mb-6 sm:mb-8 max-w-2xl mx-auto font-light"
+            className="text-base xs:text-lg sm:text-lg md:text-lg mb-6 max-w-2xl mx-auto font-light"
             style={{ color: "hsl(202 25% 55%)" }}
           >
             <span>{heroSubtitleDisplay}</span>
@@ -501,6 +517,7 @@ export default function HomePageClientContents({
               aria-hidden="true"
             />
           </p>
+
           <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pb-10">
             <Button
               asChild
@@ -526,6 +543,23 @@ export default function HomePageClientContents({
                 />
               </Link>
             </Button>
+          </div>
+
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="bg-white/30 backdrop-blur-xl rounded-xl border border-white/20 shadow-lg p-6">
+              <h2
+                className="text-xl font-bold text-foreground mb-2"
+                style={{ color: "hsl(202 10% 44%)" }}
+              >
+                {heroGlassmorphismTitleText}
+              </h2>
+              <div
+                style={{ color: "hsl(202 10% 44%)" }}
+                className="markdown-content"
+              >
+                {parse(heroGlassmorphismBodyHtml, parserOptions)}
+              </div>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
@@ -554,22 +588,19 @@ export default function HomePageClientContents({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="max-w-3xl mx-auto shadow-md overflow-hidden bg-card/85">
             <CardContent className="p-6 md:p-8">
-              <div className="flex flex-col sm:flex-row items-center sm:gap-6">
-                <div className="mb-4 sm:mb-0 sm:shrink-0">
+              <div className="flex flex-row items-center gap-4 sm:gap-6">
+                <div className="sm:shrink-0">
                   <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16">
-                    <Anchor className="h-8 w-8 md:h-10 md:w-10 text-primary" />
+                    <CirclePlay className="h-8 w-8 md:h-10 md:w-10 text-primary" />
                   </div>
                 </div>
-                <div className="text-center sm:text-left">
+                <div className="text-left flex-grow">
                   <h2
                     id={leadSectionTitleId}
-                    className="text-xl md:text-2xl font-bold font-headline text-foreground mb-2"
+                    className="text-xl md:text-2xl font-bold font-headline text-foreground"
                   >
                     {leadSectionTitleText}
                   </h2>
-                  <p className="text-md md:text-lg text-accent font-headline">
-                    {leadSectionSubtitleText}
-                  </p>
                 </div>
               </div>
               <div className="text-left mt-6 lead-section-description text-muted-foreground">
@@ -582,48 +613,9 @@ export default function HomePageClientContents({
         </div>
       </section>
 
-      {/* Why Talk Therapy? Section */}
+      {/* My Therapeutic Approach Section */}
       <section
         className="py-12 sm:py-16 bg-secondary"
-        aria-labelledby="why-choose-title"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            id="why-choose-title"
-            className="text-2xl md:text-3xl font-bold font-headline text-foreground mb-8 text-center"
-          >
-            {whyChoosePsychotherapyTitleText}
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4 sm:gap-8 max-w-5xl mx-auto">
-            <InfoCard
-              icon={<Ear className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
-              title={whyChooseCard1TitleText}
-              description={whyChooseCard1DescText}
-            />
-            <InfoCard
-              icon={<LifeBuoy className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
-              title={whyChooseCard2TitleText}
-              description={whyChooseCard2DescText}
-            />
-            <InfoCard
-              icon={<DoorOpen className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
-              title={whyChooseCard3TitleText}
-              description={whyChooseCard3DescText}
-            />
-            <InfoCard
-              icon={
-                <FolderLock className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-              }
-              title={whyChooseCard4TitleText}
-              description={whyChooseCard4DescText}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Therapeutic Approach Section */}
-      <section
-        className="py-12 sm:py-16 bg-gradient-to-r from-primary/10 to-accent/10"
         aria-labelledby="my-approach-title"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -668,10 +660,52 @@ export default function HomePageClientContents({
         </div>
       </section>
 
+      {/* Why Talk Therapy? Section */}
+      <section
+        className="py-12 sm:py-16 bg-gradient-to-r from-primary/10 to-accent/10"
+        aria-labelledby="why-choose-title"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            id="why-choose-title"
+            className="text-2xl md:text-3xl font-bold font-headline text-foreground mb-8 text-center"
+          >
+            {whyChoosePsychotherapyTitleText}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4 sm:gap-8 max-w-5xl mx-auto">
+            <InfoCard
+              icon={<Ear className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
+              title={whyChooseCard1TitleText}
+              description={whyChooseCard1DescText}
+            />
+            <InfoCard
+              icon={<LifeBuoy className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />}
+              title={whyChooseCard2TitleText}
+              description={whyChooseCard2DescText}
+            />
+            <InfoCard
+              icon={<DoorOpen className="h-6 w-6 sm:h-8 smw-8 text-primary" />}
+              title={whyChooseCard3TitleText}
+              description={whyChooseCard3DescText}
+            />
+            <InfoCard
+              icon={
+                <FolderLock className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+              }
+              title={whyChooseCard4TitleText}
+              description={whyChooseCard4DescText}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Psychotherapy Service Section */}
       <section
         className="py-12 sm:py-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/bg-pier.webp')" }}
+        style={{
+          backgroundImage: "url('/images/bg-pier.webp')",
+          backgroundColor: "hsl(var(--background))",
+        }}
         aria-labelledby="psychotherapy-service-title"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -683,7 +717,7 @@ export default function HomePageClientContents({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             <ServiceHighlightCard
-              icon={<SearchCode className="h-6 w-6 sm:h-8 sm:w-8" />}
+              icon={<SearchCode className="h-6 w-6" />}
               title={serviceFocusAreasTitleText}
               description={
                 <div className="markdown-content">
@@ -692,7 +726,7 @@ export default function HomePageClientContents({
               }
             />
             <ServiceHighlightCard
-              icon={<Navigation className="h-6 w-6 sm:h-8 sm:w-8" />}
+              icon={<Navigation className="h-6 w-6" />}
               title={serviceLocationTitleText}
               description={
                 <div className="markdown-content">
@@ -701,7 +735,7 @@ export default function HomePageClientContents({
               }
             />
             <ServiceHighlightCard
-              icon={<Wallet className="h-6 w-6 sm:h-8 sm:w-8" />}
+              icon={<Wallet className="h-6 w-6" />}
               title={serviceFeesTitleText}
               description={
                 <div className="markdown-content">
@@ -710,13 +744,15 @@ export default function HomePageClientContents({
               }
             />
             <Card className="h-full flex flex-col shadow-md bg-card/75">
-              <CardHeader className="items-center pb-2 text-center">
-                <div className="flex items-center justify-center rounded-full h-12 w-12 sm:h-16 sm:w-16 text-primary">
-                  <MessageCircleQuestion className="h-6 w-6 sm:h-8 sm:w-8" />
+              <CardHeader className="flex-row items-center space-x-4 pb-2">
+                <div className="flex items-center justify-center rounded-full h-12 w-12 text-primary flex-shrink-0">
+                  <MessageCircleQuestion className="h-6 w-6" />
                 </div>
-                <CardTitle className="text-lg font-headline text-foreground flex items-center justify-center mt-4 mb-2">
-                  {serviceQuestionsTitleText}
-                </CardTitle>
+                <div className="flex items-center">
+                  <CardTitle className="text-lg font-headline text-foreground pb-1">
+                    {serviceQuestionsTitleText}
+                  </CardTitle>
+                </div>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col pt-2">
                 <div className="text-base text-muted-foreground leading-relaxed text-left have-questions-description">
@@ -804,7 +840,7 @@ export default function HomePageClientContents({
                                   asChild
                                   variant="outline"
                                   size="sm"
-                                  className="text-sm px-4 py-2 h-auto text-primary gap-1.5 transition-transform hover:scale-105 shadow-md hover:shadow-lg"
+                                  className="text-sm px-4 py-2 h-auto text-primary gap-1.5 transition-transform hover:scale-105 shadow-md hover-shadow-lg"
                                 >
                                   <Link
                                     href={getLocalizedPath(
