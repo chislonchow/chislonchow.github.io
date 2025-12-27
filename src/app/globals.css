@@ -23,7 +23,7 @@
     --muted: 33 71% 88%;
     --muted-foreground: 202 20% 55%; /* Made lighter */
 
-    --accent: 340 25% 60%; /* #B88DA0 Darker dusty rose */
+    --accent: 340 25% 50%; /* #A17488 Darker dusty rose for links - Made lighter */
     --accent-foreground: 0 0% 10%; /* Dark text on accent */
 
     --destructive: 0 84.2% 60.2%;
@@ -236,3 +236,5 @@
     @apply font-headline;
   }
 }
+
+    

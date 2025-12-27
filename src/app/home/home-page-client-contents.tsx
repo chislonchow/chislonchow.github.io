@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
@@ -89,7 +90,7 @@ function ServiceHighlightCard({
           {icon}
         </div>
         <div className="flex items-center">
-          <CardTitle className="text-lg font-headline text-foreground pb-1">
+          <CardTitle className="text-lg font-headline text-foreground">
             {title}
           </CardTitle>
         </div>
@@ -206,10 +207,7 @@ export default function HomePageClientContents({
     translations.leadSectionDescription,
     language
   );
-  const heroGlassmorphismBodyText = getTranslatedString(
-    translations.heroGlassmorphismBody,
-    language
-  );
+  const heroGlassmorphismBodyText = getTranslatedString(translations.heroGlassmorphismBody, language);
 
   const [serviceFeesHtml, setServiceFeesHtml] = useState("");
   const [serviceLocationHtml, setServiceLocationHtml] = useState("");
@@ -219,8 +217,7 @@ export default function HomePageClientContents({
   const [approach2Html, setApproach2Html] = useState("");
   const [approach3Html, setApproach3Html] = useState("");
   const [leadSectionHtml, setLeadSectionHtml] = useState("");
-  const [heroGlassmorphismBodyHtml, setHeroGlassmorphismBodyHtml] =
-    useState("");
+  const [heroGlassmorphismBodyHtml, setHeroGlassmorphismBodyHtml] = useState("");
 
   const handleScrollToNext = () => {
     const element = document.getElementById("lead-section");
@@ -358,10 +355,7 @@ export default function HomePageClientContents({
     }
   }
 
-  const heroGlassmorphismTitleText = getTranslatedString(
-    translations.heroGlassmorphismTitle,
-    language
-  );
+  const heroGlassmorphismTitleText = getTranslatedString(translations.heroGlassmorphismTitle, language);
 
   const heroButtonText = getTranslatedString(translations.heroButton, language);
   const heroButtonSecondaryText = getTranslatedString(
@@ -492,10 +486,10 @@ export default function HomePageClientContents({
     <div className="flex flex-col font-headline">
       {/* Hero Section */}
       <section
-        className="relative pt-10 xs:pt-12 sm:pt-16 md:pt-16 pb-20 w-full bg-cover bg-no-repeat bg-center"
+        className="relative pt-8 xs:pt-10 sm:pt-12 md:pt-12 pb-20 w-full bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url('/images/bg-hero.webp')`,
-          backgroundColor: "hsl(var(--background))",
+          backgroundColor: 'hsl(var(--background))'
         }}
         aria-labelledby="hero-title-h1"
       >
@@ -521,24 +515,24 @@ export default function HomePageClientContents({
           <div className="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pb-10">
             <Button
               asChild
-              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-5 py-2.5 text-base sm:px-6 sm:py-3 sm:text-lg transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
+              className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
             >
               <a href={dynamicMailtoLink}>
                 {heroButtonText}
                 <Mail
-                  className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
+                  className="ml-1.5 h-3.5 w-3.5 sm:h-5 sm:w-5"
                   aria-hidden="true"
                 />
               </a>
             </Button>
             <Button
               asChild
-              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-5 py-2.5 text-base sm:px-6 sm:py-3 sm:text-lg transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
+              className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg transition-transform hover:scale-105 whitespace-nowrap shadow-md hover:shadow-lg"
             >
               <Link href={profilePath}>
                 {heroButtonSecondaryText}
                 <User
-                  className="ml-2 h-4 w-4 sm:h-5 sm:w-5"
+                  className="ml-1.5 h-3.5 w-3.5 sm:h-5 sm:w-5"
                   aria-hidden="true"
                 />
               </Link>
@@ -547,16 +541,10 @@ export default function HomePageClientContents({
 
           <div className="max-w-2xl mx-auto mb-8">
             <div className="bg-white/30 backdrop-blur-xl rounded-xl border border-white/20 shadow-lg p-6">
-              <h2
-                className="text-xl font-bold text-foreground mb-2"
-                style={{ color: "hsl(202 10% 44%)" }}
-              >
+              <h2 className="text-xl font-bold text-foreground mb-2" style={{ color: 'hsl(202 10% 44%)' }}>
                 {heroGlassmorphismTitleText}
               </h2>
-              <div
-                style={{ color: "hsl(202 10% 44%)" }}
-                className="markdown-content"
-              >
+              <div style={{ color: 'hsl(202 10% 44%)' }} className="markdown-content">
                 {parse(heroGlassmorphismBodyHtml, parserOptions)}
               </div>
             </div>
@@ -589,10 +577,8 @@ export default function HomePageClientContents({
           <Card className="max-w-3xl mx-auto shadow-md overflow-hidden bg-card/85">
             <CardContent className="p-6 md:p-8">
               <div className="flex flex-row items-center gap-4 sm:gap-6">
-                <div className="sm:shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16">
-                    <CirclePlay className="h-8 w-8 md:h-10 md:w-10 text-primary" />
-                  </div>
+                <div className="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 shrink-0">
+                  <CirclePlay className="h-8 w-8 md:h-10 md:w-10 text-primary" />
                 </div>
                 <div className="text-left flex-grow">
                   <h2
@@ -702,9 +688,9 @@ export default function HomePageClientContents({
       {/* Psychotherapy Service Section */}
       <section
         className="py-12 sm:py-16 bg-cover bg-center bg-no-repeat"
-        style={{
+        style={{ 
           backgroundImage: "url('/images/bg-pier.webp')",
-          backgroundColor: "hsl(var(--background))",
+          backgroundColor: 'hsl(var(--background))' 
         }}
         aria-labelledby="psychotherapy-service-title"
       >
@@ -749,7 +735,7 @@ export default function HomePageClientContents({
                   <MessageCircleQuestion className="h-6 w-6" />
                 </div>
                 <div className="flex items-center">
-                  <CardTitle className="text-lg font-headline text-foreground pb-1">
+                  <CardTitle className="text-lg font-headline text-foreground">
                     {serviceQuestionsTitleText}
                   </CardTitle>
                 </div>

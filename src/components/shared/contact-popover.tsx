@@ -110,6 +110,7 @@ export default function ContactPopover() {
                 <Button
                   asChild
                   className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
+                  onClick={() => setIsOpen(false)}
                 >
                   <a href={dynamicMailtoLink}>
                     {emailButtonText}
@@ -122,6 +123,7 @@ export default function ContactPopover() {
                 <Button
                   asChild
                   className="h-auto bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
+                  onClick={() => setIsOpen(false)}
                 >
                   <Link href={profilePath}>
                     {aboutMeButtonText}
