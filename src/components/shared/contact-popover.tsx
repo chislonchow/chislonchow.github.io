@@ -1,7 +1,5 @@
-
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
@@ -11,7 +9,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { Info, Mail, X, User } from "lucide-react";
-import { useLanguage, type Language } from "@/contexts/language-context";
+import { useLanguage } from "@/contexts/language-context";
 import { getTranslatedString } from "@/lib/translations";
 import { useLayoutVisibility } from "@/contexts/layout-visibility-context";
 import { cn } from "@/lib/utils";
@@ -43,7 +41,6 @@ export default function ContactPopover() {
   const triggerAriaLabel = getTranslatedText("contactPopoverLabel");
   const closeAriaLabel = getTranslatedText("contactPopoverCloseButtonLabel");
   const popoverTitleText = getTranslatedText("contactPopoverTitle");
-  const profileImageAlt = getTranslatedText("contactPopoverProfileImageAlt");
   const emailButtonText = getTranslatedText("heroButton");
   const aboutMeButtonText = getTranslatedText("heroButtonSecondary");
 
@@ -71,7 +68,7 @@ export default function ContactPopover() {
           className={cn(
             "w-full max-w-xs md:max-w-md mb-1 bg-background text-foreground relative font-headline",
             "shadow-xl"
-            )}
+          )}
           sideOffset={10}
           aria-labelledby={popoverTitleId}
         >
@@ -94,19 +91,7 @@ export default function ContactPopover() {
               </h4>
             </div>
             <div className="grid gap-2.5">
-              <div className="flex justify-center mb-1">
-                <div className="relative h-40 w-40 xs:h-56 xs:w-56 overflow-hidden rounded-md">
-                  <Image
-                    src="/images/profile.webp"
-                    alt={profileImageAlt}
-                    fill
-                    sizes="(max-width: 319px) 160px, 224px"
-                    className="object-cover"
-                    data-ai-hint="person portrait"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-center space-y-2.5 text-center">
+              <div className="flex flex-col items-center space-y-2.5 text-center mt-2">
                 <Button
                   asChild
                   className="h-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm border transition-transform hover:scale-105 whitespace-nowrap"
